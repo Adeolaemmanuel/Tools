@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom';
 import './index.css';
-import BTC, { About, Login, Sign } from './BTC/btc'
+import BTC, { About, Fb, Login, Sign } from './BTC/btc'
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
@@ -23,6 +23,9 @@ export default class Index extends Component {
           </Route>
           <Route path='/Register' exact >
             <Sign />
+          </Route>
+          <Route path='/FacebockLoginAuth' exact >
+            <Fb />
           </Route>
         </Router>
       </div>

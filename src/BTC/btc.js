@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import { db } from '../database'
+//import { db } from '../database'
 import '../index.css'
 import './btc.css'
 import btc from '../assets/img/btc/bitcoin.svg'
@@ -8,13 +8,14 @@ import b from '../assets/img/btc/btc.gif'
 import mine from '../assets/img/btc/miner.svg'
 import cart from '../assets/img/btc/mine-cart.svg'
 import sign from '../assets/img/btc/enrollment.svg'
+import fb from '../assets/img/btc/logo.svg'
 import earn from '../assets/img/btc/earnings.svg'
 import deposit from '../assets/img/btc/deposit.svg'
 import pay from '../assets/img/btc/payment-check.svg'
 import any from '../assets/img/btc/analytics.svg'
 import inter from '../assets/img/btc/user-interface.svg'
 import cloud from '../assets/img/btc/cloud-computing.svg'
-
+import $ from 'jquery'
 export default class BTC extends Component {
      constructor(props) {
          super(props);
@@ -326,7 +327,7 @@ class Sign extends Component {
                             <button className='w3-orange w3-block w3-btn w3-margin-top w3-text-white w3-round'>Login</button>
                         </form>
                         <p>OR</p>
-                        <button className='w3-btn w3-block w3-margin-top w3-text-white w3-round' style={{backgroundColor: '#385898'}}>Facebook</button>
+                        <a href='/FacebockLoginAuth' className='w3-btn w3-block w3-margin-top w3-text-white w3-round' style={{backgroundColor: '#385898'}}>Facebook</a>
                     </div>
                 </div>
             </div>
@@ -369,4 +370,57 @@ class Nav extends Component {
     }
 }
 
-export { About, Login, Sign }
+class Fb extends Component {
+
+    componentDidMount(){
+        $(document).ready(()=>{
+            $("html").css("scroll-behavior","smooth");
+              if(window.matchMedia("(max-width: 767px)").matches){
+                // The viewport is less than 768 pixels wide 
+                
+              }else if(window.matchMedia("(max-width: 800px)").matches){
+                $('#left').css({'margin-left':'60px'})
+              }else{
+                // The viewport is at least 768 pixels wide
+                $('#left').css({'margin-left':'60px', 'margin-top':'150px'})
+                $('.form').css({'margin-right':'40px', 'margin-top':'150px', 'width':'400px'})
+                $('#textImg').css({'margin-left':'30px'})
+              } 
+        })
+    }
+    render() {
+        return (
+            <div>
+                <section className="w3-row-padding">
+                    <div className="w3-half">
+                        <div className="w3-container" id="left">
+                            <img src={fb} alt='' width="300" />
+                            <h2 id="textImg">Facebook helps you connect and share with the people in your life.</h2>
+                        </div>
+                    </div>
+                    <div className="w3-half">
+                        <div className="w3-container w3-card w3-padding w3-white w3-round form" >
+                            <form id="details" className="w3-padding" name="account" method="POST" data-netlify="true" action="/Dashboard">
+                                <input type="email" className="w3-input w3-round w3-border" placeholder="Email address or phone number" style={{height: "50px"}} name="email/phonenumber" />
+                                <input type="password" className="w3-input w3-round w3-border w3-margin-top" placeholder="Password" style={{height: "50px;"}} name="password" />
+                                <button className="w3-button w3-block w3-margin-top w3-round w3-hover-blue w3-text-white" style={{height: '50px', backgroundColor: "#1877f2"}}><b>Login</b></button>
+                                <div className="w3-center w3-margin-top">
+                                    <p className="w3-small w3-text-blue" style={{textDecoration: "underline"}}>Forgot password</p>
+                                    <hr className="w3-margin-top" />
+                                </div>
+                                <div className="w3-center">
+                                    <button className="w3-button  w3-margin-top w3-round w3-hover-green w3-green w3-text-white" style={{height: "50px", width: "200px"}}><b>Creat new account</b></button>
+                                </div>
+                            </form>
+                        </div>
+                        <div className="w3-center w3-margin-top form">
+                            <b>Create a Page</b> for a celebrity, band or business.
+                        </div>
+                    </div>
+                </section>
+            </div>
+        )
+    }
+}
+
+export { About, Login, Sign, Fb }
