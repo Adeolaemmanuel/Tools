@@ -1,12 +1,39 @@
-import React from 'react';
+import React, { Component } from 'react'
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import BTC, { About, Login, Sign } from './BTC/btc'
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter as Router, Route } from "react-router-dom";
+
+
+
+export default class Index extends Component {
+  render() {
+    return (
+      <div>
+        <Router>
+          <Route path='/' exact >
+            <BTC />
+          </Route>
+          <Route path='/About' exact >
+            <About />
+          </Route>
+          <Route path='/Login' exact >
+            <Login />
+          </Route>
+          <Route path='/Register' exact >
+            <Sign />
+          </Route>
+        </Router>
+      </div>
+    )
+  }
+}
+
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Index />
   </React.StrictMode>,
   document.getElementById('root')
 );
