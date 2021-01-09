@@ -158,19 +158,19 @@ export default class BTC extends Component {
                     <div className='w3-center'>
                         <h2 className='w3-padding w3-orange w3-text-white w3-bold' style={{display: 'inline-block'}}>OUR FEATURES</h2>
                     </div>
-                    <div className='w3-col s6 m3 l3 w3-padding w3-center' style={{marginTop: '50px'}}>
+                    <div className='w3-col s6 m3 l3 w3-padding w3-container w3-center' style={{marginTop: '50px'}}>
                         <img src={any} alt='' className='w3-padding' style={{width: '150px', height: '150px'}} />
                         <h4 className='w3-padding w3-center w3-bold'>The highest rates of conversion and quality in our segment!</h4>
                     </div>
-                    <div className='w3-col s6 m3 l3 w3-padding w3-center' style={{marginTop: '50px'}}>
+                    <div className='w3-col s6 m3 l3 w3-container w3-padding w3-center' style={{marginTop: '50px'}}>
                         <img src={inter} alt='' className='w3-padding' style={{width: '150px', height: '150px'}} />
                         <h4 className='w3-padding w3-center w3-bold'>Easy in use and comprehensive user interface.</h4>
                     </div>
-                    <div className='w3-col s6 m3 l3 w3-padding w3-center' style={{marginTop: '50px'}}>
+                    <div className='w3-col s6 m3 l3 w3-container w3-padding w3-center' style={{marginTop: '50px'}}>
                         <img src={btc} alt='' className='w3-padding' style={{width: '150px', height: '150px'}} />
                         <h4 className='w3-padding w3-center w3-bold'>Fast, convenient and anonymous Bitcoin Payments!</h4>
                     </div>
-                    <div className='w3-col s6 m3 l3 w3-padding w3-center' style={{marginTop: '50px'}}>
+                    <div className='w3-col s6 m3 l3 w3-container w3-padding w3-center' style={{marginTop: '50px'}}>
                         <img src={cloud} alt='' className='w3-padding' style={{width: '150px', height: '150px'}} />
                         <h4 className='w3-padding w3-center w3-bold'>Our technologies sustain any load and handle any payment without a delay!</h4>
                     </div>
@@ -184,10 +184,10 @@ export default class BTC extends Component {
                     <div style={{marginTop: '50px'}}>
                         <div className='w3-row'>
                             <div className='w3-half'>
-                                <iframe width="640" title='1' height="360" src="https://www.youtube.com/embed/h5ob2CLxuwc" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen=""></iframe>
+                                <iframe title='1' style={{width: '100%'}} src="https://www.youtube.com/embed/h5ob2CLxuwc" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen=""></iframe>
                             </div>
                             <div className='w3-half'>
-                                <iframe width="640" title='2' height="360" src="https://www.youtube.com/embed/SUio-AqVkGE" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen=""></iframe>
+                                <iframe title='2' style={{width: '100%'}} src="https://www.youtube.com/embed/SUio-AqVkGE" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen=""></iframe>
                             </div>
                         </div>
                         
@@ -195,21 +195,10 @@ export default class BTC extends Component {
                         <div className='w3-hide more'>
                             <div className='w3-row'>
                                 <div className='w3-half'>
-                                    <iframe width="640" height="360" title='3' src="https://www.youtube.com/embed/AFzTIPWjhJo" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen=""></iframe>
+                                    <iframe style={{width: '100%'}} title='3' src="https://www.youtube.com/embed/AFzTIPWjhJo" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen=""></iframe>
                                 </div>
                                 <div className='w3-half'>
-                                    <iframe width="640" title='4' height="360" src="https://www.youtube.com/embed/ZvhuHLKM1Vs" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen=""></iframe>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className='w3-hide more'>
-                            <div className='w3-row'>
-                                <div className='w3-half'>
-                                    <iframe width="640" height="360" title='5' src="https://www.youtube.com/embed/Jk9WfQPbdmo" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen=""></iframe>
-                                </div>
-                                <div className='w3-half'>
-                                    <iframe width="640" title='6' height="360" src="https://www.youtube.com/embed/GQ03MJy5o30" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen=""></iframe>
+                                    <iframe title='4' style={{width: '100%'}} src="https://www.youtube.com/embed/ZvhuHLKM1Vs" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen=""></iframe>
                                 </div>
                             </div>
                         </div>
@@ -217,10 +206,10 @@ export default class BTC extends Component {
                         <div className='w3-hide more'>
                             <div className='w3-row'>
                                 <div className='w3-half'>
-                                    <iframe width="640" height="360" title='7' src="https://www.youtube.com/embed/vuLjJMZJkJE" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen=""></iframe>
+                                    <iframe style={{width: '100%'}} title='5' src="https://www.youtube.com/embed/Jk9WfQPbdmo" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen=""></iframe>
                                 </div>
                                 <div className='w3-half'>
-                                    <iframe width="640" title='8' height="360" src="https://www.youtube.com/embed/chwk4JeI5lM" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen=""></iframe>
+                                    <iframe title='6' style={{width: '100%'}} src="https://www.youtube.com/embed/GQ03MJy5o30" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen=""></iframe>
                                 </div>
                             </div>
                         </div>
@@ -228,10 +217,21 @@ export default class BTC extends Component {
                         <div className='w3-hide more'>
                             <div className='w3-row'>
                                 <div className='w3-half'>
-                                    <iframe width="640" height="360" title='8' src="https://www.youtube.com/embed/qAf_mA0JDLE" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen=""></iframe>
+                                    <iframe style={{width: '100%'}} title='7' src="https://www.youtube.com/embed/vuLjJMZJkJE" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen=""></iframe>
                                 </div>
                                 <div className='w3-half'>
-                                    <iframe width="640" title='9' height="360" src="https://www.youtube.com/embed/yRPL4ijhZKo" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen=""></iframe>
+                                    <iframe title='8' style={{width: '100%'}} src="https://www.youtube.com/embed/chwk4JeI5lM" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen=""></iframe>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className='w3-hide more'>
+                            <div className='w3-row'>
+                                <div className='w3-half'>
+                                    <iframe style={{width: '100%'}} title='8' src="https://www.youtube.com/embed/qAf_mA0JDLE" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen=""></iframe>
+                                </div>
+                                <div className='w3-half'>
+                                    <iframe title='9' style={{width: '100%'}} src="https://www.youtube.com/embed/yRPL4ijhZKo" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen=""></iframe>
                                 </div>
                             </div>
                         </div>
@@ -344,8 +344,8 @@ class Nav extends Component {
                         <a className='w3-bar-item' style={{textDecoration: 'none'}}  href='/#plans'>PLANS</a>
                         <Link className='w3-bar-item' style={{textDecoration: 'none'}}  to='/Faq'>FAQ</Link>
                         <a className='w3-bar-item' style={{textDecoration: 'none'}}  href='/#videos'>VIDEOS</a>
-                        <a className='w3-bar-item w3-btn w3-border w3-border-white w3-right' href='/Login'>LOGIN</a>
-                        <a className='w3-bar-item w3-btn w3-border w3-border-white w3-right' href='/Register'>SIGN UP</a>
+                        <a className='w3-bar-item w3-btn w3-border w3-border-white w3-right' href='Login'>LOGIN</a>
+                        <a className='w3-bar-item w3-btn w3-border w3-border-white w3-right' href='Register'>SIGN UP</a>
                     </div>
                 </nav>
                 <div className="w3-sidebar w3-bar-block w3-hide w3-margin-top w3-animate-left w3-card" style={{width: "200px"}} id="side">
@@ -357,8 +357,8 @@ class Nav extends Component {
                         <a className='w3-bar-item w3-btn w3-orange w3-round w3-text-white w3-margin-top w3-center' onClick={()=>{document.getElementById('side').classList.add('w3-hide')}}  href='/#plans'>PLANS</a>
                         <Link className='w3-bar-item w3-btn w3-orange w3-round w3-text-white w3-margin-top w3-center' onClick={()=>{document.getElementById('side').classList.add('w3-hide')}}  to='/Faq'>FAQ</Link>
                         <a className='w3-bar-item w3-btn w3-orange w3-round w3-text-white w3-margin-top w3-center' onClick={()=>{document.getElementById('side').classList.add('w3-hide')}}  href='/#videos'>VIDEOS</a>
-                        <a className='w3-bar-item w3-btn w3-orange w3-round w3-text-white w3-margin-top w3-center' onClick={()=>{document.getElementById('side').classList.add('w3-hide')}} href='/Login'>LOGIN</a>
-                        <a className='w3-bar-item w3-btn w3-orange w3-round w3-text-white w3-margin-top w3-center' onClick={()=>{document.getElementById('side').classList.add('w3-hide')}} href='/Register'>SIGN UP</a>
+                        <a className='w3-bar-item w3-btn w3-orange w3-round w3-text-white w3-margin-top w3-center' onClick={()=>{document.getElementById('side').classList.add('w3-hide')}} href='Login'>LOGIN</a>
+                        <a className='w3-bar-item w3-btn w3-orange w3-round w3-text-white w3-margin-top w3-center' onClick={()=>{document.getElementById('side').classList.add('w3-hide')}} href='Register'>SIGN UP</a>
                     </div>
                 </div>
             </div>
