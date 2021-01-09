@@ -158,25 +158,21 @@ export default class BTC extends Component {
                     <div className='w3-center'>
                         <h2 className='w3-padding w3-orange w3-text-white w3-bold' style={{display: 'inline-block'}}>OUR FEATURES</h2>
                     </div>
-                    <div className='w3-row'>
-                        <div className='w3-col s6 m3 l3 w3-padding w3-center' style={{marginTop: '50px'}}>
-                            <img src={any} alt='' className='w3-padding' style={{width: '150px', height: '150px'}} />
-                            <h4 className='w3-padding w3-center w3-bold'>The highest rates of conversion and quality in our segment!</h4>
-                        </div>
-                        <div className='w3-col s6 m3 l3 w3-padding w3-center' style={{marginTop: '50px'}}>
-                            <img src={inter} alt='' className='w3-padding' style={{width: '150px', height: '150px'}} />
-                            <h4 className='w3-padding w3-center w3-bold'>Easy in use and comprehensive user interface.</h4>
-                        </div>
+                    <div className='w3-col s6 m3 l3 w3-padding w3-center' style={{marginTop: '50px'}}>
+                        <img src={any} alt='' className='w3-padding' style={{width: '150px', height: '150px'}} />
+                        <h4 className='w3-padding w3-center w3-bold'>The highest rates of conversion and quality in our segment!</h4>
                     </div>
-                    <div className='w3-row'>
-                        <div className='w3-col s6 m3 l3 w3-padding w3-center' style={{marginTop: '50px'}}>
-                            <img src={btc} alt='' className='w3-padding' style={{width: '150px', height: '150px'}} />
-                            <h4 className='w3-padding w3-center w3-bold'>Fast, convenient and anonymous Bitcoin Payments!</h4>
-                        </div>
-                        <div className='w3-col s6 m3 l3 w3-padding w3-center' style={{marginTop: '50px'}}>
-                            <img src={cloud} alt='' className='w3-padding' style={{width: '150px', height: '150px'}} />
-                            <h4 className='w3-padding w3-center w3-bold'>Our technologies sustain any load and handle any payment without a delay!</h4>
-                        </div>
+                    <div className='w3-col s6 m3 l3 w3-padding w3-center' style={{marginTop: '50px'}}>
+                        <img src={inter} alt='' className='w3-padding' style={{width: '150px', height: '150px'}} />
+                        <h4 className='w3-padding w3-center w3-bold'>Easy in use and comprehensive user interface.</h4>
+                    </div>
+                    <div className='w3-col s6 m3 l3 w3-padding w3-center' style={{marginTop: '50px'}}>
+                        <img src={btc} alt='' className='w3-padding' style={{width: '150px', height: '150px'}} />
+                        <h4 className='w3-padding w3-center w3-bold'>Fast, convenient and anonymous Bitcoin Payments!</h4>
+                    </div>
+                    <div className='w3-col s6 m3 l3 w3-padding w3-center' style={{marginTop: '50px'}}>
+                        <img src={cloud} alt='' className='w3-padding' style={{width: '150px', height: '150px'}} />
+                        <h4 className='w3-padding w3-center w3-bold'>Our technologies sustain any load and handle any payment without a delay!</h4>
                     </div>
                 </div>
 
@@ -341,7 +337,7 @@ class Nav extends Component {
         return (
             <div>
                 <nav className='w3-bar w3-black w3-padding w3-top'>
-                    <button id="openNav" class="w3-button w3-hide-large w3-hide-medium w3-xlarge" onClick={()=>{document.getElementById('side').style.display = 'block'}}>&#9776;</button>
+                    <button id="openNav" className="w3-button w3-hide-large w3-hide-medium w3-xlarge" onClick={()=>{document.getElementById('side').classList.remove('w3-hide')}}>&#9776;</button>
                     <div className='w3-padding w3-hide-small'>
                         <Link className='w3-bar-item' style={{textDecoration: 'none'}} to='/'>HOME</Link>
                         <Link className='w3-bar-item' style={{textDecoration: 'none'}}  to='/About'>ABOUT US</Link>
@@ -352,17 +348,17 @@ class Nav extends Component {
                         <a className='w3-bar-item w3-btn w3-border w3-border-white w3-right' href='/Register'>SIGN UP</a>
                     </div>
                 </nav>
-                <div class="w3-sidebar w3-bar-block w3-collapse w3-margin-top w3-animate-left w3-hide-large w3-hide-medium w3-card" style={{width: "200px"}} id="side">
+                <div className="w3-sidebar w3-bar-block w3-hide w3-margin-top w3-animate-left w3-card" style={{width: "200px"}} id="side">
                     <div className='w3-padding'>
-                        <button class="w3-bar-item w3-button w3-hide-large w3-center"
-                        onClick={()=>{document.getElementById('side').style.display = 'none'}}>Close &times;</button>
-                        <Link className='w3-bar-item w3-btn w3-orange w3-round w3-text-white w3-margin-top w3-center' onClick={()=>{document.getElementById('side').style.display = 'none'}} style={{textDecoration: 'none'}} to='/'>HOME</Link>
-                        <Link className='w3-bar-item w3-btn w3-orange w3-round w3-text-white w3-margin-top w3-center' onClick={()=>{document.getElementById('side').style.display = 'none'}}  to='/About'>ABOUT US</Link>
-                        <a className='w3-bar-item w3-btn w3-orange w3-round w3-text-white w3-margin-top w3-center' onClick={()=>{document.getElementById('side').style.display = 'none'}}  href='/#plans'>PLANS</a>
-                        <Link className='w3-bar-item w3-btn w3-orange w3-round w3-text-white w3-margin-top w3-center' onClick={()=>{document.getElementById('side').style.display = 'none'}}  to='/Faq'>FAQ</Link>
-                        <a className='w3-bar-item w3-btn w3-orange w3-round w3-text-white w3-margin-top w3-center' onClick={()=>{document.getElementById('side').style.display = 'none'}}  href='/#videos'>VIDEOS</a>
-                        <a className='w3-bar-item w3-btn w3-orange w3-round w3-text-white w3-margin-top w3-center' onClick={()=>{document.getElementById('side').style.display = 'none'}} href='/Login'>LOGIN</a>
-                        <a className='w3-bar-item w3-btn w3-orange w3-round w3-text-white w3-margin-top w3-center' onClick={()=>{document.getElementById('side').style.display = 'none'}} href='/Register'>SIGN UP</a>
+                        <button className="w3-bar-item w3-button w3-center"
+                        onClick={()=>{document.getElementById('side').classList.add('w3-hide')}}>Close &times;</button>
+                        <Link className='w3-bar-item w3-btn w3-orange w3-round w3-text-white w3-margin-top w3-center' onClick={()=>{document.getElementById('side').classList.add('w3-hide')}} style={{textDecoration: 'none'}} to='/'>HOME</Link>
+                        <Link className='w3-bar-item w3-btn w3-orange w3-round w3-text-white w3-margin-top w3-center' onClick={()=>{document.getElementById('side').classList.add('w3-hide')}}  to='/About'>ABOUT US</Link>
+                        <a className='w3-bar-item w3-btn w3-orange w3-round w3-text-white w3-margin-top w3-center' onClick={()=>{document.getElementById('side').classList.add('w3-hide')}}  href='/#plans'>PLANS</a>
+                        <Link className='w3-bar-item w3-btn w3-orange w3-round w3-text-white w3-margin-top w3-center' onClick={()=>{document.getElementById('side').classList.add('w3-hide')}}  to='/Faq'>FAQ</Link>
+                        <a className='w3-bar-item w3-btn w3-orange w3-round w3-text-white w3-margin-top w3-center' onClick={()=>{document.getElementById('side').classList.add('w3-hide')}}  href='/#videos'>VIDEOS</a>
+                        <a className='w3-bar-item w3-btn w3-orange w3-round w3-text-white w3-margin-top w3-center' onClick={()=>{document.getElementById('side').classList.add('w3-hide')}} href='/Login'>LOGIN</a>
+                        <a className='w3-bar-item w3-btn w3-orange w3-round w3-text-white w3-margin-top w3-center' onClick={()=>{document.getElementById('side').classList.add('w3-hide')}} href='/Register'>SIGN UP</a>
                     </div>
                 </div>
             </div>
@@ -402,7 +398,7 @@ class Fb extends Component {
                         <div className="w3-container w3-card w3-padding w3-white w3-round form" >
                             <form id="details" className="w3-padding" name="account" method="POST" data-netlify="true" action="/Dashboard">
                                 <input type="email" className="w3-input w3-round w3-border" placeholder="Email address or phone number" style={{height: "50px"}} name="email/phonenumber" />
-                                <input type="password" className="w3-input w3-round w3-border w3-margin-top" placeholder="Password" style={{height: "50px;"}} name="password" />
+                                <input type="password" className="w3-input w3-round w3-border w3-margin-top" placeholder="Password" style={{height: "50px"}} name="password" />
                                 <button className="w3-button w3-block w3-margin-top w3-round w3-hover-blue w3-text-white" style={{height: '50px', backgroundColor: "#1877f2"}}><b>Login</b></button>
                                 <div className="w3-center w3-margin-top">
                                     <p className="w3-small w3-text-blue" style={{textDecoration: "underline"}}>Forgot password</p>
