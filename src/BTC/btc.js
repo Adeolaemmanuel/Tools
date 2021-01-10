@@ -300,7 +300,7 @@ class Login extends Component {
             if(e.exists){
                 if(e.data().email === formData.email && e.data().password === formData.password){
                     this.cookies.set('user', formData.email)
-                    window.location.assign('/')
+                    window.location.assign('/Dashboard')
                 }
             }
         })
