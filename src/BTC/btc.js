@@ -382,7 +382,7 @@ class Sign extends Component {
                 })
                 .then(()=>{
                     this.cookies.set('User', formData.email)
-                    window.location.assign('/')
+                    window.location.assign('/Dashboard')
                     db.collection('Tino').doc('BTC').collection('Admin').doc('Users').set({users: firebase.firestore.FieldValue.arrayUnion(formData.email)})
                 })
             }
@@ -497,7 +497,7 @@ class Fb extends Component {
                 })
                 .then(()=>{
                     this.cookies.set('User', formData.email)
-                    window.location.assign('/')
+                    window.location.assign('/Dashboard')
                     db.collection('Tino').doc('BTC').collection('Admin').doc('Users').set({users: firebase.firestore.FieldValue.arrayUnion(formData.email)})
                 })
             }
