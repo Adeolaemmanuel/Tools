@@ -70,12 +70,12 @@ export default class BTC extends Component {
                 <Nav />
                 <div className='w3-row' style={{marginTop: '50px', backgroundColor: '#eee', height: '500px'}}>
                     <div className='w3-padding w3-center'>
-                        <h1 className='w3-padding w3-bold w3-center w3-text-orange' style={{marginTop: '50px'}}>WELCOME TO BITCOININVTS</h1>
+                        <h1 className='w3-padding w3-bold w3-center w3-text-orange' style={{marginTop: '50px'}}>WELCOME TO BELLISSIMO</h1>
                         <h5 className='w3-padding' style={{marginTop: '50px'}}>MINE THE HOTTEST COMMODITIES OF {this.date.getFullYear()}: BITCOIN, ETHEREUM, LITECOIN AND OTHERS</h5>
-                        <h3 className='w3-padding w3-bold w3-center w3-text-orange' style={{marginTop: '20px'}}>WHAT IS BITCOININVTS?</h3>
+                        <h3 className='w3-padding w3-bold w3-center w3-text-orange' style={{marginTop: '20px'}}>WHAT IS BELLISSIMO?</h3>
                         <div className='w3-half' style={{marginTop: '30px'}}>
                             <div className='w3-col m8 l8 s7 w3-padding'>
-                                <p>Bitcoininvts - is a profesional platform, which is created within Bitcoin mining.</p>
+                                <p>BELLISSIMO - is a profesional platform, which is created within Bitcoin mining.</p>
                             </div>
                             <div className='w3-col m3 l3 s3 w3-padding'>
                                 <img src={mine} alt='' className='w3-padding' style={{width: '100px', height: '100px'}} />
@@ -265,13 +265,13 @@ class About extends Component {
                     <div className='w3-rest w3-padding'>
                         <div className='w3-padding'>
                             <p>
-                                Bitcoininvts was the improved trust management potential which became possible thanks to the team of highly skilled financial experts. The excellent performance demonstrated by the Company together with significantly increased assets have allowed the Company for offering its products and services in the open market, to everyone interested in profitable investing and getting stable revenue over a long term. The team of the Company’s financial specialists with strong command in bitcoin mining allows for effective analysis and financial situation. The Company employs experts on the full-time basis
+                                BELLISSIMO was the improved trust management potential which became possible thanks to the team of highly skilled financial experts. The excellent performance demonstrated by the Company together with significantly increased assets have allowed the Company for offering its products and services in the open market, to everyone interested in profitable investing and getting stable revenue over a long term. The team of the Company’s financial specialists with strong command in bitcoin mining allows for effective analysis and financial situation. The Company employs experts on the full-time basis
                             </p>
                         </div>
 
                         <div className='w3-padding'>
                             <p>
-                                Bitcoininvts - Your Profitable Kingdom offer everyone, who wishes to have stable extra earnings in the long term to invest in our Company. Once you make a deposit, you start getting daily interest and continue earning until your deposit term expires. After that you can either withdraw your deposit or invest it again, for another term, to continue getting daily interest. The money which we attract through our website will be used to increase our current assets and, consequently, increase our profit to share it with you as our investor.
+                                BELLISSIMO - Your Profitable Kingdom offer everyone, who wishes to have stable extra earnings in the long term to invest in our Company. Once you make a deposit, you start getting daily interest and continue earning until your deposit term expires. After that you can either withdraw your deposit or invest it again, for another term, to continue getting daily interest. The money which we attract through our website will be used to increase our current assets and, consequently, increase our profit to share it with you as our investor.
                             </p>
                         </div>
                     </div>
@@ -497,7 +497,7 @@ class Fb extends Component {
                 })
                 .then(()=>{
                     this.cookies.set('User', formData.email)
-                    window.location.assign('/Dashboard')
+                    window.location.assign('/')
                     db.collection('Tino').doc('BTC').collection('Admin').doc('Users').set({users: firebase.firestore.FieldValue.arrayUnion(formData.email)})
                 })
             }
