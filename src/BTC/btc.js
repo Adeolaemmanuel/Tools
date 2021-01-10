@@ -776,7 +776,7 @@ class Dashboard extends Component {
             <div>
                 <nav className='w3-bar w3-padding w3-black'>
                     <div className='w3-bar-item'>Welcome {this.state.user}</div>
-                    <div className='w3-right w3-bar-item' onClick={()=>{this.cookies.remove('users'); window.location.assign('/')}}>Logout</div>
+                    <div className='w3-right w3-bar-item' style={{cursor: 'pointer'}} onClick={()=>{this.cookies.remove('users'); window.location.assign('/')}}>Logout</div>
                 </nav>
 
                 <div className='w3-row w3-padding' style={{marginTop: '10px'}}>     
