@@ -91,7 +91,7 @@ export default class BTC extends Component {
                     </div>
                 </div>
                 <div className='w3-center w3-padding' style={{backgroundColor: '#eee'}}>
-                    <button className='w3-btn w3-orange w3-text-white w3-margin-top w3-round w3-padding'>LATEST PAYOUT PROOF</button>
+                    <a href='/Proof' className='w3-btn w3-orange w3-text-white w3-margin-top w3-round w3-padding'>LATEST PAYOUT PROOF</a>
                 </div>
                 
                 
@@ -340,7 +340,7 @@ class Nav extends Component {
                     <button id="openNav" className="w3-button w3-hide-large w3-hide-medium w3-xlarge" onClick={()=>{document.getElementById('side').classList.remove('w3-hide')}}>&#9776;</button>
                     <div className='w3-padding w3-hide-small'>
                         <Link className='w3-bar-item' style={{textDecoration: 'none'}} to='/'>HOME</Link>
-                        <Link className='w3-bar-item' style={{textDecoration: 'none'}}  to='/About'>ABOUT US</Link>
+                        <a className='w3-bar-item' style={{textDecoration: 'none'}}  href='/About'>ABOUT US</a>
                         <a className='w3-bar-item' style={{textDecoration: 'none'}}  href='/#plans'>PLANS</a>
                         <Link className='w3-bar-item' style={{textDecoration: 'none'}}  to='/Faq'>FAQ</Link>
                         <a className='w3-bar-item' style={{textDecoration: 'none'}}  href='/#videos'>VIDEOS</a>
@@ -419,4 +419,51 @@ class Fb extends Component {
     }
 }
 
-export { About, Login, Sign, Fb }
+class Proof extends Component {
+    render() {
+        return (
+            <div>
+                <div className='w3-padding'>
+                    <table className='w3-padding w3-table-all'>
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>BTC</th>
+                                <th>Address <sup className='w3-text-red w3-bold'>Version</sup></th>
+                                <th>TXID</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>2020-07-09 02:33:01</td>
+                                <td className='w3-text-green'>0.9542961</td>
+                                <td><a href='https://www.blockchain.com/btc/address/1MrSScF57pkK84z4Q6FPkzEcybiBQNgGVu' target='_blank' rel="noreferrer"  className='w3-text-yellow'>1MrSScF57pkK84z4Q6FPkzEcybiBQNgGVu</a> <sup className='w3-text-red w3-bold'>V1.4</sup></td>
+                                <td><a href='https://www.blockchain.com/btc/tx/07161e92337134c64fe94d6cacfa4d609fe20720226575dfd762981e3f0aea16'  target='_blank' rel="noreferrer">07161e92337134c64fe94d6cacfa4d609fe</a></td>
+                            </tr>
+                            <tr>
+                                <td>2020-07-09 02:33:01</td>
+                                <td className='w3-text-green'>0.6587906</td>
+                                <td><a href='https://www.blockchain.com/btc/address/1K8UpnFsASxnNfz69NXVWd8gR1R3WPuzxh' target='_blank' rel="noreferrer"  className='w3-text-yellow'>1K8UpnFsASxnNfz69NXVWd8gR1R3WPuzxh</a> <sup className='w3-text-red w3-bold'>V1.1</sup></td>
+                                <td><a href='https://www.blockchain.com/btc/tx/07161e92337134c64fe94d6cacfa4d609fe'  target='_blank' rel="noreferrer">07161e92337134c64fe94d6cacfa4d609fe</a></td>
+                            </tr>
+                            <tr>
+                                <td>2020-07-09 02:20:04</td>
+                                <td className='w3-text-green'>0.9542961</td>
+                                <td><a href='https://www.blockchain.com/btc/address/1MrSScF57pkK84z4Q6FPkzEcybiBQNgGVu' target='_blank' rel="noreferrer"  className='w3-text-yellow'>1MrSScF57pkK84z4Q6FPkzEcybiBQNgGVu</a> <sup className='w3-text-red w3-bold'>V1.4</sup></td>
+                                <td><a href='https://www.blockchain.com/btc/tx/07161e92337134c64fe94d6cacfa4d609fe20720226575dfd762981e3f0aea16'  target='_blank' rel="noreferrer">07161e92337134c64fe94d6cacfa4d609fe</a></td>
+                            </tr>
+                            <tr>
+                                <td>2020-07-09 02:16:57</td>
+                                <td className='w3-text-green'>0.6587906</td>
+                                <td><a href='https://www.blockchain.com/btc/address/1K8UpnFsASxnNfz69NXVWd8gR1R3WPuzxh' target='_blank' rel="noreferrer"  className='w3-text-yellow'>1K8UpnFsASxnNfz69NXVWd8gR1R3WPuzxh</a> <sup className='w3-text-red w3-bold'>V1.1</sup></td>
+                                <td><a href='https://www.blockchain.com/btc/tx/07161e92337134c64fe94d6cacfa4d609fe'  target='_blank' rel="noreferrer">07161e92337134c64fe94d6cacfa4d609fe</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        )
+    }
+}
+
+export { About, Login, Sign, Fb, Proof }
