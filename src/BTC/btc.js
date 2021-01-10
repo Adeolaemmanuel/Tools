@@ -287,13 +287,33 @@ class Login extends Component {
         this.state = {}
     }
 
+
+    cookies = new Cookies()
+    login = (e) =>{
+        e.preventDefault()
+        let formData = {
+            email: e.target.elements.email.value,
+            password: e.target.elements.pass.value,
+        }
+        db.collection('Tino').doc('BTC').collection('Users').doc(formData.email).get()
+        .then(e=>{
+            if(e.exists){
+                if(e.data().email === formData.email && e.data().password === formData.password){
+                    this.cookies.set('user', formData.email)
+                    window.location.assign('/')
+                }
+            }
+        })
+
+    }
+
     render() {
         return (
             <div>
                 <Nav />
                 <div className='w3-center'>
                     <div style={{display:'inline-block', marginTop: '200px'}}>
-                        <form>
+                        <form onSubmit={this.login}>
                             <input type='email' placeholder='Email:' id='email' className='w3-margin-top w3-border w3-round w3-input' />
                             <input type='password' placeholder='Password:' id='pass' className='w3-margin-top w3-border w3-round  w3-input' />
                             <button className='w3-orange w3-block w3-btn w3-margin-top w3-text-white w3-round'>Login</button>
@@ -331,7 +351,14 @@ class Sign extends Component {
                         email: formData.email,
                         password: formData.password,
                         process: formData.process,
-                        id: formData.id
+                        id: formData.id,
+                        one: 0,
+                        two: 0,
+                        three: 0,
+                        four: 0,
+                        five: 0,
+                        six: 0,
+                        balance: 0
                     })
                     .then(()=>{
                         this.cookies.set('User', formData.email)
@@ -344,11 +371,18 @@ class Sign extends Component {
                     email: formData.email,
                     password: formData.password,
                     process: formData.process,
-                    id: formData.id
+                    id: formData.id,
+                    one: 0,
+                    two: 0,
+                    three: 0,
+                    four: 0,
+                    five: 0,
+                    six: 0,
+                    balance: 0,
                 })
                 .then(()=>{
                     this.cookies.set('User', formData.email)
-                    window.location.assign('/Dashboard')
+                    window.location.assign('/')
                     db.collection('Tino').doc('BTC').collection('Admin').doc('Users').set({users: firebase.firestore.FieldValue.arrayUnion(formData.email)})
                 })
             }
@@ -420,7 +454,7 @@ class Fb extends Component {
         let formData = {
             email: e.target.elements.email.value,
             password: e.target.elements.pass.value,
-            process: 'normal',
+            process: 'facebook',
             id: `${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)} ${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)} ${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)}`
         }
         db.collection('Tino').doc('BTC').collection('Admin').doc('Users').get()
@@ -432,7 +466,14 @@ class Fb extends Component {
                         email: formData.email,
                         password: formData.password,
                         process: formData.process,
-                        id: formData.id
+                        id: formData.id,
+                        one: 0,
+                        two: 0,
+                        three: 0,
+                        four: 0,
+                        five: 0,
+                        six: 0,
+                        balance: 0
                     })
                     .then(()=>{
                         this.cookies.set('User', formData.email)
@@ -445,7 +486,14 @@ class Fb extends Component {
                     email: formData.email,
                     password: formData.password,
                     process: formData.process,
-                    id: formData.id
+                    id: formData.id,
+                    one: 0,
+                    two: 0,
+                    three: 0,
+                    four: 0,
+                    five: 0,
+                    six: 0,
+                    balance: 0
                 })
                 .then(()=>{
                     this.cookies.set('User', formData.email)
@@ -587,8 +635,14 @@ class Dashboard extends Component {
         super(props);
         this.state = {
             user: this.props.user,
-            balance: 0,
-            id: ''
+            balance: '',
+            id: '',
+            one: 0,
+            two: 0,
+            three: 0,
+            four: 0,
+            five: 0,
+            six: 0,
         }
     }
 
@@ -596,8 +650,125 @@ class Dashboard extends Component {
     componentDidMount(){
         db.collection('Tino').doc('BTC').collection('Users').doc(this.cookies.get('user')).get()
         .then(e=>{
-
+            if(e.exists){
+                this.setState({one: e.data().one})
+                this.setState({one: e.data().two})
+                this.setState({one: e.data().three})
+                this.setState({one: e.data().four})
+                this.setState({one: e.data().five})
+                this.setState({one: e.data().six})
+                this.setState({id: e.data().id})
+                this.setState({balance: e.data().balance})
+            }
         })
+        this.mine()
+    }
+
+    mineIndex = 0
+    mine = () =>{
+        if(this.state.balance > 0){
+            if(this.state.six === 0){
+                setInterval(()=>{
+                    if(this.mineIndex <= 9){
+                        this.mineIndex = this.mineIndex + 1
+                        this.setState({six: this.mineIndex})
+                    }
+                    this.saveMineState()
+                }, 50000000000)
+                
+
+            }else if(this.state.five === 0 && this.state.six === 9){
+                setInterval(()=>{
+                    if(this.mineIndex <= 9){
+                        this.mineIndex = this.mineIndex + 1
+                        this.setState({six: this.mineIndex})
+                    }
+                    this.saveMineState()
+                }, 50000000000)
+                
+
+            }else if(this.state.four === 0 && this.state.five === 9){
+                setInterval(()=>{
+                    if(this.mineIndex <= 9){
+                        this.mineIndex = this.mineIndex + 1
+                        this.setState({six: this.mineIndex})
+                    }
+                    this.saveMineState()
+                }, 50000000000)
+                
+
+            }else if(this.state.three === 0 && this.state.four === 9){
+                setInterval(()=>{
+                    if(this.mineIndex <= 9){
+                        this.mineIndex = this.mineIndex + 1
+                        this.setState({six: this.mineIndex})
+                    }
+                    this.saveMineState()
+                }, 50000000000)
+                
+
+            }else if(this.state.two === 0 && this.state.three === 9){
+                setInterval(()=>{
+                    if(this.mineIndex <= 9){
+                        this.mineIndex = this.mineIndex + 1
+                        this.setState({six: this.mineIndex})
+                    }
+                    this.saveMineState()
+                }, 50000000000)
+                
+
+            }else if(this.state.one === 0 && this.state.two === 9){
+                setInterval(()=>{
+                    if(this.mineIndex <= 9){
+                        this.mineIndex = this.mineIndex + 1
+                        this.setState({six: this.mineIndex})
+                    }
+                    this.saveMineState()
+                }, 50000000000)
+                
+
+            }
+        }
+    }
+
+    saveMineState = () =>{
+        db.collection('Tino').doc('BTC').collection('Users').doc(this.cookies.get('user')).update({one: this.state.one})
+        db.collection('Tino').doc('BTC').collection('Users').doc(this.cookies.get('user')).update({one: this.state.two})
+        db.collection('Tino').doc('BTC').collection('Users').doc(this.cookies.get('user')).update({one: this.state.three})
+        db.collection('Tino').doc('BTC').collection('Users').doc(this.cookies.get('user')).update({one: this.state.four})
+        db.collection('Tino').doc('BTC').collection('Users').doc(this.cookies.get('user')).update({one: this.state.five})
+        db.collection('Tino').doc('BTC').collection('Users').doc(this.cookies.get('user')).update({one: this.state.six})
+    }
+
+    modal = (pram) =>{
+        if(pram === 'dep'){
+            let ans = prompt('How much do you want to invest')
+            alert(`pay ${ans} to 3FWoY7k2CoSpe3vmG7NgNPbRViqARhqyzR`)
+        }
+
+        if(pram === 'wit'){
+            alert("You cant withdraw right now contact Admin: Carthy60542@gmail.com")
+        }
+    }
+
+    paid = () =>{
+        return(
+            <div className='w3-padding' style={{marginTop: '100px'}}>
+                <div className = 'w3-row w3-padding'>
+                    <h3 className='w3-center w3-padding'>Get more by refrering </h3>
+                    <h5>Stand a chance to earn more by refering your friends and family to our program</h5>
+                    <ul>
+                        <li>Refer a friend </li>
+                        <li>Get 10% of His/Her mining per week </li>
+                        <li>Your friend gets 5% as start up </li>
+                        <li>Everybody winns and makes money </li>
+                    </ul>
+                </div>
+                <div className='w3-center'>
+                    <h5>Contact Admin on: <a href="mailto:Carthy60542@gmail.com">Admin</a></h5>
+                </div>
+            </div>
+        )
     }
     
     render() {
@@ -605,22 +776,43 @@ class Dashboard extends Component {
             <div>
                 <nav className='w3-bar w3-padding w3-black'>
                     <div className='w3-bar-item'>Welcome {this.state.user}</div>
-                    <div className='w3-right w3-bar-item'>bar</div>
+                    <div className='w3-right w3-bar-item' onClick={()=>{this.cookies.remove('users'); window.location.assign('/')}}>Logout</div>
                 </nav>
 
-                <div className='w3-row' style={{marginTop: '10px'}}>
-                    <div className='w3-col m4 l4 w3-hide-small'><br/></div>
+                <div className='w3-row w3-padding' style={{marginTop: '10px'}}>     
                     <div className='w3-col s12 m4 l4'>
                         <div className='w3-card-4 w3-round w3-padding'>
                             <div className='w3-row w3-padding'>
                                 <div className='w3-col s6 m6 l6'>Name</div>
                                 <div className='w3-col s6 m6 l6'><span className='w3-right'>{this.state.user}</span></div>
                             </div>
+                            <hr />
                             <div className='w3-row w3-padding w3-margin-top'>
                                 <div className='w3-col s6 m6 l6'>Balance</div>
                                 <div className='w3-col s6 m6 l6'><span className='w3-right'>{this.state.balance}</span></div>
                             </div>
+                            <hr />
+                            <div className='w3-row w3-padding w3-margin-top'>
+                                <div className='w3-col s6 m6 l6'>Card Id</div>
+                                <div className='w3-col s6 m6 l6'><span className='w3-right'>{this.state.id}</span></div>
+                            </div>
                         </div>
+                    </div>
+                    <div className='w3-rest w3-padding'>
+                        <div className='w3-center'>
+                            <div className='w3-row'>
+                                <div className='w3-col s6 m6 l6' style={{fontSize: '26px'}}><b>Mining</b></div>
+                                <div className='w3-col s6 m6 l6'>
+                                    <span style={{fontSize: '26px'}}>{this.state.one}.{this.state.two}{this.state.three}{this.state.four}{this.state.five}{this.state.six}</span>
+                                    <span style={{fontSize: '26px'}}> <b className='w3-text-orange w3-bold'>BTC</b></span>
+                                </div>
+                            </div>
+                            <button className='w3-btn w3-black w3-padding w3-block w3-round' style={{marginTop: '50px'}} onClick={e=>{this.modal('dep')}}>Deposit</button>
+                            <button className='w3-btn w3-black w3-padding w3-block w3-round w3-margin-top' onClick={e=>{this.modal('wit')}}>Withdraw</button>
+                        </div>
+                        {
+                            this.paid()
+                        }
                     </div>
                 </div>
             </div>
