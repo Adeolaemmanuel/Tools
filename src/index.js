@@ -22,7 +22,7 @@ export default class Index extends Component {
       return (
         <div>
           <Router>
-            <Route path='/Dashboard'>
+            <Route path='/Dashboard' exact>
               <Dashboard user={this.state.user} />
             </Route>
           </Router>
