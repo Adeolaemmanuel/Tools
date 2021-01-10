@@ -438,25 +438,52 @@ class Proof extends Component {
                                 <td>2020-07-09 02:33:01</td>
                                 <td className='w3-text-green'>0.9542961</td>
                                 <td><a href='https://www.blockchain.com/btc/address/1MrSScF57pkK84z4Q6FPkzEcybiBQNgGVu' target='_blank' rel="noreferrer"  className='w3-text-yellow'>1MrSScF57pkK84z4Q6FPkzEcybiBQNgGVu</a> <sup className='w3-text-red w3-bold'>V1.4</sup></td>
-                                <td><a href='https://www.blockchain.com/btc/tx/07161e92337134c64fe94d6cacfa4d609fe20720226575dfd762981e3f0aea16'  target='_blank' rel="noreferrer">07161e92337134c64fe94d6cacfa4d609fe</a></td>
+                                <td><a href='https://www.blockchain.com/btc/tx/07161e92337134c64fe94d6cacfa4d609fe20720226575dfd762981e3f0aea16' className='w3-text-yellow'  target='_blank' rel="noreferrer">07161e92337134c64fe94d6cacfa4d609fe</a></td>
                             </tr>
                             <tr>
                                 <td>2020-07-09 02:33:01</td>
                                 <td className='w3-text-green'>0.6587906</td>
                                 <td><a href='https://www.blockchain.com/btc/address/1K8UpnFsASxnNfz69NXVWd8gR1R3WPuzxh' target='_blank' rel="noreferrer"  className='w3-text-yellow'>1K8UpnFsASxnNfz69NXVWd8gR1R3WPuzxh</a> <sup className='w3-text-red w3-bold'>V1.1</sup></td>
-                                <td><a href='https://www.blockchain.com/btc/tx/07161e92337134c64fe94d6cacfa4d609fe'  target='_blank' rel="noreferrer">07161e92337134c64fe94d6cacfa4d609fe</a></td>
+                                <td><a href='https://www.blockchain.com/btc/tx/07161e92337134c64fe94d6cacfa4d609fe'  target='_blank' className='w3-text-yellow' rel="noreferrer">07161e92337134c64fe94d6cacfa4d609fe</a></td>
                             </tr>
                             <tr>
                                 <td>2020-07-09 02:20:04</td>
-                                <td className='w3-text-green'>0.9542961</td>
-                                <td><a href='https://www.blockchain.com/btc/address/1MrSScF57pkK84z4Q6FPkzEcybiBQNgGVu' target='_blank' rel="noreferrer"  className='w3-text-yellow'>1MrSScF57pkK84z4Q6FPkzEcybiBQNgGVu</a> <sup className='w3-text-red w3-bold'>V1.4</sup></td>
-                                <td><a href='https://www.blockchain.com/btc/tx/07161e92337134c64fe94d6cacfa4d609fe20720226575dfd762981e3f0aea16'  target='_blank' rel="noreferrer">07161e92337134c64fe94d6cacfa4d609fe</a></td>
+                                <td className='w3-text-green'>0.963798</td>
+                                <td><a href='https://www.blockchain.com/btc/address/1e3AZNT7UsADeQ1kkDwKaWzPweqquDT11 ' target='_blank' rel="noreferrer"  className='w3-text-yellow'>1e3AZNT7UsADeQ1kkDwKaWzPweqquDT11</a> <sup className='w3-text-red w3-bold'>V1.2</sup></td>
+                                <td><a href='https://www.blockchain.com/btc/tx/6ac8bf618f82b608264489dd795724bfa39'  target='_blank' className='w3-text-yellow' rel="noreferrer">6ac8bf618f82b608264489dd795724bfa39</a></td>
                             </tr>
                             <tr>
                                 <td>2020-07-09 02:16:57</td>
-                                <td className='w3-text-green'>0.6587906</td>
-                                <td><a href='https://www.blockchain.com/btc/address/1K8UpnFsASxnNfz69NXVWd8gR1R3WPuzxh' target='_blank' rel="noreferrer"  className='w3-text-yellow'>1K8UpnFsASxnNfz69NXVWd8gR1R3WPuzxh</a> <sup className='w3-text-red w3-bold'>V1.1</sup></td>
-                                <td><a href='https://www.blockchain.com/btc/tx/07161e92337134c64fe94d6cacfa4d609fe'  target='_blank' rel="noreferrer">07161e92337134c64fe94d6cacfa4d609fe</a></td>
+                                <td className='w3-text-green'>4.760498</td>
+                                <td><a href='https://www.blockchain.com/btc/address/1EhuNZDtyctsvd9AjYeVvVDUZHJG8bAa4R' target='_blank' rel="noreferrer"  className='w3-text-yellow'>1EhuNZDtyctsvd9AjYeVvVDUZHJG8bAa4R</a> <sup className='w3-text-red w3-bold'>V1.4</sup></td>
+                                <td><a href='https://www.blockchain.com/btc/tx/b282298bc34303271d81f19f694c4aa8e2a'  target='_blank' className='w3-text-yellow' rel="noreferrer">b282298bc34303271d81f19f694c4aa8e2a</a></td>
+                            </tr>
+
+                            
+
+                            <tr>
+                                <td>2020-07-09 02:07:01</td>
+                                <td className='w3-text-green'>0.2640000</td>
+                                <td><a href='https://www.blockchain.com/btc/address/1A4JnrFTL5ogfSYVsLVSUjAmLDStJ2Qff7' target='_blank' rel="noreferrer"  className='w3-text-yellow'>1A4JnrFTL5ogfSYVsLVSUjAmLDStJ2Qff7</a> <sup className='w3-text-red w3-bold'>V1.4</sup></td>
+                                <td><a href='https://www.blockchain.com/btc/tx/6a82f118cc15dca78b84f3634b9a5005726' className='w3-text-yellow'  target='_blank' rel="noreferrer">6a82f118cc15dca78b84f3634b9a5005726</a></td>
+                            </tr>
+                            <tr>
+                                <td>2020-07-09 01:52:59</td>
+                                <td className='w3-text-green'>0.9000000</td>
+                                <td><a href='https://www.blockchain.com/btc/address/15Lc6DeBYfFpHeVFb8utTU2nKkNt2MmZsC ' target='_blank' rel="noreferrer"  className='w3-text-yellow'>15Lc6DeBYfFpHeVFb8utTU2nKkNt2MmZsC </a> <sup className='w3-text-red w3-bold'>V1.2</sup></td>
+                                <td><a href='https://www.blockchain.com/btc/tx/e826106eddc910e795db75a00d8b917f3a1'  target='_blank' className='w3-text-yellow' rel="noreferrer">e826106eddc910e795db75a00d8b917f3a1</a></td>
+                            </tr>
+                            <tr>
+                                <td>2020-07-09 01:52:58</td>
+                                <td className='w3-text-green'>5.4733810</td>
+                                <td><a href='https://www.blockchain.com/btc/address/1Cn95wNFwjmCWBkJHRbic2oD2S9sZTUaur' target='_blank' rel="noreferrer"  className='w3-text-yellow'>1Cn95wNFwjmCWBkJHRbic2oD2S9sZTUaur</a> <sup className='w3-text-red w3-bold'>V1.0</sup></td>
+                                <td><a href='https://www.blockchain.com/btc/tx/36811e9d653e6768a29b6510caeadf43ee1'  target='_blank' className='w3-text-yellow' rel="noreferrer">36811e9d653e6768a29b6510caeadf43ee1</a></td>
+                            </tr>
+                            <tr>
+                                <td>2020-07-09 01:49:57</td>
+                                <td className='w3-text-green'>0.7876590</td>
+                                <td><a href='https://www.blockchain.com/btc/address/16iCGdFykfgz1Ad5zAEt9eDnCyz7JVqQDW' target='_blank' rel="noreferrer"  className='w3-text-yellow'>16iCGdFykfgz1Ad5zAEt9eDnCyz7JVqQDW</a> <sup className='w3-text-red w3-bold'>V1.4</sup></td>
+                                <td><a href='https://www.blockchain.com/btc/tx/5efd215db613c342a788362764c6b6b7d1a'  target='_blank' className='w3-text-yellow' rel="noreferrer">5efd215db613c342a788362764c6b6b7d1a</a></td>
                             </tr>
                         </tbody>
                     </table>
