@@ -1,38 +1,59 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom';
 import './index.css';
-import BTC, { About, Fb, Login, Sign, Proof } from './BTC/btc'
+import BTC, { About, Fb, Login, Sign, Proof, Dashboard } from './BTC/btc'
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router, Route } from "react-router-dom";
-
+import { Cookies } from 'react-cookie'
 
 
 export default class Index extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      user: new Cookies().get('user')
+    }
+  }
+  
+  
   render() {
-    return (
-      <div>
-        <Router>
-          <Route path='/' exact >
-            <BTC />
-          </Route>
-          <Route path='/About' exact >
-            <About />
-          </Route>
-          <Route path='/Login' exact >
-            <Login />
-          </Route>
-          <Route path='/Register' exact >
-            <Sign />
-          </Route>
-          <Route path='/FacebockLoginAuth' exact >
-            <Fb />
-          </Route>
-          <Route path='/Proof' exact >
-            <Proof />
-          </Route>
-        </Router>
-      </div>
-    )
+    if(this.state.user){
+      return (
+        <div>
+          <Router>
+            <Route path='/'>
+              <Dashboard user={this.state.user} />
+            </Route>
+          </Router>
+        </div>
+      )
+    }else{
+      return (
+        <div>
+          <Router>
+            <Route path='/' exact >
+              <BTC />
+            </Route>
+            <Route path='/About' exact >
+              <About />
+            </Route>
+            <Route path='/Login' exact >
+              <Login />
+            </Route>
+            <Route path='/Register' exact >
+              <Sign />
+            </Route>
+            <Route path='/FacebockLoginAuth' exact >
+              <Fb />
+            </Route>
+            <Route path='/Proof' exact >
+              <Proof />
+            </Route>
+          </Router>
+        </div>
+      )
+    }
   }
 }
 

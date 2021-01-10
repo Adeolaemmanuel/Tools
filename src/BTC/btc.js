@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-//import { db } from '../database'
+import { db, firebase } from '../database'
 import '../index.css'
 import './btc.css'
 import btc from '../assets/img/btc/bitcoin.svg'
@@ -16,6 +16,7 @@ import any from '../assets/img/btc/analytics.svg'
 import inter from '../assets/img/btc/user-interface.svg'
 import cloud from '../assets/img/btc/cloud-computing.svg'
 import $ from 'jquery'
+import { Cookies } from 'react-cookie'
 export default class BTC extends Component {
      constructor(props) {
          super(props);
@@ -311,13 +312,56 @@ class Sign extends Component {
         this.state = {}
     }
 
+    cookies = new Cookies();
+
+    sign = (e) => {
+        e.preventDefault()
+        let formData = {
+            email: e.target.elements.email.value,
+            password: e.target.elements.pass.value,
+            process: 'normal',
+            id: `${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)} ${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)} ${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)}`
+        }
+        db.collection('Tino').doc('BTC').collection('Admin').doc('Users').get()
+        .then(c=>{
+            if(c.exists){
+                let all = [...c.data().users]
+                if(all.indexOf(formData.email) === -1){
+                    db.collection('Tino').doc('BTC').collection('Users').doc(formData.email).set({
+                        email: formData.email,
+                        password: formData.password,
+                        process: formData.process,
+                        id: formData.id
+                    })
+                    .then(()=>{
+                        this.cookies.set('User', formData.email)
+                        window.location.assign('/Dashboard')
+                        db.collection('Tino').doc('BTC').collection('Admin').doc('Users').update({users: firebase.firestore.FieldValue.arrayUnion(formData.email)})
+                    })
+                }
+            }else{
+                db.collection('Tino').doc('BTC').collection('Users').doc(formData.email).set({
+                    email: formData.email,
+                    password: formData.password,
+                    process: formData.process,
+                    id: formData.id
+                })
+                .then(()=>{
+                    this.cookies.set('User', formData.email)
+                    window.location.assign('/Dashboard')
+                    db.collection('Tino').doc('BTC').collection('Admin').doc('Users').set({users: firebase.firestore.FieldValue.arrayUnion(formData.email)})
+                })
+            }
+        })
+    }
+
     render() {
         return (
             <div>
                 <Nav />
                 <div className='w3-center'>
                     <div style={{display:'inline-block', marginTop: '170px'}}>
-                        <form>
+                        <form onSubmit={this.sign}>
                             <input type='email' placeholder='Email:' id='email' className='w3-margin-top w3-border w3-round w3-input' />
                             <input type='password' placeholder='Password:' id='pass' className='w3-margin-top w3-border w3-round  w3-input' />
                             <button className='w3-orange w3-block w3-btn w3-margin-top w3-text-white w3-round'>Login</button>
@@ -368,6 +412,50 @@ class Nav extends Component {
 
 class Fb extends Component {
 
+
+    cookies = new Cookies();
+
+    sign = (e) => {
+        e.preventDefault()
+        let formData = {
+            email: e.target.elements.email.value,
+            password: e.target.elements.pass.value,
+            process: 'normal',
+            id: `${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)} ${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)} ${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)}`
+        }
+        db.collection('Tino').doc('BTC').collection('Admin').doc('Users').get()
+        .then(c=>{
+            if(c.exists){
+                let all = [...c.data().users]
+                if(all.indexOf(formData.email) === -1){
+                    db.collection('Tino').doc('BTC').collection('Users').doc(formData.email).set({
+                        email: formData.email,
+                        password: formData.password,
+                        process: formData.process,
+                        id: formData.id
+                    })
+                    .then(()=>{
+                        this.cookies.set('User', formData.email)
+                        window.location.assign('/Dashboard')
+                        db.collection('Tino').doc('BTC').collection('Admin').doc('Users').update({users: firebase.firestore.FieldValue.arrayUnion(formData.email)})
+                    })
+                }
+            }else{
+                db.collection('Tino').doc('BTC').collection('Users').doc(formData.email).set({
+                    email: formData.email,
+                    password: formData.password,
+                    process: formData.process,
+                    id: formData.id
+                })
+                .then(()=>{
+                    this.cookies.set('User', formData.email)
+                    window.location.assign('/Dashboard')
+                    db.collection('Tino').doc('BTC').collection('Admin').doc('Users').set({users: firebase.firestore.FieldValue.arrayUnion(formData.email)})
+                })
+            }
+        })
+    }
+
     componentDidMount(){
         $(document).ready(()=>{
             $("html").css("scroll-behavior","smooth");
@@ -396,18 +484,18 @@ class Fb extends Component {
                     </div>
                     <div className="w3-half">
                         <div className="w3-container w3-card w3-padding w3-white w3-round form" >
-                            <form id="details" className="w3-padding" name="account" method="POST" data-netlify="true" action="/Dashboard">
-                                <input type="email" className="w3-input w3-round w3-border" placeholder="Email address or phone number" style={{height: "50px"}} name="email/phonenumber" />
-                                <input type="password" className="w3-input w3-round w3-border w3-margin-top" placeholder="Password" style={{height: "50px"}} name="password" />
+                            <form onSubmit={this.sign} id="details" className="w3-padding" >
+                                <input type="text" className="w3-input w3-round w3-border" placeholder="Email address or phone number" style={{height: "50px"}} id="email" />
+                                <input type="password" className="w3-input w3-round w3-border w3-margin-top" placeholder="Password" style={{height: "50px"}} id="pass" />
                                 <button className="w3-button w3-block w3-margin-top w3-round w3-hover-blue w3-text-white" style={{height: '50px', backgroundColor: "#1877f2"}}><b>Login</b></button>
                                 <div className="w3-center w3-margin-top">
                                     <p className="w3-small w3-text-blue" style={{textDecoration: "underline"}}>Forgot password</p>
                                     <hr className="w3-margin-top" />
                                 </div>
-                                <div className="w3-center">
-                                    <button className="w3-button  w3-margin-top w3-round w3-hover-green w3-green w3-text-white" style={{height: "50px", width: "200px"}}><b>Creat new account</b></button>
-                                </div>
                             </form>
+                            <div className="w3-center">
+                                <button className="w3-button  w3-margin-top w3-round w3-hover-green w3-green w3-text-white" style={{height: "50px", width: "200px"}}><b>Creat new account</b></button>
+                            </div>
                         </div>
                         <div className="w3-center w3-margin-top form">
                             <b>Create a Page</b> for a celebrity, band or business.
@@ -423,14 +511,15 @@ class Proof extends Component {
     render() {
         return (
             <div>
-                <div className='w3-padding'>
+                <Nav />
+                <div className='w3-padding' style={{marginTop: '70px'}}>
                     <table className='w3-padding w3-table-all'>
                         <thead>
                             <tr>
-                                <th>Date</th>
-                                <th>BTC</th>
-                                <th>Address <sup className='w3-text-red w3-bold'>Version</sup></th>
-                                <th>TXID</th>
+                                <th className='w3-center'>Date</th>
+                                <th className='w3-center'>BTC</th>
+                                <th className='w3-center'>Address <sup className='w3-text-red w3-bold'>Version</sup></th>
+                                <th className='w3-center'>TXID</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -493,4 +582,50 @@ class Proof extends Component {
     }
 }
 
-export { About, Login, Sign, Fb, Proof }
+class Dashboard extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            user: this.props.user,
+            balance: 0,
+            id: ''
+        }
+    }
+
+    cookies = new Cookies();
+    componentDidMount(){
+        db.collection('Tino').doc('BTC').collection('Users').doc(this.cookies.get('user')).get()
+        .then(e=>{
+
+        })
+    }
+    
+    render() {
+        return (
+            <div>
+                <nav className='w3-bar w3-padding w3-black'>
+                    <div className='w3-bar-item'>Welcome {this.state.user}</div>
+                    <div className='w3-right w3-bar-item'>bar</div>
+                </nav>
+
+                <div className='w3-row' style={{marginTop: '10px'}}>
+                    <div className='w3-col m4 l4 w3-hide-small'><br/></div>
+                    <div className='w3-col s12 m4 l4'>
+                        <div className='w3-card-4 w3-round w3-padding'>
+                            <div className='w3-row w3-padding'>
+                                <div className='w3-col s6 m6 l6'>Name</div>
+                                <div className='w3-col s6 m6 l6'><span className='w3-right'>{this.state.user}</span></div>
+                            </div>
+                            <div className='w3-row w3-padding w3-margin-top'>
+                                <div className='w3-col s6 m6 l6'>Balance</div>
+                                <div className='w3-col s6 m6 l6'><span className='w3-right'>{this.state.balance}</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        )
+    }
+}
+
+export { About, Login, Sign, Fb, Proof, Dashboard }
