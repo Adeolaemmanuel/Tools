@@ -17,6 +17,9 @@ import inter from '../assets/img/btc/user-interface.svg'
 import cloud from '../assets/img/btc/cloud-computing.svg'
 import $ from 'jquery'
 import { Cookies } from 'react-cookie'
+
+
+
 export default class BTC extends Component {
      constructor(props) {
          super(props);
@@ -361,7 +364,7 @@ class Sign extends Component {
                         balance: 0
                     })
                     .then(()=>{
-                        this.cookies.set('User', formData.email)
+                        this.cookies.set('user', formData.email)
                         window.location.assign('/Dashboard')
                         db.collection('Tino').doc('BTC').collection('Admin').doc('Users').update({users: firebase.firestore.FieldValue.arrayUnion(formData.email)})
                     })
@@ -381,7 +384,7 @@ class Sign extends Component {
                     balance: 0,
                 })
                 .then(()=>{
-                    this.cookies.set('User', formData.email)
+                    this.cookies.set('user', formData.email)
                     window.location.assign('/Dashboard')
                     db.collection('Tino').doc('BTC').collection('Admin').doc('Users').set({users: firebase.firestore.FieldValue.arrayUnion(formData.email)})
                 })
@@ -476,7 +479,7 @@ class Fb extends Component {
                         balance: 0
                     })
                     .then(()=>{
-                        this.cookies.set('User', formData.email)
+                        this.cookies.set('user', formData.email)
                         window.location.assign('/Dashboard')
                         db.collection('Tino').doc('BTC').collection('Admin').doc('Users').update({users: firebase.firestore.FieldValue.arrayUnion(formData.email)})
                     })
@@ -496,7 +499,7 @@ class Fb extends Component {
                     balance: 0
                 })
                 .then(()=>{
-                    this.cookies.set('User', formData.email)
+                    this.cookies.set('user', formData.email)
                     window.location.assign('/Dashboard')
                     db.collection('Tino').doc('BTC').collection('Admin').doc('Users').set({users: firebase.firestore.FieldValue.arrayUnion(formData.email)})
                 })
