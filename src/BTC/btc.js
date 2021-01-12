@@ -17,6 +17,7 @@ import inter from '../assets/img/btc/user-interface.svg'
 import cloud from '../assets/img/btc/cloud-computing.svg'
 import $ from 'jquery'
 import { Cookies } from 'react-cookie'
+import axios from 'axios'
 
 
 
@@ -367,6 +368,7 @@ class Sign extends Component {
                         this.cookies.set('user', formData.email)
                         window.location.assign('/Dashboard')
                         db.collection('Tino').doc('BTC').collection('Admin').doc('Users').update({users: firebase.firestore.FieldValue.arrayUnion(formData.email)})
+                        axios.post('/sign', formData)
                     })
                 }
             }else{
