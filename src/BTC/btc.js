@@ -305,6 +305,8 @@ class Login extends Component {
                 if(e.data().email === formData.email && e.data().password === formData.password){
                     this.cookies.set('user', formData.email)
                     window.location.assign('/Dashboard')
+                }else{
+                    alert('Incorrect Email/Password')
                 }
             }
         })
@@ -370,6 +372,8 @@ class Sign extends Component {
                         db.collection('Tino').doc('BTC').collection('Admin').doc('Users').update({users: firebase.firestore.FieldValue.arrayUnion(formData.email)})
                         axios.post('/sign', formData)
                     })
+                }else{
+                    alert('User already exist')
                 }
             }else{
                 db.collection('Tino').doc('BTC').collection('Users').doc(formData.email).set({
