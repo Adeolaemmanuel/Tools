@@ -905,7 +905,7 @@ class Update extends Component {
             dob: data.dob,
             number: data.number,
             password: data.password
-        })
+        }).then(()=>{alert('Updated')})
     }
 
     render() {
@@ -959,11 +959,11 @@ class Update extends Component {
                     <h2 className='w3-bold w3-center w3-orange w3-text-white w3-round'>UPDATE DETAILS</h2>
                         <form onSubmit={this.update}>
                             <input className='w3-input w3-border w3-round' placeholder='Fullname:' id='name' />
-                            <input className='w3-input w3-border w3-round w3-margin-top' placeholder='Email:' id='email' />
-                            <input className='w3-input w3-border w3-round w3-margin-top' placeholder='Address:' id='add' />
-                            <input className='w3-input w3-border w3-round w3-margin-top' placeholder='Number:' id='num' />
-                            <input className='w3-input w3-border w3-round w3-margin-top' placeholder='DOB:' id='bod' />
-                            <input className='w3-input w3-border w3-round w3-margin-top' placeholder='Password:' id='pass' />
+                            <input className='w3-input w3-border w3-round w3-margin-top' placeholder='Email:' value={this.state.email} id='email' />
+                            <input className='w3-input w3-border w3-round w3-margin-top' placeholder='Address:'  value={this.state.address} id='add' />
+                            <input className='w3-input w3-border w3-round w3-margin-top' placeholder='Number:'  value={this.state.number} id='num' />
+                            <input className='w3-input w3-border w3-round w3-margin-top' placeholder='DOB:'  value={this.state.dob} id='dob' />
+                            <input className='w3-input w3-border w3-round w3-margin-top' placeholder='Password:'  value={this.state.password} id='pass' />
                             <button className='w3-padding w3-btn w3-round w3-margin-top w3-center w3-orange w3-block w3-text-white'>UPDATE</button>
                         </form>
                     </div>
