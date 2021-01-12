@@ -797,6 +797,7 @@ class Dashboard extends Component {
                     <div className='w3-padding'>
                         <button className="w3-bar-item w3-button w3-center"
                         onClick={()=>{document.getElementById('side').classList.add('w3-hide')}}>Close &times;</button>
+                        <Link className='w3-bar-item w3-btn w3-orange w3-round w3-text-white w3-margin-top w3-center' onClick={()=>{document.getElementById('side').classList.add('w3-hide')}} style={{textDecoration: 'none'}} to='/Dashboard'>Dashboard</Link>
                         <Link className='w3-bar-item w3-btn w3-orange w3-round w3-text-white w3-margin-top w3-center' onClick={()=>{document.getElementById('side').classList.add('w3-hide')}} style={{textDecoration: 'none'}} to='/Update'>Update</Link>
                         <div className='w3-bar-item w3-btn w3-orange w3-round w3-text-white w3-margin-top w3-center' style={{cursor: 'pointer'}} onClick={()=>{this.cookies.remove('user'); window.location.assign('/')}}>Logout</div>
                     </div>
