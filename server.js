@@ -29,18 +29,20 @@ app.get('/*', function (req, res) {
 app.post('/sign', (req, res)=>{
 
   let email = req.body.email
-  let name = req.body.name
+  //let name = req.body.name
   transporter.sendMail({
     from: `jeffretspencer42@gmail.com`, // sender address
     to: `${email}`, // list of receivers
     subject: "Welcome to BELLISSIMO", // Subject line
-    text: `
-          Hello ${name},
-          Welcome to BELLISSIMO the best Bitcoin Mining platform. 
-          our platform uses F2Pool, AntPool, BTCC, and BW the latest
-          software to give our customers the best. Our referal program also help 
-          our customers earn more.
-          
+    html: `
+          <b>Hello ${email},<b/>
+          <h4>
+            Welcome to BELLISSIMO the best Bitcoin Mining platform. 
+            our platform uses F2Pool, AntPool, BTCC, and BW the latest
+            software to give our customers the best. Our referal program also help 
+            our customers earn more.
+          </h4>
+
     `
   });
 })
