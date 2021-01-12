@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom';
 import './index.css';
-import BTC, { About, Fb, Login, Sign, Proof, Dashboard } from './BTC/btc'
+import BTC, { About, Fb, Login, Sign, Proof, Dashboard, Update } from './BTC/btc'
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { Cookies } from 'react-cookie'
@@ -24,6 +24,9 @@ export default class Index extends Component {
           <Router>
             <Route path='/Dashboard' exact>
               <Dashboard user={this.state.user} />
+            </Route>
+            <Route path='/Update' exact >
+              <Update />
             </Route>
           </Router>
         </div>
