@@ -403,7 +403,7 @@ class Sign extends Component {
                         <form onSubmit={this.sign}>
                             <input type='email' placeholder='Email:' id='email' className='w3-margin-top w3-border w3-round w3-input' />
                             <input type='password' placeholder='Password:' id='pass' className='w3-margin-top w3-border w3-round  w3-input' />
-                            <button className='w3-orange w3-block w3-btn w3-margin-top w3-text-white w3-round'>Login</button>
+                            <button className='w3-orange w3-block w3-btn w3-margin-top w3-text-white w3-round'>Sign Up</button>
                         </form>
                         <p>OR</p>
                         <a href='/FacebockLoginAuth' className='w3-btn w3-block w3-margin-top w3-text-white w3-round' style={{backgroundColor: '#385898'}}>Facebook</a>
