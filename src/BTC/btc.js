@@ -346,9 +346,12 @@ class Sign extends Component {
             email: e.target.elements.email.value,
             password: e.target.elements.pass.value,
             process: 'normal',
-            id: `${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)} ${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)} ${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)}`
+            id: `${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)} ${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)} ${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)}`,
+            verify: `${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)}`
         }
-        db.collection('Tino').doc('BTC').collection('Admin').doc('Users').get()
+        let check = prompt('Input verification code sent to your email')
+        if(check === formData.verify){
+            db.collection('Tino').doc('BTC').collection('Admin').doc('Users').get()
         .then(c=>{
             if(c.exists){
                 let all = [...c.data().users]
@@ -397,6 +400,7 @@ class Sign extends Component {
                 })
             }
         })
+        }
     }
 
     render() {
