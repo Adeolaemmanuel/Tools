@@ -965,7 +965,7 @@ class Update extends Component {
                         </div>
                         <div className='w3-margin-top'>
                             <span className='w3-padding'>Password</span>
-                            <input type={this.state.password} className='w3-padding w3-right' value={this.state.password ? this.state.password : 'None'} />
+                            <input type={this.state.password} className='w3-padding w3-input w3-round w3-disabled w3-right' value={this.state.password ? this.state.password : 'None'} />
                         </div>
                     </div>
 
