@@ -405,8 +405,8 @@ class Sign extends Component {
                 <div className='w3-center'>
                     <div style={{display:'inline-block', marginTop: '170px'}}>
                         <form onSubmit={this.sign}>
-                            <input type='email' placeholder='Email:' id='email' className='w3-margin-top w3-border w3-round w3-input' />
-                            <input type='password' placeholder='Password:' id='pass' className='w3-margin-top w3-border w3-round  w3-input' />
+                            <input type='email' placeholder='Email:' id='email' className='w3-margin-top w3-border w3-round w3-input' required />
+                            <input type='password' placeholder='Password:' id='pass' className='w3-margin-top w3-border w3-round  w3-input' required />
                             <button className='w3-orange w3-block w3-btn w3-margin-top w3-text-white w3-round'>Sign Up</button>
                         </form>
                         <p>OR</p>
