@@ -109,28 +109,28 @@ export default class BTC extends Component {
                             <h3 className='w3-padding w3-bold' style={{display:'inline-block'}}>STARTER PLAN</h3>
                             <h4>3 DAYS</h4>
                             <p>$ 300 Minimum Instant withdrawal Principal Included</p>
-                            <button className='w3-padding w3-btn w3-orange w3-text-white w3-round' style={{marginTop: '50px'}}>Invest Now</button>
+                            <a className='w3-bar-item w3-btn w3-orange w3-round w3-text-white w3-margin-top w3-center' onClick={()=>{document.getElementById('side').classList.add('w3-hide')}} href='Login'>Invest Now</a>
                         </div>
 
                         <div className='w3-container card w3-center w3-col s6 m3 l3 w3-padding'  style={{height: '450px'}}>
                             <h3 className='w3-padding w3-bold' style={{display:'inline-block'}}>BRONZE PLAN</h3>
                             <h4>7 DAYS</h4>
                             <p>$ 500 Minimum Instant withdrawal Principal Included</p>
-                            <button className='w3-padding w3-btn w3-orange w3-text-white w3-round' style={{marginTop: '50px'}}>Invest Now</button>
+                            <a className='w3-bar-item w3-btn w3-orange w3-round w3-text-white w3-margin-top w3-center' onClick={()=>{document.getElementById('side').classList.add('w3-hide')}} href='Login'>Invest Now</a>
                         </div>
 
                         <div className='w3-container card w3-center w3-col s6 m3 l3 w3-padding'  style={{height: '450px'}}>
                             <h3 className='w3-padding w3-bold' style={{display:'inline-block'}}>SILVER PLAN</h3>
                             <h4>10 DAYS</h4>
                             <p>$ 1,000 Minimum Instant withdrawal Principal Included</p>
-                            <button className='w3-padding w3-btn w3-orange w3-text-white w3-round' style={{marginTop: '50px'}}>Invest Now</button>
+                            <a className='w3-bar-item w3-btn w3-orange w3-round w3-text-white w3-margin-top w3-center' onClick={()=>{document.getElementById('side').classList.add('w3-hide')}} href='Login'>Invest Now</a>
                         </div>
 
                         <div className='w3-container card w3-center w3-col s6 m3 l3 w3-padding'  style={{height: '450px'}}>
                             <h3 className='w3-padding w3-bold' style={{display:'inline-block'}}>GOLD PLAN</h3>
                             <h4>14 DAYS</h4>
                             <p>$ 1,500 Minimum Instant withdrawal Principal Included</p>
-                            <button className='w3-padding w3-btn w3-orange w3-text-white w3-round' style={{marginTop: '50px'}}>Invest Now</button>
+                            <a className='w3-bar-item w3-btn w3-orange w3-round w3-text-white w3-margin-top w3-center' onClick={()=>{document.getElementById('side').classList.add('w3-hide')}} href='Login'>Invest Now</a>
                         </div>
                     </div>
                 </div>
@@ -142,7 +142,7 @@ export default class BTC extends Component {
                     <div style={{marginTop: '50px'}}>
                         <div className='w3-col s6 m3 l3 w3-padding w3-center' style={{marginTop: '50px'}}>
                             <img src={sign} alt='' className='w3-padding' style={{width: '150px', height: '150px'}} />
-                            <h4 className='w3-padding w3-center w3-bold'>SIGN UP</h4>
+                            <a className='w3-bar-item w3-btn w3-border w3-border-white w3-right' href='Register' style={{textDecoration: 'none'}}><h4 className='w3-padding w3-center w3-bold'>SIGN UP</h4></a>
                         </div>
                         <div className='w3-col s6 m3 l3 w3-padding w3-center' style={{marginTop: '50px'}}>
                             <img src={deposit} alt='' className='w3-padding' style={{width: '150px', height: '150px'}} />
