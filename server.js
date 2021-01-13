@@ -31,7 +31,7 @@ app.post('/sign', (req, res)=>{
   let email = req.body.email
   //let name = req.body.name
   transporter.sendMail({
-    from: `jeffretspencer42@gmail.com`, // sender address
+    from: `BELLISSIMO`, // sender address
     to: `${email}`, // list of receivers
     subject: "Welcome to BELLISSIMO", // Subject line
     html: `
