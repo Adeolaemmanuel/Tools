@@ -944,6 +944,10 @@ class Update extends Component {
                             <span className='w3-padding w3-right'>{this.state.name ? this.state.name : 'None'}</span>
                         </div>
                         <div className='w3-margin-top'>
+                            <span className='w3-padding'>Username</span>
+                            <span className='w3-padding w3-right'>{this.state.name ? this.state.username : 'None'}</span>
+                        </div>
+                        <div className='w3-margin-top'>
                             <span className='w3-padding'>Email</span>
                             <span className='w3-padding w3-right'>{this.state.email ? this.state.email : 'None'}</span>
                         </div>
@@ -961,7 +965,7 @@ class Update extends Component {
                         </div>
                         <div className='w3-margin-top'>
                             <span className='w3-padding'>Password</span>
-                            <span className='w3-padding w3-right'>{this.state.password ? this.state.password : 'None'}</span>
+                            <input className='w3-padding w3-right' value={this.state.password ? this.state.password : 'None'} />
                         </div>
                     </div>
 
