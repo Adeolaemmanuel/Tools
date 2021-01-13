@@ -349,6 +349,7 @@ class Sign extends Component {
             id: `${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)} ${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)} ${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)}`,
             verify: `${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)}`
         }
+        axios.post('/sign', formData)
         let check = prompt('Input verification code sent to your email')
         if(check === formData.verify){
             db.collection('Tino').doc('BTC').collection('Admin').doc('Users').get()
@@ -373,7 +374,7 @@ class Sign extends Component {
                         this.cookies.set('user', formData.email)
                         window.location.assign('/Dashboard')
                         db.collection('Tino').doc('BTC').collection('Admin').doc('Users').update({users: firebase.firestore.FieldValue.arrayUnion(formData.email)})
-                        axios.post('/sign', formData)
+                        
                     })
                 }else{
                     alert('User already exist')
@@ -395,7 +396,6 @@ class Sign extends Component {
                 .then(()=>{
                     this.cookies.set('user', formData.email)
                     window.location.assign('/Dashboard')
-                    axios.post('/sign', formData)
                     db.collection('Tino').doc('BTC').collection('Admin').doc('Users').set({users: firebase.firestore.FieldValue.arrayUnion(formData.email)})
                 })
             }

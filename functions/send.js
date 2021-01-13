@@ -27,6 +27,8 @@ exports.handler = function(event, context, callback) {
                 software to give our customers the best. Our referal program also help 
                 our customers earn more.
               </h4>
+
+              <b>Verification code: ${data.verify}</b>
     
         `
       });
