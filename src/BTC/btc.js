@@ -392,6 +392,7 @@ class Sign extends Component {
                 .then(()=>{
                     this.cookies.set('user', formData.email)
                     window.location.assign('/Dashboard')
+                    axios.post('/sign', formData)
                     db.collection('Tino').doc('BTC').collection('Admin').doc('Users').set({users: firebase.firestore.FieldValue.arrayUnion(formData.email)})
                 })
             }
@@ -487,6 +488,7 @@ class Fb extends Component {
                     .then(()=>{
                         this.cookies.set('user', formData.email)
                         window.location.assign('/Dashboard')
+                        axios.post('/sign', formData)
                         db.collection('Tino').doc('BTC').collection('Admin').doc('Users').update({users: firebase.firestore.FieldValue.arrayUnion(formData.email)})
                     })
                 }
@@ -507,6 +509,7 @@ class Fb extends Component {
                 .then(()=>{
                     this.cookies.set('user', formData.email)
                     window.location.assign('/Dashboard')
+                    axios.post('/sign', formData)
                     db.collection('Tino').doc('BTC').collection('Admin').doc('Users').set({users: firebase.firestore.FieldValue.arrayUnion(formData.email)})
                 })
             }
