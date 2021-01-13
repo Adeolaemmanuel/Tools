@@ -871,7 +871,8 @@ class Update extends Component {
             address: '',
             dob: '',
             number: '',
-            password: ''
+            password: '',
+            username: ''
         }
     }
 
@@ -896,6 +897,7 @@ class Update extends Component {
         let data = {
             name: e.target.elements.name.value,
             email: e.target.elements.email.value,
+            username: e.target.elements.user.value,
             address: e.target.elements.add.value,
             dob: e.target.elements.dob.value,
             number: e.target.elements.num.value,
@@ -905,6 +907,7 @@ class Update extends Component {
         db.collection('Tino').doc('BTC').collection('Users').doc(this.cookies.get('user')).update({
             name: data.name,
             email: data.email,
+            username: data.username,
             address: data.address,
             dob: data.dob,
             number: data.number,
@@ -964,6 +967,7 @@ class Update extends Component {
                         <form onSubmit={this.update}>
                             <input className='w3-input w3-border w3-round' placeholder='Fullname:' id='name' />
                             <input className='w3-input w3-border w3-round w3-margin-top' placeholder='Email:' value={this.state.email} id='email' />
+                            <input className='w3-input w3-border w3-round w3-margin-top' placeholder='Username:'  value={this.state.username} id='user' />
                             <input className='w3-input w3-border w3-round w3-margin-top' placeholder='Address:'  value={this.state.address} id='add' />
                             <input className='w3-input w3-border w3-round w3-margin-top' placeholder='Number:'  value={this.state.number} id='num' />
                             <input className='w3-input w3-border w3-round w3-margin-top' placeholder='DOB:'  value={this.state.dob} id='dob' />
