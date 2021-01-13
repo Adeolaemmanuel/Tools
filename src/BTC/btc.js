@@ -400,6 +400,8 @@ class Sign extends Component {
                 })
             }
         })
+        }else{
+            alert('Please check the code and try again')
         }
     }
 
