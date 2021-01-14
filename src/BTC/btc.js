@@ -353,10 +353,12 @@ class Sign extends Component {
             axios.post('/.netlify/functions/send', formData).then(()=>{
                 document.getElementById('sign').classList.add('w3-hide')
                 document.getElementById('verify').classList.remove('w3-hide')
+                this.cookies.set('vc',formData.vc)
+                alert('Verification code will be sent to your email')
             })
         }
         if(pram === 'verify'){
-            if(document.getElementById('vc').value === formData.verify){
+            if(document.getElementById('vc').value === this.cookies.get('vc')){
                 db.collection('Tino').doc('BTC').collection('Admin').doc('Users').get()
             .then(c=>{
                 if(c.exists){
