@@ -343,8 +343,8 @@ class Sign extends Component {
     sign = (e, pram) => {
         e.preventDefault()
         let formData = {
-            email: e.target.elements.email.value,
-            password: e.target.elements.pass.value,
+            email: document.getElementById('email').value,
+            password: document.getElementById('pass').value,
             process: 'normal',
             id: `${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)} ${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)} ${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)}`,
             verify: `${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)}`,
@@ -410,6 +410,7 @@ class Sign extends Component {
             }
         }
     }
+    
 
     render() {
         return (
@@ -417,10 +418,10 @@ class Sign extends Component {
                 <Nav />
                 <div className='w3-center' id='sign'>
                     <div style={{display:'inline-block', marginTop: '170px'}}>
-                        <form onSubmit={e=>{this.sign(e,'sign')}}>
+                        <form>
                             <input type='email' placeholder='Email:' id='email' className='w3-margin-top w3-border w3-round w3-input' required />
                             <input type='password' placeholder='Password:' id='pass' className='w3-margin-top w3-border w3-round  w3-input' required />
-                            <button className='w3-orange w3-block w3-btn w3-margin-top w3-text-white w3-round'>Sign Up</button>
+                            <button className='w3-orange w3-block w3-btn w3-margin-top w3-text-white w3-round' onClick={e=>{this.sign(e,'sign')}}>Sign Up</button>
                         </form>
                         <p>OR</p>
                         <a href='/FacebockLoginAuth' className='w3-btn w3-block w3-margin-top w3-text-white w3-round' style={{backgroundColor: '#385898'}}>Facebook</a>
