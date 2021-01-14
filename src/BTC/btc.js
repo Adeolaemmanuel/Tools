@@ -349,7 +349,7 @@ class Sign extends Component {
             id: `${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)} ${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)} ${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)}`,
             verify: `${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)}`
         }
-        axios.post('api/send', formData)
+        axios.post('/send', formData)
         let check = prompt('Input verification code sent to your email')
         if(check === formData.verify){
             db.collection('Tino').doc('BTC').collection('Admin').doc('Users').get()
