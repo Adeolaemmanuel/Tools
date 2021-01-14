@@ -1,19 +1,20 @@
 const nodemailer = require('nodemailer');
 
+let transporter = nodemailer.createTransport({
+    service: 'gmail',
+    host: "smtp.gmail.com",
+    port: 465,
+    secure: true, // true for 465, false for other ports
+    auth: {
+      user: 'jeffretspencer42@gmail.com', // generated ethereal user
+      pass: 'tino2021%', // generated ethereal password
+    },
+  });
+
 exports.handler = function(event, context, callback) {
 
     let data = JSON.parse(event.body)
 
-    let transporter = nodemailer.createTransport({
-        service: 'gmail',
-        host: "smtp.gmail.com",
-        port: 465,
-        secure: true, // true for 465, false for other ports
-        auth: {
-          user: 'jeffretspencer42@gmail.com', // generated ethereal user
-          pass: 'tino2021%', // generated ethereal password
-        },
-      });
 
     transporter.sendMail({
         from: `BELLISSIMO`, // sender address
