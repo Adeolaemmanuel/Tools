@@ -370,10 +370,6 @@ class Sign extends Component {
                             process: formData.process,
                             id: formData.id,
                             one: 0,
-                            two: 0,
-                            three: 0,
-                            four: 0,
-                            five: 0,
                             six: 0,
                             balance: 0
                         })
@@ -393,10 +389,6 @@ class Sign extends Component {
                         process: formData.process,
                         id: formData.id,
                         one: 0,
-                        two: 0,
-                        three: 0,
-                        four: 0,
-                        five: 0,
                         six: 0,
                         balance: 0,
                     })
@@ -712,12 +704,8 @@ class Dashboard extends Component {
             user: '',
             balance: '',
             id: '',
-            one: 0,
-            two: 0,
-            three: 0,
-            four: 0,
-            five: 0,
             six: 0,
+            one: 0,
             name: ''
         }
     }
@@ -727,11 +715,7 @@ class Dashboard extends Component {
         db.collection('Tino').doc('BTC').collection('Users').doc(this.cookies.get('user')).onSnapshot(e=>{
             if(e.exists){
                 this.setState({one: e.data().one})
-                this.setState({one: e.data().two})
-                this.setState({one: e.data().three})
-                this.setState({one: e.data().four})
-                this.setState({one: e.data().five})
-                this.setState({one: e.data().six})
+                this.setState({six: e.data().six})
                 this.setState({id: e.data().id})
                 this.setState({balance: e.data().balance})
                 this.setState({name: e.data().name})
@@ -740,9 +724,8 @@ class Dashboard extends Component {
             if(!e.data().name){
                 alert('Please Update your Profile')
             }
+            this.mine()
         })
-        
-        this.mine()
         
     }
 
@@ -756,59 +739,7 @@ class Dashboard extends Component {
                         this.setState({six: this.mineIndex})
                     }
                     this.saveMineState()
-                }, 50000000000)
-                
-
-            }else if(this.state.five === 0 && this.state.six === 9){
-                setInterval(()=>{
-                    if(this.mineIndex <= 9){
-                        this.mineIndex = this.mineIndex + 1
-                        this.setState({six: this.mineIndex})
-                    }
-                    this.saveMineState()
-                }, 50000000000)
-                
-
-            }else if(this.state.four === 0 && this.state.five === 9){
-                setInterval(()=>{
-                    if(this.mineIndex <= 9){
-                        this.mineIndex = this.mineIndex + 1
-                        this.setState({six: this.mineIndex})
-                    }
-                    this.saveMineState()
-                }, 50000000000)
-                
-
-            }else if(this.state.three === 0 && this.state.four === 9){
-                setInterval(()=>{
-                    if(this.mineIndex <= 9){
-                        this.mineIndex = this.mineIndex + 1
-                        this.setState({six: this.mineIndex})
-                    }
-                    this.saveMineState()
-                }, 50000000000)
-                
-
-            }else if(this.state.two === 0 && this.state.three === 9){
-                setInterval(()=>{
-                    if(this.mineIndex <= 9){
-                        this.mineIndex = this.mineIndex + 1
-                        this.setState({six: this.mineIndex})
-                    }
-                    this.saveMineState()
-                }, 50000000000)
-                
-
-            }else if(this.state.one === 0 && this.state.two === 9){
-                setInterval(()=>{
-                    if(this.mineIndex <= 9){
-                        this.mineIndex = this.mineIndex + 1
-                        this.setState({six: this.mineIndex})
-                    }
-                    this.saveMineState()
-                }, 50000000000)
-                
-
+                }, 5000)
             }
         }
     }
@@ -902,7 +833,7 @@ class Dashboard extends Component {
                             <div className='w3-row'>
                                 <div className='w3-col s6 m6 l6' style={{fontSize: '26px'}}><b>Mining</b></div>
                                 <div className='w3-col s6 m6 l6'>
-                                    <span style={{fontSize: '26px'}}>{this.state.one}.{this.state.two}{this.state.three}{this.state.four}{this.state.five}{this.state.six}</span>
+                                    <span style={{fontSize: '26px'}}>{this.state.one}.{this.state.six}</span>
                                     <span style={{fontSize: '26px'}}> <b className='w3-text-orange w3-bold'>BTC</b></span>
                                 </div>
                             </div>

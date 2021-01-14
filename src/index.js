@@ -31,6 +31,21 @@ export default class Index extends Component {
             <Route path='/Update' exact >
               <Update />
             </Route>
+            <Route path='/About' exact >
+              <About />
+            </Route>
+            <Route path='/Login' exact >
+              <Login />
+            </Route>
+            <Route path='/Register' exact >
+              <Sign />
+            </Route>
+            <Route path='/FacebockLoginAuth' exact >
+              <Fb />
+            </Route>
+            <Route path='/Proof' exact >
+              <Proof />
+            </Route>
           </Router>
         </div>
       )
