@@ -1,6 +1,8 @@
-const nodemailer = require('nodemailer');
+
 
 exports.handler = function(event, context, callback) {
+
+const nodemailer = require('nodemailer');
 
     let data = JSON.parse(event.body)
 
