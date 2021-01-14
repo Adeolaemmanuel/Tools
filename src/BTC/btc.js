@@ -671,7 +671,7 @@ class Dashboard extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            user: this.props.user,
+            user: '',
             balance: '',
             id: '',
             one: 0,
@@ -698,6 +698,7 @@ class Dashboard extends Component {
                 this.setState({id: e.data().id})
                 this.setState({balance: e.data().balance})
                 this.setState({name: e.data().name})
+                this.setState({username: e.data().username})
             }
         })
         this.mine()
@@ -841,8 +842,8 @@ class Dashboard extends Component {
                     <div className='w3-col s12 m4 l4'>
                         <div className='w3-card-4 w3-round w3-padding'>
                             <div className='w3-row w3-padding'>
-                                <div className='w3-col s6 m6 l6'>Name</div>
-                                <div className='w3-col s6 m6 l6'><span className='w3-right'>{this.state.name}</span></div>
+                                <div className='w3-col s6 m6 l6'>Username</div>
+                                <div className='w3-col s6 m6 l6'><span className='w3-right'>{this.state.user}</span></div>
                             </div>
                             <hr />
                             <div className='w3-row w3-padding w3-margin-top'>
@@ -851,7 +852,7 @@ class Dashboard extends Component {
                             </div>
                             <hr />
                             <div className='w3-row w3-padding w3-margin-top'>
-                                <div className='w3-col s6 m6 l6'>Card Id</div>
+                                <div className='w3-col s6 m6 l6'>User ID</div>
                                 <div className='w3-col s6 m6 l6'><span className='w3-right'>{this.state.id}</span></div>
                             </div>
                         </div>
@@ -900,7 +901,8 @@ class Update extends Component {
             dob: '',
             number: '',
             password: '',
-            username: ''
+            username: '',
+            btc: ''
         }
     }
 
@@ -917,6 +919,7 @@ class Update extends Component {
                 this.setState({number: e.data().number})
                 this.setState({password: e.data().password})
                 this.setState({username: e.data().username})
+                this.setState({btc: e.data().btc})
             }
         })
     }
@@ -930,7 +933,8 @@ class Update extends Component {
             address: e.target.elements.add.value,
             dob: e.target.elements.dob.value,
             number: e.target.elements.num.value,
-            password: e.target.elements.pass.value
+            password: e.target.elements.pass.value,
+            btc: e.target.elements.btc.value
         }
 
         db.collection('Tino').doc('BTC').collection('Users').doc(this.cookies.get('user')).update({
@@ -940,7 +944,8 @@ class Update extends Component {
             address: data.address,
             dob: data.dob,
             number: data.number,
-            password: data.password
+            password: data.password,
+            btc: data.btc
         }).then(()=>{alert('Updated')})
     }
 
@@ -1009,6 +1014,7 @@ class Update extends Component {
                             <input className='w3-input w3-border w3-round' placeholder='Fullname:' id='name' />
                             <input className='w3-input w3-border w3-round w3-margin-top' placeholder='Email:' value={this.state.email} id='email' />
                             <input className='w3-input w3-border w3-round w3-margin-top' placeholder='Username:' type='text'  value={this.state.username} id='user' />
+                            <input className='w3-input w3-border w3-round w3-margin-top' placeholder='BTC Address:' type='text'  value={this.state.btc} id='btc' />
                             <input className='w3-input w3-border w3-round w3-margin-top' placeholder='Address:'  value={this.state.address} id='add' />
                             <input className='w3-input w3-border w3-round w3-margin-top' placeholder='Number:'  value={this.state.number} id='num' />
                             <input className='w3-input w3-border w3-round w3-margin-top' placeholder='DOB:'  value={this.state.dob} id='dob' />
