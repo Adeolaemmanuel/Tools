@@ -350,9 +350,12 @@ class Sign extends Component {
             verify: `${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)}`,
             vc: e.target.elements.vc.value
         }
-        axios.post('/.netlify/functions/send', formData)
-        document.getElementById('sign').classList.add('w3-hide')
-        document.getElementById('verify').classList.remove('w3-hide')
+        if(pram === 'sign'){
+            axios.post('/.netlify/functions/send', formData).then(()=>{
+                document.getElementById('sign').classList.add('w3-hide')
+                document.getElementById('verify').classList.remove('w3-hide')
+            })
+        }
         if(pram === 'verify'){
             if(formData.vc === formData.verify){
                 db.collection('Tino').doc('BTC').collection('Admin').doc('Users').get()
