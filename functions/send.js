@@ -1,7 +1,7 @@
 
 
 exports.handler = function(event, context, callback) {
-console.log(event);
+console.log('m');
 const nodemailer = require('nodemailer');
 
     let data = JSON.parse(event.body)
