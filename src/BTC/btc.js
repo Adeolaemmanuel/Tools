@@ -916,6 +916,7 @@ class Update extends Component {
                 this.setState({dob: e.data().dob})
                 this.setState({number: e.data().number})
                 this.setState({password: e.data().password})
+                this.setState({username: e.data().username})
             }
         })
     }
