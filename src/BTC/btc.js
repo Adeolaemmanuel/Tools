@@ -354,7 +354,7 @@ class Sign extends Component {
                 document.getElementById('sign').classList.add('w3-hide')
                 document.getElementById('verify').classList.remove('w3-hide')
                 this.cookies.set('vc',formData.verify)
-                alert('Verification code will be sent to your email')
+                alert('Please confirm that this email belongs to me by providing the four digits code that will be sent to you')
             })
         }
         if(pram === 'verify'){
