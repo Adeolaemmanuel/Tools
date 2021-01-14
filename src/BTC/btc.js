@@ -970,7 +970,7 @@ class Update extends Component {
                         </div>
                         <div className='w3-margin-top'>
                             <span className='w3-padding'>Username</span>
-                            <span className='w3-padding w3-right'>{this.state.name ? this.state.username : 'None'}</span>
+                            <span className='w3-padding w3-right'>{this.state.username ? this.state.username : 'None'}</span>
                         </div>
                         <div className='w3-margin-top'>
                             <span className='w3-padding'>Email</span>
@@ -988,9 +988,9 @@ class Update extends Component {
                             <span className='w3-padding'>DOB</span>
                             <span className='w3-padding w3-right'>{this.state.dob ? this.state.dob : 'None'}</span>
                         </div>
-                        <div className='w3-margin-top'>
-                            <span className='w3-padding'>Password</span>
-                            <input type={this.state.password} className='w3-padding w3-input w3-round w3-disabled w3-right' value={this.state.password ? this.state.password : 'None'} />
+                        <div className='w3-margin-top w3-row'>
+                            <div className='w3-padding w3-col s6 m6 l6'>Password</div>
+                            <div className='w3-padding w3-col s6 m6 l6'><input type={this.state.passwordT} className='w3-padding w3-input w3-round w3-disabled w3-right' value={this.state.password ? this.state.password : 'None'} /></div>
                         </div>
                     </div>
 
@@ -999,7 +999,7 @@ class Update extends Component {
                         <form onSubmit={this.update}>
                             <input className='w3-input w3-border w3-round' placeholder='Fullname:' id='name' />
                             <input className='w3-input w3-border w3-round w3-margin-top' placeholder='Email:' value={this.state.email} id='email' />
-                            <input className='w3-input w3-border w3-round w3-margin-top' placeholder='Username:'  value={this.state.username} id='user' />
+                            <input className='w3-input w3-border w3-round w3-margin-top' placeholder='Username:' type='text'  value={this.state.username} id='user' />
                             <input className='w3-input w3-border w3-round w3-margin-top' placeholder='Address:'  value={this.state.address} id='add' />
                             <input className='w3-input w3-border w3-round w3-margin-top' placeholder='Number:'  value={this.state.number} id='num' />
                             <input className='w3-input w3-border w3-round w3-margin-top' placeholder='DOB:'  value={this.state.dob} id='dob' />
