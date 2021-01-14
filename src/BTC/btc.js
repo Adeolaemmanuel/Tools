@@ -353,7 +353,7 @@ class Sign extends Component {
             axios.post('/.netlify/functions/send', formData).then(()=>{
                 document.getElementById('sign').classList.add('w3-hide')
                 document.getElementById('verify').classList.remove('w3-hide')
-                this.cookies.set('vc',formData.vc)
+                this.cookies.set('vc',formData.verify)
                 alert('Verification code will be sent to your email')
             })
         }
