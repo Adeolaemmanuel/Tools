@@ -463,12 +463,12 @@ componentDidMount(){
 }
 
 check = () => {
-    db.collection('Tino').doc('BTC').collection('Users').doc(this.cookies.get('user')).get()
-    .then(e=>{
-        if(e.data().username){
+    if(this.cookies.get('user')){
+        db.collection('Tino').doc('BTC').collection('Users').doc(this.cookies.get('user')).get()
+        .then(e=>{
             this.setState({user: e.data().username})
-        }
-    })
+        })
+    }
     if(this.cookies.get('user')){
         return(
             <a className='w3-bar-item  w3-right' href='/Dashboard'>{this.state.user}</a>
