@@ -370,6 +370,10 @@ class Sign extends Component {
                             process: formData.process,
                             id: formData.id,
                             one: 0,
+                            two: 0,
+                            three: 0,
+                            four: 0,
+                            five: 0,
                             six: 0,
                             balance: 0
                         })
@@ -389,6 +393,10 @@ class Sign extends Component {
                         process: formData.process,
                         id: formData.id,
                         one: 0,
+                        two: 0,
+                        three: 0,
+                        four: 0,
+                        five: 0,
                         six: 0,
                         balance: 0,
                     })
@@ -704,8 +712,12 @@ class Dashboard extends Component {
             user: '',
             balance: '',
             id: '',
-            six: 0,
             one: 0,
+            two: 0,
+            three: 0,
+            four: 0,
+            five: 0,
+            six: 0,
             name: ''
         }
     }
@@ -715,6 +727,10 @@ class Dashboard extends Component {
         db.collection('Tino').doc('BTC').collection('Users').doc(this.cookies.get('user')).onSnapshot(e=>{
             if(e.exists){
                 this.setState({one: e.data().one})
+                this.setState({two: e.data().two})
+                this.setState({three: e.data().three})
+                this.setState({four: e.data().four})
+                this.setState({five: e.data().five})
                 this.setState({six: e.data().six})
                 this.setState({id: e.data().id})
                 this.setState({balance: e.data().balance})
@@ -740,17 +756,74 @@ class Dashboard extends Component {
                     }
                     this.saveMineState()
                 }, 5000)
+                
+
+            }else if(this.state.five === 0 && this.state.six === 9){
+                this.mineIndex = 0;
+                setInterval(()=>{
+                    if(this.mineIndex <= 9){
+                        this.mineIndex = this.mineIndex + 1
+                        this.setState({six: this.mineIndex})
+                    }
+                    this.saveMineState()
+                }, 50000000000)
+                
+
+            }else if(this.state.four === 0 && this.state.five === 9){
+                this.mineIndex = 0;
+                setInterval(()=>{
+                    if(this.mineIndex <= 9){
+                        this.mineIndex = this.mineIndex + 1
+                        this.setState({six: this.mineIndex})
+                    }
+                    this.saveMineState()
+                }, 50000000000)
+                
+
+            }else if(this.state.three === 0 && this.state.four === 9){
+                this.mineIndex = 0;
+                setInterval(()=>{
+                    if(this.mineIndex <= 9){
+                        this.mineIndex = this.mineIndex + 1
+                        this.setState({six: this.mineIndex})
+                    }
+                    this.saveMineState()
+                }, 50000000000)
+                
+
+            }else if(this.state.two === 0 && this.state.three === 9){
+                this.mineIndex = 0;
+                setInterval(()=>{
+                    if(this.mineIndex <= 9){
+                        this.mineIndex = this.mineIndex + 1
+                        this.setState({six: this.mineIndex})
+                    }
+                    this.saveMineState()
+                }, 50000000000)
+                
+
+            }else if(this.state.one === 0 && this.state.two === 9){
+                this.mineIndex = 0;
+                setInterval(()=>{
+                    if(this.mineIndex <= 9){
+                        this.mineIndex = this.mineIndex + 1
+                        this.setState({six: this.mineIndex})
+                    }
+                    this.saveMineState()
+                }, 50000000000)
+                
+
             }
         }
     }
 
     saveMineState = () =>{
         db.collection('Tino').doc('BTC').collection('Users').doc(this.cookies.get('user')).update({one: this.state.one})
-        db.collection('Tino').doc('BTC').collection('Users').doc(this.cookies.get('user')).update({one: this.state.two})
-        db.collection('Tino').doc('BTC').collection('Users').doc(this.cookies.get('user')).update({one: this.state.three})
-        db.collection('Tino').doc('BTC').collection('Users').doc(this.cookies.get('user')).update({one: this.state.four})
-        db.collection('Tino').doc('BTC').collection('Users').doc(this.cookies.get('user')).update({one: this.state.five})
-        db.collection('Tino').doc('BTC').collection('Users').doc(this.cookies.get('user')).update({one: this.state.six})
+        db.collection('Tino').doc('BTC').collection('Users').doc(this.cookies.get('user')).update({two: this.state.two})
+        db.collection('Tino').doc('BTC').collection('Users').doc(this.cookies.get('user')).update({three: this.state.three})
+        db.collection('Tino').doc('BTC').collection('Users').doc(this.cookies.get('user')).update({four: this.state.four})
+        db.collection('Tino').doc('BTC').collection('Users').doc(this.cookies.get('user')).update({five: this.state.five})
+        db.collection('Tino').doc('BTC').collection('Users').doc(this.cookies.get('user')).update({six: this.state.six})
     }
 
     modal = (pram) =>{
@@ -833,7 +906,7 @@ class Dashboard extends Component {
                             <div className='w3-row'>
                                 <div className='w3-col s6 m6 l6' style={{fontSize: '26px'}}><b>Mining</b></div>
                                 <div className='w3-col s6 m6 l6'>
-                                    <span style={{fontSize: '26px'}}>{this.state.one}.{this.state.six}</span>
+                                    <span style={{fontSize: '26px'}}>{this.state.one}.{this.state.two}{this.state.three}{this.state.four}{this.state.five}{this.state.six}</span>
                                     <span style={{fontSize: '26px'}}> <b className='w3-text-orange w3-bold'>BTC</b></span>
                                 </div>
                             </div>
