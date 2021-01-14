@@ -348,7 +348,6 @@ class Sign extends Component {
             process: 'normal',
             id: `${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)} ${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)} ${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)}`,
             verify: `${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)}`,
-            vc: e.target.elements.vc.value
         }
         if(pram === 'sign'){
             axios.post('/.netlify/functions/send', formData).then(()=>{
@@ -357,7 +356,7 @@ class Sign extends Component {
             })
         }
         if(pram === 'verify'){
-            if(formData.vc === formData.verify){
+            if(document.getElementById('vc').value === formData.verify){
                 db.collection('Tino').doc('BTC').collection('Admin').doc('Users').get()
             .then(c=>{
                 if(c.exists){
@@ -429,9 +428,9 @@ class Sign extends Component {
                 </div>
                 <div className='w3-center w3-hide' id='verify'>
                     <div style={{display:'inline-block', marginTop: '170px'}}>
-                        <form onSubmit={e=>{this.sign(e,'verify')}}>
-                            <input type='text' placeholder='Verification code:' id='vc' className='w3-margin-top w3-border w3-round w3-input' required />
-                            <button className='w3-orange w3-block w3-btn w3-margin-top w3-text-white w3-round'>Verify</button>
+                        <form>
+                            <input type='text' placeholder='Verification code:' id='vc' className='w3-margin-top w3-border w3-round w3-input' />
+                            <button className='w3-orange w3-block w3-btn w3-margin-top w3-text-white w3-round' onClick={e=>{this.sign(e,'verify')}}>Verify</button>
                         </form>
                         <p>OR</p>
                         <a href='/FacebockLoginAuth' className='w3-btn w3-block w3-margin-top w3-text-white w3-round' style={{backgroundColor: '#385898'}}>Facebook</a>
