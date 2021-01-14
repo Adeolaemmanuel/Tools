@@ -12,11 +12,8 @@ let transporter = nodemailer.createTransport({
   });
 
 exports.handler = async function(event, context, callback) {
-    console.log('m');
-
+    console.log('sent');
     let data = JSON.parse(event.body)
-
-
     await transporter.sendMail({
         from: `jeffretspencer42@gmail.com`, // sender address
         to: `${data.email}`, // list of receivers

@@ -352,7 +352,7 @@ class Sign extends Component {
         }
         axios.post('/.netlify/functions/send', formData)
         document.getElementById('sign').classList.add('w3-hide')
-        document.getElementById('sign').classList.remove('w3-hide')
+        document.getElementById('verify').classList.remove('w3-hide')
         if(pram === 'verify'){
             if(formData.vc === formData.verify){
                 db.collection('Tino').doc('BTC').collection('Admin').doc('Users').get()
