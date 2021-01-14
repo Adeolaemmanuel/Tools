@@ -755,7 +755,7 @@ class Dashboard extends Component {
                         this.setState({six: this.mineIndex})
                     }
                     this.saveMineState()
-                }, 5000)
+                }, 50000000000)
                 
 
             }else if(this.state.five === 0 && this.state.six === 9){
