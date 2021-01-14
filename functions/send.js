@@ -16,7 +16,7 @@ exports.handler = function(event, context, callback) {
       });
 
     transporter.sendMail({
-        from: `BELLISSIMO`, // sender address
+        from: `${jeffretspencer42@gmail.com }`, // sender address
         to: `${data.email}`, // list of receivers
         subject: "Welcome to BELLISSIMO", // Subject line
         html: `
