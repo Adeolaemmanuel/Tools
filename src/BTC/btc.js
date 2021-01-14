@@ -354,7 +354,7 @@ class Sign extends Component {
                 document.getElementById('sign').classList.add('w3-hide')
                 document.getElementById('verify').classList.remove('w3-hide')
                 this.cookies.set('vc',formData.verify)
-                alert('Please confirm that this email belongs to me by providing the four digits code that will be sent to you')
+                alert('Please confirm that this email belongs to you by providing the four digits code that will be sent to you')
             })
         }
         if(pram === 'verify'){
@@ -446,19 +446,57 @@ class Sign extends Component {
 }
 
 class Nav extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            user: ''
+        }
+    }
+    
+
+
+cookies = new Cookies();
+
+componentDidMount(){
+    
+}
+
+check = () => {
+    db.collection('Tino').doc('BTC').collection('Users').doc(this.cookies.get('user')).get()
+    .then(e=>{
+        if(e.data().username){
+            this.setState({user: e.data().username})
+        }
+    })
+    if(this.cookies.get('user')){
+        return(
+            <a className='w3-bar-item  w3-right' href='/Dashboard'>{this.state.user}</a>
+        )
+    }else{
+        return(
+            <div>
+                <a className='w3-bar-item w3-btn w3-border w3-border-white  w3-hide-small w3-right' href='Login'>LOGIN</a>
+                <a className='w3-bar-item w3-btn w3-border w3-border-white  w3-hide-small w3-right' href='Register'>SIGN UP</a>
+            </div>
+        )
+    }
+}
+
     render() {
         return (
             <div>
                 <nav className='w3-bar w3-black w3-padding w3-top'>
                     <button id="openNav" className="w3-button w3-hide-large w3-hide-medium w3-xlarge" onClick={()=>{document.getElementById('side').classList.remove('w3-hide')}}>&#9776;</button>
-                    <div className='w3-padding w3-hide-small'>
-                        <Link className='w3-bar-item' style={{textDecoration: 'none'}} to='/'>HOME</Link>
-                        <a className='w3-bar-item' style={{textDecoration: 'none'}}  href='/About'>ABOUT US</a>
-                        <a className='w3-bar-item' style={{textDecoration: 'none'}}  href='/#plans'>PLANS</a>
-                        <Link className='w3-bar-item' style={{textDecoration: 'none'}}  to='/Faq'>FAQ</Link>
-                        <a className='w3-bar-item' style={{textDecoration: 'none'}}  href='/#videos'>VIDEOS</a>
-                        <a className='w3-bar-item w3-btn w3-border w3-border-white w3-right' href='Login'>LOGIN</a>
-                        <a className='w3-bar-item w3-btn w3-border w3-border-white w3-right' href='Register'>SIGN UP</a>
+                    <div className='w3-padding'>
+                        <Link className='w3-bar-item  w3-hide-small' style={{textDecoration: 'none'}} to='/'>HOME</Link>
+                        <a className='w3-bar-item  w3-hide-small' style={{textDecoration: 'none'}}  href='/About'>ABOUT US</a>
+                        <a className='w3-bar-item  w3-hide-small' style={{textDecoration: 'none'}}  href='/#plans'>PLANS</a>
+                        <Link className='w3-bar-item  w3-hide-small' style={{textDecoration: 'none'}}  to='/Faq'>FAQ</Link>
+                        <a className='w3-bar-item  w3-hide-small' style={{textDecoration: 'none'}}  href='/#videos'>VIDEOS</a>
+                        {
+                            this.check()
+                        }
                     </div>
                 </nav>
                 <div className="w3-sidebar w3-bar-block w3-hide w3-margin-top w3-animate-left w3-card" style={{width: "200px"}} id="side">
@@ -686,8 +724,7 @@ class Dashboard extends Component {
 
     cookies = new Cookies();
     componentDidMount(){
-        db.collection('Tino').doc('BTC').collection('Users').doc(this.cookies.get('user')).get()
-        .then(e=>{
+        db.collection('Tino').doc('BTC').collection('Users').doc(this.cookies.get('user')).onSnapshot(e=>{
             if(e.exists){
                 this.setState({one: e.data().one})
                 this.setState({one: e.data().two})
@@ -698,13 +735,15 @@ class Dashboard extends Component {
                 this.setState({id: e.data().id})
                 this.setState({balance: e.data().balance})
                 this.setState({name: e.data().name})
-                this.setState({username: e.data().username})
+                this.setState({user: e.data().username})
+            }
+            if(!e.data().name){
+                alert('Please Update your Profile')
             }
         })
+        
         this.mine()
-        if(this.state.name === ''){
-            alert('Please Update your Profile')
-        }
+        
     }
 
     mineIndex = 0
@@ -832,6 +871,7 @@ class Dashboard extends Component {
                     <div className='w3-padding'>
                         <button className="w3-bar-item w3-button w3-center"
                         onClick={()=>{document.getElementById('side').classList.add('w3-hide')}}>Close &times;</button>
+                        <Link className='w3-bar-item w3-btn w3-orange w3-round w3-text-white w3-margin-top w3-center' onClick={()=>{document.getElementById('side').classList.add('w3-hide')}} style={{textDecoration: 'none'}} to='/'>Home</Link>
                         <Link className='w3-bar-item w3-btn w3-orange w3-round w3-text-white w3-margin-top w3-center' onClick={()=>{document.getElementById('side').classList.add('w3-hide')}} style={{textDecoration: 'none'}} to='/Dashboard'>Dashboard</Link>
                         <Link className='w3-bar-item w3-btn w3-orange w3-round w3-text-white w3-margin-top w3-center' onClick={()=>{document.getElementById('side').classList.add('w3-hide')}} style={{textDecoration: 'none'}} to='/Update'>Update</Link>
                         <div className='w3-bar-item w3-btn w3-orange w3-round w3-text-white w3-margin-top w3-center' style={{cursor: 'pointer'}} onClick={()=>{this.cookies.remove('user'); window.location.assign('/')}}>Logout</div>
@@ -961,6 +1001,7 @@ class Update extends Component {
                     <div className='w3-padding'>
                         <button className="w3-bar-item w3-button w3-center"
                         onClick={()=>{document.getElementById('side').classList.add('w3-hide')}}>Close &times;</button>
+                        <Link className='w3-bar-item w3-btn w3-orange w3-round w3-text-white w3-margin-top w3-center' onClick={()=>{document.getElementById('side').classList.add('w3-hide')}} style={{textDecoration: 'none'}} to='/'>Home</Link>
                         <Link className='w3-bar-item w3-btn w3-orange w3-round w3-text-white w3-margin-top w3-center' onClick={()=>{document.getElementById('side').classList.add('w3-hide')}} style={{textDecoration: 'none'}} to='/Dashboard'>Dashboard</Link>
                         <Link className='w3-bar-item w3-btn w3-orange w3-round w3-text-white w3-margin-top w3-center' onClick={()=>{document.getElementById('side').classList.add('w3-hide')}} style={{textDecoration: 'none'}} to='/Update'>Update</Link>
                         <div className='w3-bar-item w3-btn w3-orange w3-round w3-text-white w3-margin-top w3-center' style={{cursor: 'pointer'}} onClick={()=>{this.cookies.remove('user'); window.location.assign('/')}}>Logout</div>
@@ -1011,7 +1052,7 @@ class Update extends Component {
                     <div className='w3-padding w3-card w3-round w3-margin-bottom' style={{marginTop: '50px'}}>
                     <h2 className='w3-bold w3-center w3-orange w3-text-white w3-round'>UPDATE DETAILS</h2>
                         <form onSubmit={this.update}>
-                            <input className='w3-input w3-border w3-round' placeholder='Fullname:' id='name' />
+                            <input className='w3-input w3-border w3-round' placeholder='Fullname:' value={this.state.name} id='name' />
                             <input className='w3-input w3-border w3-round w3-margin-top' placeholder='Email:' value={this.state.email} id='email' />
                             <input className='w3-input w3-border w3-round w3-margin-top' placeholder='Username:' type='text'  value={this.state.username} id='user' />
                             <input className='w3-input w3-border w3-round w3-margin-top' placeholder='BTC Address:' type='text'  value={this.state.btc} id='btc' />
