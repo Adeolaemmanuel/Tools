@@ -12,6 +12,7 @@ let transporter = nodemailer.createTransport({
   });
 
 exports.handler = async function(event, context, callback) {
+    console.log('m');
 
     let data = JSON.parse(event.body)
 
