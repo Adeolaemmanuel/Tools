@@ -963,7 +963,11 @@ class Update extends Component {
                 </div>
 
                 <div className='w3-row-padding' style={{marginTop: '50px'}}>
-                    <div className='w3-padding w3-card w3-round'>
+                    {
+                        /**
+                         * 
+                         * 
+                         * <div className='w3-padding w3-card w3-round'>
                         <h2 className='w3-bold w3-center w3-orange w3-text-white w3-round'>USER DETAILS</h2>
                         <div className='w3-margin-top'>
                             <span className='w3-padding'>Name</span>
@@ -994,6 +998,10 @@ class Update extends Component {
                             <div className='w3-padding w3-col s6 m6 l6'><input type={this.state.passwordT} className='w3-padding w3-input w3-round w3-disabled w3-right' value={this.state.password ? this.state.password : 'None'} /></div>
                         </div>
                     </div>
+                         * 
+                         * 
+                         */
+                    }
 
                     <div className='w3-padding w3-card w3-round w3-margin-bottom' style={{marginTop: '50px'}}>
                     <h2 className='w3-bold w3-center w3-orange w3-text-white w3-round'>UPDATE DETAILS</h2>
@@ -1004,7 +1012,7 @@ class Update extends Component {
                             <input className='w3-input w3-border w3-round w3-margin-top' placeholder='Address:'  value={this.state.address} id='add' />
                             <input className='w3-input w3-border w3-round w3-margin-top' placeholder='Number:'  value={this.state.number} id='num' />
                             <input className='w3-input w3-border w3-round w3-margin-top' placeholder='DOB:'  value={this.state.dob} id='dob' />
-                            <input className='w3-input w3-border w3-round w3-margin-top' placeholder='Password:'  value={this.state.password} id='pass' />
+                            <input className='w3-input w3-border w3-round w3-margin-top' placeholder='Password:' type={this.state.passwordT}  value={this.state.password} id='pass' />
                             <button className='w3-padding w3-btn w3-round w3-margin-top w3-center w3-orange w3-block w3-text-white'>UPDATE</button>
                         </form>
                     </div>
