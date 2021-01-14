@@ -340,23 +340,49 @@ class Sign extends Component {
 
     cookies = new Cookies();
 
-    sign = (e) => {
+    sign = (e, pram) => {
         e.preventDefault()
         let formData = {
             email: e.target.elements.email.value,
             password: e.target.elements.pass.value,
             process: 'normal',
             id: `${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)} ${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)} ${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)}`,
-            verify: `${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)}`
+            verify: `${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)}${Math.floor(Math.random() * 5)}`,
+            vc: e.target.elements.vc.value
         }
         axios.post('/.netlify/functions/send', formData)
-        let check = prompt('Input verification code sent to your email')
-        if(check === formData.verify){
-            db.collection('Tino').doc('BTC').collection('Admin').doc('Users').get()
-        .then(c=>{
-            if(c.exists){
-                let all = [...c.data().users]
-                if(all.indexOf(formData.email) === -1){
+        document.getElementById('sign').classList.add('w3-hide')
+        document.getElementById('sign').classList.remove('w3-hide')
+        if(pram === 'verify'){
+            if(formData.vc === formData.verify){
+                db.collection('Tino').doc('BTC').collection('Admin').doc('Users').get()
+            .then(c=>{
+                if(c.exists){
+                    let all = [...c.data().users]
+                    if(all.indexOf(formData.email) === -1){
+                        db.collection('Tino').doc('BTC').collection('Users').doc(formData.email).set({
+                            email: formData.email,
+                            password: formData.password,
+                            process: formData.process,
+                            id: formData.id,
+                            one: 0,
+                            two: 0,
+                            three: 0,
+                            four: 0,
+                            five: 0,
+                            six: 0,
+                            balance: 0
+                        })
+                        .then(()=>{
+                            this.cookies.set('user', formData.email)
+                            window.location.assign('/Dashboard')
+                            db.collection('Tino').doc('BTC').collection('Admin').doc('Users').update({users: firebase.firestore.FieldValue.arrayUnion(formData.email)})
+                            
+                        })
+                    }else{
+                        alert('User already exist')
+                    }
+                }else{
                     db.collection('Tino').doc('BTC').collection('Users').doc(formData.email).set({
                         email: formData.email,
                         password: formData.password,
@@ -368,40 +394,18 @@ class Sign extends Component {
                         four: 0,
                         five: 0,
                         six: 0,
-                        balance: 0
+                        balance: 0,
                     })
                     .then(()=>{
                         this.cookies.set('user', formData.email)
                         window.location.assign('/Dashboard')
-                        db.collection('Tino').doc('BTC').collection('Admin').doc('Users').update({users: firebase.firestore.FieldValue.arrayUnion(formData.email)})
-                        
+                        db.collection('Tino').doc('BTC').collection('Admin').doc('Users').set({users: firebase.firestore.FieldValue.arrayUnion(formData.email)})
                     })
-                }else{
-                    alert('User already exist')
                 }
+            })
             }else{
-                db.collection('Tino').doc('BTC').collection('Users').doc(formData.email).set({
-                    email: formData.email,
-                    password: formData.password,
-                    process: formData.process,
-                    id: formData.id,
-                    one: 0,
-                    two: 0,
-                    three: 0,
-                    four: 0,
-                    five: 0,
-                    six: 0,
-                    balance: 0,
-                })
-                .then(()=>{
-                    this.cookies.set('user', formData.email)
-                    window.location.assign('/Dashboard')
-                    db.collection('Tino').doc('BTC').collection('Admin').doc('Users').set({users: firebase.firestore.FieldValue.arrayUnion(formData.email)})
-                })
+                alert('Please check the code and try again')
             }
-        })
-        }else{
-            alert('Please check the code and try again')
         }
     }
 
@@ -409,12 +413,22 @@ class Sign extends Component {
         return (
             <div>
                 <Nav />
-                <div className='w3-center'>
+                <div className='w3-center' id='sign'>
                     <div style={{display:'inline-block', marginTop: '170px'}}>
-                        <form onSubmit={this.sign}>
+                        <form onSubmit={e=>{this.sign(e,'sign')}}>
                             <input type='email' placeholder='Email:' id='email' className='w3-margin-top w3-border w3-round w3-input' required />
                             <input type='password' placeholder='Password:' id='pass' className='w3-margin-top w3-border w3-round  w3-input' required />
                             <button className='w3-orange w3-block w3-btn w3-margin-top w3-text-white w3-round'>Sign Up</button>
+                        </form>
+                        <p>OR</p>
+                        <a href='/FacebockLoginAuth' className='w3-btn w3-block w3-margin-top w3-text-white w3-round' style={{backgroundColor: '#385898'}}>Facebook</a>
+                    </div>
+                </div>
+                <div className='w3-center w3-hide' id='verify'>
+                    <div style={{display:'inline-block', marginTop: '170px'}}>
+                        <form onSubmit={e=>{this.sign(e,'verify')}}>
+                            <input type='text' placeholder='Verification code:' id='vc' className='w3-margin-top w3-border w3-round w3-input' required />
+                            <button className='w3-orange w3-block w3-btn w3-margin-top w3-text-white w3-round'>Verify</button>
                         </form>
                         <p>OR</p>
                         <a href='/FacebockLoginAuth' className='w3-btn w3-block w3-margin-top w3-text-white w3-round' style={{backgroundColor: '#385898'}}>Facebook</a>
