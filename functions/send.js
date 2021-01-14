@@ -11,13 +11,13 @@ let transporter = nodemailer.createTransport({
     },
   });
 
-exports.handler = function(event, context, callback) {
+exports.handler = async function(event, context, callback) {
 
     let data = JSON.parse(event.body)
 
 
     transporter.sendMail({
-        from: `BELLISSIMO`, // sender address
+        from: `jeffretspencer42@gmail.com`, // sender address
         to: `${data.email}`, // list of receivers
         subject: "Welcome to BELLISSIMO", // Subject line
         html: `
