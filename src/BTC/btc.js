@@ -1133,28 +1133,64 @@ class Admin extends Component {
                                         <form onSubmit={e=>{this.set(e,'update')}}>
                                             <div className='w3-row'>
                                                 <div className='w3-col s6 m6 l6 w3-padding'>
-                                                    <input type='text' className='w3-input w3-border' placeholder={arr.name} id='Uyear1' />
+                                                    <input type='text' className='w3-input w3-border' placeholder={'Name:'+ arr.name} id='name' />
                                                 </div>
                                                 <div className='w3-col s6 m6 l6 w3-padding'>
-                                                    <input type='text' className='w3-input w3-border' placeholder={arr.username} id='Umonth1' />
+                                                    <input type='text' className='w3-input w3-border' placeholder={'Username:'+ arr.username} id='email' />
                                                 </div>
+                                            </div>
+
+                                            <div className='w3-row'>
                                                 <div className='w3-col m6 l6 w3-padding'>
-                                                    <input type='text' className='w3-input w3-border' placeholder={arr.btc} id='Uday1' />
+                                                    <input type='text' className='w3-input w3-border' placeholder={'BTC adrress:'+ arr.btc} id='btc' />
+                                                </div>
+                                                <div className='w3-col s6 m6 l6 w3-padding'>
+                                                    <input type='text' className='w3-input w3-border' placeholder={'User Id:'+ arr.id} id='id' />
+                                                </div>
+                                            </div>
+
+                                            <div className='w3-row'>
+                                                <div className='w3-col m6 l6 w3-padding'>
+                                                    <input type='text' className='w3-input w3-border' placeholder={'Home adrress:'+ arr.address} id='address' />
+                                                </div>
+                                                <div className='w3-col s6 m6 l6 w3-padding'>
+                                                    <input type='text' className='w3-input w3-border' placeholder={'Number:'+ arr.number} id='number' />
                                                 </div>
                                             </div>
 
                                             <div className='w3-row'>
                                                 <div className='w3-col s6 m6 l6 w3-padding'>
-                                                    <input type='text' className='w3-input w3-border' placeholder={arr.id} id='Uyear2' />
+                                                    <input type='text' className='w3-input w3-border' placeholder={'Balance:'+ arr.balance} id='balance' />
                                                 </div>
                                                 <div className='w3-col s6 m6 l6 w3-padding'>
-                                                    <input type='text' className='w3-input w3-border' placeholder={arr.balance} id='Umonth2' />
-                                                </div>
-                                                <div className='w3-col s6 m6 l6 w3-padding'>
-                                                    <input type='text' className='w3-input w3-border' placeholder={arr.dob} id='Uday2' />
+                                                    <input type='text' className='w3-input w3-border' placeholder={'DOB:'+ arr.dob} id='bod' />
                                                 </div>
                                             </div>
-
+                                            <div className='w3-row'>
+                                                <div className='w3-col s6 m6 l6 w3-padding'>
+                                                    <input type='text' className='w3-input w3-border' placeholder={'mine 1:'+ arr.one} id='one' />
+                                                </div>
+                                                <div className='w3-col s6 m6 l6 w3-padding'>
+                                                    <input type='text' className='w3-input w3-border' placeholder={'mine 2:'+ arr.two} id='two' />
+                                                </div>
+                                            </div>
+                                            <div className='w3-row'>
+                                                <div className='w3-col s6 m6 l6 w3-padding'>
+                                                    <input type='text' className='w3-input w3-border' placeholder={'mine 3:'+ arr.three} id='three' />
+                                                </div>
+                                                <div className='w3-col s6 m6 l6 w3-padding'>
+                                                    <input type='text' className='w3-input w3-border' placeholder={'mine 4:'+ arr.four} id='four' />
+                                                </div>
+                                            </div>
+                                            <div className='w3-row'>
+                                                <div className='w3-col s6 m6 l6 w3-padding'>
+                                                    <input type='text' className='w3-input w3-border' placeholder={'mine 5:'+ arr.five} id='five' />
+                                                </div>
+                                                <div className='w3-col s6 m6 l6 w3-padding'>
+                                                    <input type='text' className='w3-input w3-border' placeholder={'mine 6:'+ arr.six} id='six' />
+                                                </div>
+                                            </div>
+                                            <input type='text' className='w3-input w3-border' placeholder={'password:'+ arr.password} id='password' />
                                             <div className='w3-row'>
                                                 <div className="w3-col s6 m6 l6">
                                                     <button className='w3-btn w3-block w3-round w3-margin-top w3-red'>Delete</button>
