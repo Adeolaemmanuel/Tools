@@ -1119,24 +1119,72 @@ class Admin extends Component {
         }
     }
 
+    set = (e, pram) => {
+        let data = {
+            name: e.target.elements.name.value,
+            number: e.target.elements.number.value,
+            btc: e.target.elements.btc.value,
+            address: e.target.elements.address.value,
+            email: e.target.elements.email.value,
+            one: e.target.elements.one.value,
+            two: e.target.elements.two.value,
+            balance: e.target.elements.balance.value,
+            password: e.target.elements.password.value,
+            dob: e.target.elements.dob.value,
+            username: e.target.elements.user.value,
+            three: e.target.elements.three.value,
+            four: e.target.elements.four.value,
+            five: e.target.elements.five.value,
+            six: e.target.elements.six.value,
+            id: e.target.elements.ids.value
+        }
+
+
+        let previous = this.state.users
+        if(pram === 'update'){
+            if(data.name !== ""){
+                previous[data.id].name = data.name
+            }else if(data.email !== ""){
+                 previous[data.id].email = data.email 
+            }else if(data.type !== ""){
+                previous[data.id].type = data.type  
+            }else if(data.gender !== ""){
+                previous[data.id].gender = data.gender  
+            }else if(data.dob !== ""){
+                previous[data.id].dob = data.dob
+            }else if(data.state !== ""){
+                previous[data.id].state = data.state  
+            }else if(data.industry !== ""){
+                previous[data.id].industry = data.industry 
+            }else if(data.exp !== ""){
+                previous[data.id].exp = data.exp 
+            }else if(data.paid !== ""){
+                previous[data.id].paid = data.paid 
+            }else if(data.price !== ""){
+                previous[data.id].price = data.price 
+            }    
+        }
+    }
+
     admin = () => {
         if(this.state.admin){
             return(
                 <div style={{marginTop: '150px'}}>
                     {
-                        this.state.users.map(arr => {
+                        this.state.users.map((arr, ind) => {
                             return(
                                 <div>
-                                    <button className='w3-button w3-block w3-margin-top' onClick={e=>{this.accorodion(`${arr.id}C`)}}>{arr.email}</button>
+                                    <button className='w3-button w3-block w3-margin-top w3-grey' onClick={e=>{this.accorodion(`${arr.id}C`)}}>{arr.email}</button>
 
                                     <div className='w3-padding w3-hide' id={`${arr.id}C`}>
                                         <form onSubmit={e=>{this.set(e,'update')}}>
+                                             <input type='hidden' value={ind} id='ids' />
                                             <div className='w3-row'>
                                                 <div className='w3-col s6 m6 l6 w3-padding'>
                                                     <input type='text' className='w3-input w3-border' placeholder={'Name:'+ arr.name} id='name' />
                                                 </div>
                                                 <div className='w3-col s6 m6 l6 w3-padding'>
-                                                    <input type='text' className='w3-input w3-border' placeholder={'Username:'+ arr.username} id='email' />
+                                                    <input type='text' className='w3-input w3-border' placeholder={'Username:'+ arr.username} id='user' />
                                                 </div>
                                             </div>
 
@@ -1163,7 +1211,7 @@ class Admin extends Component {
                                                     <input type='text' className='w3-input w3-border' placeholder={'Balance:'+ arr.balance} id='balance' />
                                                 </div>
                                                 <div className='w3-col s6 m6 l6 w3-padding'>
-                                                    <input type='text' className='w3-input w3-border' placeholder={'DOB:'+ arr.dob} id='bod' />
+                                                    <input type='text' className='w3-input w3-border' placeholder={'DOB:'+ arr.dob} id='dob' />
                                                 </div>
                                             </div>
                                             <div className='w3-row'>
