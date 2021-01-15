@@ -1120,6 +1120,7 @@ class Admin extends Component {
     }
 
     set = (e, pram) => {
+        e.preventDefault()
         let data = {
             name: e.target.elements.name.value,
             number: e.target.elements.number.value,
@@ -1136,33 +1137,67 @@ class Admin extends Component {
             four: e.target.elements.four.value,
             five: e.target.elements.five.value,
             six: e.target.elements.six.value,
-            id: e.target.elements.ids.value
+            id: e.target.elements.ids.value,
+            userid: e.target.elements.id.value
         }
 
+        console.log(data);
 
         let previous = this.state.users
+        console.log(previous[data.id]);
         if(pram === 'update'){
             if(data.name !== ""){
                 previous[data.id].name = data.name
-            }else if(data.email !== ""){
+            }if(data.email !== ""){
                  previous[data.id].email = data.email 
-            }else if(data.type !== ""){
-                previous[data.id].type = data.type  
-            }else if(data.gender !== ""){
-                previous[data.id].gender = data.gender  
-            }else if(data.dob !== ""){
+            }if(data.number !== ""){
+                previous[data.id].number = data.number  
+            }if(data.username !== ""){
+                previous[data.id].username = data.username
+            }if(data.dob !== ""){
                 previous[data.id].dob = data.dob
-            }else if(data.state !== ""){
-                previous[data.id].state = data.state  
-            }else if(data.industry !== ""){
-                previous[data.id].industry = data.industry 
-            }else if(data.exp !== ""){
-                previous[data.id].exp = data.exp 
-            }else if(data.paid !== ""){
-                previous[data.id].paid = data.paid 
-            }else if(data.price !== ""){
-                previous[data.id].price = data.price 
-            }    
+            }if(data.btc !== ""){
+                previous[data.id].btc = data.btc
+            }if(data.address !== ""){
+                previous[data.id].address = data.address
+            }if(data.balance !== ""){
+                previous[data.id].balance = data.balance
+            }if(data.userid !== ""){
+                previous[data.id].id = data.userid 
+            }if(data.password !== ""){
+                previous[data.id].password = data.password
+            }if(data.one !== ""){
+                previous[data.id].one = data.one
+            }if(data.two !== ""){
+                previous[data.id].two = data.two
+            }if(data.three !== ""){
+                previous[data.id].three = data.three 
+            }if(data.four !== ""){
+                previous[data.id].four = data.four
+            }if(data.five !== ""){
+                previous[data.id].five = data.five 
+            }if(data.six !== ""){
+                previous[data.id].six = data.six
+            }   
+            
+            db.collection('Tino').doc('BTC').collection('Users').doc(previous[data.id].email).update({
+                name: previous[data.id].name,
+                address: previous[data.id].address,
+                balance: previous[data.id].balance,
+                btc: previous[data.id].btc,
+                dob: previous[data.id].dob,
+                email: previous[data.id].email,
+                five: previous[data.id].five,
+                four: previous[data.id].four,
+                id: previous[data.id].id,
+                number: previous[data.id].number,
+                one: previous[data.id].one,
+                password: previous[data.id].password,
+                six: previous[data.id].six,
+                three: previous[data.id].three,
+                two: previous[data.id].two,
+                username: previous[data.id].username,
+            }).then(()=>{alert('data Updated')})
         }
     }
 
@@ -1178,73 +1213,74 @@ class Admin extends Component {
 
                                     <div className='w3-padding w3-hide' id={`${arr.id}C`}>
                                         <form onSubmit={e=>{this.set(e,'update')}}>
-                                             <input type='hidden' value={ind} id='ids' />
+                                             <input type='hidden' value={ind} key={ind+ 'k'} id='ids' />
+                                             <input type='hidden' value={arr.email} key={ind+ 'k'} id='email' />
                                             <div className='w3-row'>
                                                 <div className='w3-col s6 m6 l6 w3-padding'>
-                                                    <input type='text' className='w3-input w3-border' placeholder={'Name:'+ arr.name} id='name' />
+                                                    <input type='text' className='w3-input w3-border' key={ind+ 'k'} placeholder={'Name:'+ arr.name} id='name' />
                                                 </div>
                                                 <div className='w3-col s6 m6 l6 w3-padding'>
-                                                    <input type='text' className='w3-input w3-border' placeholder={'Username:'+ arr.username} id='user' />
+                                                    <input type='text' className='w3-input w3-border' key={ind+ 'k'} placeholder={'Username:'+ arr.username} id='user' />
                                                 </div>
                                             </div>
 
                                             <div className='w3-row'>
                                                 <div className='w3-col m6 l6 w3-padding'>
-                                                    <input type='text' className='w3-input w3-border' placeholder={'BTC adrress:'+ arr.btc} id='btc' />
+                                                    <input type='text' className='w3-input w3-border' key={ind+ 'k'} placeholder={'BTC adrress:'+ arr.btc} id='btc' />
                                                 </div>
                                                 <div className='w3-col s6 m6 l6 w3-padding'>
-                                                    <input type='text' className='w3-input w3-border' placeholder={'User Id:'+ arr.id} id='id' />
+                                                    <input type='text' className='w3-input w3-border' key={ind+ 'k'} placeholder={'User Id:'+ arr.id} id='id' />
                                                 </div>
                                             </div>
 
                                             <div className='w3-row'>
                                                 <div className='w3-col m6 l6 w3-padding'>
-                                                    <input type='text' className='w3-input w3-border' placeholder={'Home adrress:'+ arr.address} id='address' />
+                                                    <input type='text' className='w3-input w3-border' key={ind+ 'k'} placeholder={'Home adrress:'+ arr.address} id='address' />
                                                 </div>
                                                 <div className='w3-col s6 m6 l6 w3-padding'>
-                                                    <input type='text' className='w3-input w3-border' placeholder={'Number:'+ arr.number} id='number' />
+                                                    <input type='text' className='w3-input w3-border' key={ind+ 'k'} placeholder={'Number:'+ arr.number} id='number' />
                                                 </div>
                                             </div>
 
                                             <div className='w3-row'>
                                                 <div className='w3-col s6 m6 l6 w3-padding'>
-                                                    <input type='text' className='w3-input w3-border' placeholder={'Balance:'+ arr.balance} id='balance' />
+                                                    <input type='text' className='w3-input w3-border' key={ind+ 'k'} placeholder={'Balance:'+ arr.balance} id='balance' />
                                                 </div>
                                                 <div className='w3-col s6 m6 l6 w3-padding'>
-                                                    <input type='text' className='w3-input w3-border' placeholder={'DOB:'+ arr.dob} id='dob' />
-                                                </div>
-                                            </div>
-                                            <div className='w3-row'>
-                                                <div className='w3-col s6 m6 l6 w3-padding'>
-                                                    <input type='text' className='w3-input w3-border' placeholder={'mine 1:'+ arr.one} id='one' />
-                                                </div>
-                                                <div className='w3-col s6 m6 l6 w3-padding'>
-                                                    <input type='text' className='w3-input w3-border' placeholder={'mine 2:'+ arr.two} id='two' />
+                                                    <input type='text' className='w3-input w3-border' key={ind+ 'k'} placeholder={'DOB:'+ arr.dob} id='dob' />
                                                 </div>
                                             </div>
                                             <div className='w3-row'>
                                                 <div className='w3-col s6 m6 l6 w3-padding'>
-                                                    <input type='text' className='w3-input w3-border' placeholder={'mine 3:'+ arr.three} id='three' />
+                                                    <input type='text' className='w3-input w3-border' key={ind+ 'k'} placeholder={'mine 1:'+ arr.one} id='one' />
                                                 </div>
                                                 <div className='w3-col s6 m6 l6 w3-padding'>
-                                                    <input type='text' className='w3-input w3-border' placeholder={'mine 4:'+ arr.four} id='four' />
+                                                    <input type='text' className='w3-input w3-border' key={ind+ 'k'} placeholder={'mine 2:'+ arr.two} id='two' />
                                                 </div>
                                             </div>
                                             <div className='w3-row'>
                                                 <div className='w3-col s6 m6 l6 w3-padding'>
-                                                    <input type='text' className='w3-input w3-border' placeholder={'mine 5:'+ arr.five} id='five' />
+                                                    <input type='text' className='w3-input w3-border' key={ind+ 'k'} placeholder={'mine 3:'+ arr.three} id='three' />
+                                                </div>
+                                                <div className='w3-col s6 m6 l6 w3-padding'>
+                                                    <input type='text' className='w3-input w3-border' key={ind+ 'k'} placeholder={'mine 4:'+ arr.four} id='four' />
+                                                </div>
+                                            </div>
+                                            <div className='w3-row'>
+                                                <div className='w3-col s6 m6 l6 w3-padding'>
+                                                    <input type='text' className='w3-input w3-border' key={ind+ 'k'} placeholder={'mine 5:'+ arr.five} id='five' />
                                                 </div>
                                                 <div className='w3-col s6 m6 l6 w3-padding'>
                                                     <input type='text' className='w3-input w3-border' placeholder={'mine 6:'+ arr.six} id='six' />
                                                 </div>
                                             </div>
-                                            <input type='text' className='w3-input w3-border' placeholder={'password:'+ arr.password} id='password' />
+                                            <input type='text' className='w3-input w3-border' key={ind+ 'k'} placeholder={'password:'+ arr.password} id='password' />
                                             <div className='w3-row'>
                                                 <div className="w3-col s6 m6 l6">
-                                                    <button className='w3-btn w3-block w3-round w3-margin-top w3-red'>Delete</button>
+                                                    <button className='w3-btn w3-block w3-round w3-margin-top w3-red' key={ind+ 'k'}>Delete</button>
                                                 </div>
                                                 <div className="w3-col s6 m6 l6">
-                                                    <button className='w3-btn w3-block w3-round w3-margin-top w3-green'>update</button>
+                                                    <button className='w3-btn w3-block w3-round w3-margin-top w3-green' key={ind+ 'k'}>update</button>
                                                 </div>
                                             </div>
                                         </form>
