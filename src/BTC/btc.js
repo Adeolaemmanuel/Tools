@@ -888,7 +888,7 @@ class Dashboard extends Component {
                             <hr />
                             <div className='w3-row w3-padding w3-margin-top'>
                                 <div className='w3-col s6 m6 l6'>Balance</div>
-                                <div className='w3-col s6 m6 l6'><span className='w3-right'>{this.state.balance}</span></div>
+                                <div className='w3-col s6 m6 l6'><span className='w3-right'>${this.state.balance}</span></div>
                             </div>
                             <hr />
                             <div className='w3-row w3-padding w3-margin-top'>
@@ -1155,8 +1155,13 @@ class Admin extends Component {
                                                 </div>
                                             </div>
 
-                                            <div className='w3-center'>
-                                                <button className='w3-btn w3-block w3-round w3-margin-top w3-green'>Set</button>
+                                            <div className='w3-row'>
+                                                <div className="w3-col s6 m6 l6">
+                                                    <button className='w3-btn w3-block w3-round w3-margin-top w3-red'>Delete</button>
+                                                </div>
+                                                <div className="w3-col s6 m6 l6">
+                                                    <button className='w3-btn w3-block w3-round w3-margin-top w3-green'>update</button>
+                                                </div>
                                             </div>
                                         </form>
                                     </div>
