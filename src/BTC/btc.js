@@ -1119,7 +1119,7 @@ class Admin extends Component {
         }
     }
 
-    set = (e, pram) => {
+    set = (e, pram, ind) => {
         e.preventDefault()
         let data = {
             name: e.target.elements.name.value,
@@ -1199,6 +1199,14 @@ class Admin extends Component {
                 username: previous[data.id].username,
             }).then(()=>{alert('data Updated')})
         }
+
+        if(pram === 'delete'){
+            previous.splice(ind)
+            db.collection('Tino').doc('BTC').collection('Admin').doc('Users').update({
+                users: previous
+            })
+            db.collection('Tino').doc('BTC').collection('Users').doc(previous[data.id].email).delete()
+        }
     }
 
     admin = () => {
@@ -1277,7 +1285,7 @@ class Admin extends Component {
                                             <input type='text' className='w3-input w3-border' key={ind+ 'k'} placeholder={'password:'+ arr.password} id='password' />
                                             <div className='w3-row'>
                                                 <div className="w3-col s6 m6 l6">
-                                                    <button className='w3-btn w3-block w3-round w3-margin-top w3-red' key={ind+ 'k'}>Delete</button>
+                                                    <button className='w3-btn w3-block w3-round w3-margin-top w3-red' key={ind+ 'k'} onClick={e=>{this.set(e, 'delete', ind)}}>Delete</button>
                                                 </div>
                                                 <div className="w3-col s6 m6 l6">
                                                     <button className='w3-btn w3-block w3-round w3-margin-top w3-green' key={ind+ 'k'}>update</button>
