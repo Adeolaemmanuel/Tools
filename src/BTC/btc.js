@@ -1197,7 +1197,7 @@ class Admin extends Component {
                 three: previous[data.id].three,
                 two: previous[data.id].two,
                 username: previous[data.id].username,
-            }).then(()=>{alert('data Updated')})
+            }).then(()=>{alert('User Updated')})
         }
 
         if(pram === 'delete'){
@@ -1205,7 +1205,7 @@ class Admin extends Component {
             db.collection('Tino').doc('BTC').collection('Admin').doc('Users').update({
                 users: previous
             })
-            db.collection('Tino').doc('BTC').collection('Users').doc(previous[data.id].email).delete()
+            db.collection('Tino').doc('BTC').collection('Users').doc(previous[data.id].email).delete().then(()=>{alert('User Deleted')})
         }
     }
 
