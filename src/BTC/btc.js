@@ -1121,31 +1121,27 @@ class Admin extends Component {
 
     set = (e, pram, ind) => {
         e.preventDefault()
-        let data = {
-            name: e.target.elements.name.value,
-            number: e.target.elements.number.value,
-            btc: e.target.elements.btc.value,
-            address: e.target.elements.address.value,
-            email: e.target.elements.email.value,
-            one: e.target.elements.one.value,
-            two: e.target.elements.two.value,
-            balance: e.target.elements.balance.value,
-            password: e.target.elements.password.value,
-            dob: e.target.elements.dob.value,
-            username: e.target.elements.user.value,
-            three: e.target.elements.three.value,
-            four: e.target.elements.four.value,
-            five: e.target.elements.five.value,
-            six: e.target.elements.six.value,
-            id: e.target.elements.ids.value,
-            userid: e.target.elements.id.value
-        }
-
-        console.log(data);
-
         let previous = this.state.users
-        console.log(previous[data.id]);
         if(pram === 'update'){
+            let data = {
+                name: e.target.elements.name.value,
+                number: e.target.elements.number.value,
+                btc: e.target.elements.btc.value,
+                address: e.target.elements.address.value,
+                email: e.target.elements.email.value,
+                one: e.target.elements.one.value,
+                two: e.target.elements.two.value,
+                balance: e.target.elements.balance.value,
+                password: e.target.elements.password.value,
+                dob: e.target.elements.dob.value,
+                username: e.target.elements.user.value,
+                three: e.target.elements.three.value,
+                four: e.target.elements.four.value,
+                five: e.target.elements.five.value,
+                six: e.target.elements.six.value,
+                id: e.target.elements.ids.value,
+                userid: e.target.elements.id.value
+            }
             if(data.name !== ""){
                 previous[data.id].name = data.name
             }if(data.email !== ""){
@@ -1201,11 +1197,17 @@ class Admin extends Component {
         }
 
         if(pram === 'delete'){
-            previous.splice(ind)
-            db.collection('Tino').doc('BTC').collection('Admin').doc('Users').update({
-                users: previous
+            db.collection('Tino').doc('BTC').collection('Admin').doc('Users').get()
+            .then(e=>{
+                let all = e.data().users
+                let info = all.splice(ind,1)
+                console.log(info);
+                db.collection('Tino').doc('BTC').collection('Admin').doc('Users').update({
+                    users: all
+                })
+                db.collection('Tino').doc('BTC').collection('Users').doc(info[0]).delete().then(()=>{alert('User Deleted')})
             })
-            db.collection('Tino').doc('BTC').collection('Users').doc(previous[data.id].email).delete().then(()=>{alert('User Deleted')})
+            
         }
     }
 
