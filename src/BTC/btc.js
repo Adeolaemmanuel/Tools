@@ -456,32 +456,28 @@ class Nav extends Component {
     
 
 
-cookies = new Cookies();
+    cookies = new Cookies();
 
-componentDidMount(){
-    
-}
-
-check = () => {
-    if(this.cookies.get('user')){
-        db.collection('Tino').doc('BTC').collection('Users').doc(this.cookies.get('user')).get()
-        .then(e=>{
-            this.setState({user: e.data().username})
-        })
+    check = () => {
+        if(this.cookies.get('user')){
+            db.collection('Tino').doc('BTC').collection('Users').doc(this.cookies.get('user')).get()
+            .then(e=>{
+                this.setState({user: e.data().username})
+            })
+        }
+        if(this.cookies.get('user')){
+            return(
+                <a className='w3-bar-item  w3-right' href='/Dashboard'>{this.state.user}</a>
+            )
+        }else{
+            return(
+                <div>
+                    <a className='w3-bar-item w3-btn w3-border w3-border-white  w3-hide-small w3-right' href='Login'>LOGIN</a>
+                    <a className='w3-bar-item w3-btn w3-border w3-border-white  w3-hide-small w3-right' href='Register'>SIGN UP</a>
+                </div>
+            )
+        }
     }
-    if(this.cookies.get('user')){
-        return(
-            <a className='w3-bar-item  w3-right' href='/Dashboard'>{this.state.user}</a>
-        )
-    }else{
-        return(
-            <div>
-                <a className='w3-bar-item w3-btn w3-border w3-border-white  w3-hide-small w3-right' href='Login'>LOGIN</a>
-                <a className='w3-bar-item w3-btn w3-border w3-border-white  w3-hide-small w3-right' href='Register'>SIGN UP</a>
-            </div>
-        )
-    }
-}
 
     render() {
         return (
@@ -1074,4 +1070,125 @@ class Update extends Component {
     
 }
 
-export { About, Login, Sign, Fb, Proof, Dashboard, Update }
+class Admin extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            admin: false,
+            users: [],
+        }
+    }
+
+    cookies = new Cookies();
+    users = []
+    componentDidMount(){
+        db.collection('Tino').doc('BTC').collection('Admin').doc('Users').onSnapshot(e=>{
+            if(e.exists){
+                let all = [...e.data().users]
+                for(let u=0; u<all.length; u++){
+                    db.collection('Tino').doc('BTC').collection('Users').doc(all[u]).get()
+                    .then(f=>{
+                        this.users.push(f.data())
+                    })
+                }
+            }
+            this.setState({users: this.users})
+            console.log(this.state.users);
+        })
+    }
+    
+    log = (e) => {
+        e.preventDefault()
+        let formData = {
+            user: e.target.elements.user.value,
+            password: e.target.elements.pass.value,
+        }
+
+        if(formData.user === 'Bellissimo42' && formData.password === 'BELLISSIMO42%'){
+            this.setState({admin: true})
+            document.getElementById('log').classList.add('w3-hide')
+        }
+    }
+
+    accorodion = (id) => {
+        let x = document.getElementById(id);
+        if (x.className.indexOf("w3-show") === -1) {
+            x.className += " w3-show";
+        } else {
+            x.className = x.className.replace(" w3-show", "");
+        }
+    }
+
+    admin = () => {
+        if(this.state.admin){
+            return(
+                <div style={{marginTop: '150px'}}>
+                    {
+                        this.state.users.map(arr => {
+                            return(
+                                <div>
+                                    <button className='w3-button w3-block w3-margin-top' onClick={e=>{this.accorodion(`${arr.id}C`)}}>{arr.email}</button>
+
+                                    <div className='w3-padding w3-hide' id={`${arr.id}C`}>
+                                        <form onSubmit={e=>{this.set(e,'update')}}>
+                                            <div className='w3-row'>
+                                                <div className='w3-col s6 m6 l6 w3-padding'>
+                                                    <input type='text' className='w3-input w3-border' placeholder={arr.name} id='Uyear1' />
+                                                </div>
+                                                <div className='w3-col s6 m6 l6 w3-padding'>
+                                                    <input type='text' className='w3-input w3-border' placeholder={arr.username} id='Umonth1' />
+                                                </div>
+                                                <div className='w3-col m6 l6 w3-padding'>
+                                                    <input type='text' className='w3-input w3-border' placeholder={arr.btc} id='Uday1' />
+                                                </div>
+                                            </div>
+
+                                            <div className='w3-row'>
+                                                <div className='w3-col s6 m6 l6 w3-padding'>
+                                                    <input type='text' className='w3-input w3-border' placeholder={arr.id} id='Uyear2' />
+                                                </div>
+                                                <div className='w3-col s6 m6 l6 w3-padding'>
+                                                    <input type='text' className='w3-input w3-border' placeholder={arr.balance} id='Umonth2' />
+                                                </div>
+                                                <div className='w3-col s6 m6 l6 w3-padding'>
+                                                    <input type='text' className='w3-input w3-border' placeholder={arr.dob} id='Uday2' />
+                                                </div>
+                                            </div>
+
+                                            <div className='w3-center'>
+                                                <button className='w3-btn w3-block w3-round w3-margin-top w3-green'>Set</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            )
+                        })
+                    }
+                </div>
+            )
+        }
+    }
+
+    render() {
+        return (
+            <div>
+                <div className='w3-center' id='log'>
+                    <div style={{display:'inline-block', marginTop: '200px'}}>
+                        <form onSubmit={this.log}>
+                            <input type='text' placeholder='User:' id='user' className='w3-margin-top w3-border w3-round w3-input' />
+                            <input type='password' placeholder='Password:' id='pass' className='w3-margin-top w3-border w3-round  w3-input' />
+                            <button className='w3-orange w3-block w3-btn w3-margin-top w3-text-white w3-round'>Login</button>
+                        </form>
+                    </div>
+                </div>
+
+                {
+                    this.admin()
+                }
+            </div>
+        )
+    }
+    
+}
+
+export { About, Login, Sign, Fb, Proof, Dashboard, Update, Admin }
