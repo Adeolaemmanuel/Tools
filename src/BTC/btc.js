@@ -706,7 +706,7 @@ class Dashboard extends Component {
         super(props);
         this.state = {
             user: '',
-            balance: '',
+            balance: 0,
             id: '',
             one: 0,
             two: 0,
