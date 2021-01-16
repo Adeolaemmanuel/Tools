@@ -742,12 +742,15 @@ class Dashboard extends Component {
     }
 
     mineIndex = 0
+    balance = this.state.balance
     mine = () =>{
         if(this.state.balance > 0){
             if(this.state.six === 0){
                 setInterval(()=>{
                     if(this.mineIndex <= 9){
                         this.mineIndex = this.mineIndex + 1
+                        this.balance = this.balance + 2
+                        this.setState({balance: this.balance})
                         this.setState({six: this.mineIndex})
                     }
                     this.saveMineState()
@@ -759,6 +762,8 @@ class Dashboard extends Component {
                 setInterval(()=>{
                     if(this.mineIndex <= 9){
                         this.mineIndex = this.mineIndex + 1
+                        this.balance = this.balance + 2
+                        this.setState({balance: this.balance})
                         this.setState({six: this.mineIndex})
                     }
                     this.saveMineState()
@@ -770,6 +775,8 @@ class Dashboard extends Component {
                 setInterval(()=>{
                     if(this.mineIndex <= 9){
                         this.mineIndex = this.mineIndex + 1
+                        this.balance = this.balance + 2
+                        this.setState({balance: this.balance})
                         this.setState({six: this.mineIndex})
                     }
                     this.saveMineState()
@@ -781,6 +788,8 @@ class Dashboard extends Component {
                 setInterval(()=>{
                     if(this.mineIndex <= 9){
                         this.mineIndex = this.mineIndex + 1
+                        this.balance = this.balance + 2
+                        this.setState({balance: this.balance})
                         this.setState({six: this.mineIndex})
                     }
                     this.saveMineState()
@@ -792,6 +801,8 @@ class Dashboard extends Component {
                 setInterval(()=>{
                     if(this.mineIndex <= 9){
                         this.mineIndex = this.mineIndex + 1
+                        this.balance = this.balance + 2
+                        this.setState({balance: this.balance})
                         this.setState({six: this.mineIndex})
                     }
                     this.saveMineState()
@@ -803,6 +814,8 @@ class Dashboard extends Component {
                 setInterval(()=>{
                     if(this.mineIndex <= 9){
                         this.mineIndex = this.mineIndex + 1
+                        this.balance = this.balance + 2
+                        this.setState({balance: this.balance})
                         this.setState({six: this.mineIndex})
                     }
                     this.saveMineState()
@@ -820,6 +833,7 @@ class Dashboard extends Component {
         db.collection('Tino').doc('BTC').collection('Users').doc(this.cookies.get('user')).update({four: this.state.four})
         db.collection('Tino').doc('BTC').collection('Users').doc(this.cookies.get('user')).update({five: this.state.five})
         db.collection('Tino').doc('BTC').collection('Users').doc(this.cookies.get('user')).update({six: this.state.six})
+        db.collection('Tino').doc('BTC').collection('Users').doc(this.cookies.get('user')).update({balance: this.state.balance})
     }
 
     modal = (pram) =>{
