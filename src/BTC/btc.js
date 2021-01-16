@@ -706,7 +706,7 @@ class Dashboard extends Component {
         super(props);
         this.state = {
             user: '',
-            balance: 0,
+            balance: 100,
             id: '',
             one: 0,
             two: 0,
@@ -729,32 +729,31 @@ class Dashboard extends Component {
                 this.setState({five: e.data().five})
                 this.setState({six: e.data().six})
                 this.setState({id: e.data().id})
-                this.setState({balance: e.data().balance})
+                //this.setState({balance: e.data().balance})
                 this.setState({name: e.data().name})
                 this.setState({user: e.data().username})
             }
-            if(!e.data().name){
-                alert('Please Update your Profile')
-            }
             this.mine()
         })
+
+        if(!this.state.name){
+            alert('Please Update your Profile')
+        }
         
     }
 
     mineIndex = 0
-    balance = this.state.balance
     mine = () =>{
         if(this.state.balance > 0){
             if(this.state.six === 0){
                 setInterval(()=>{
                     if(this.mineIndex <= 9){
                         this.mineIndex = this.mineIndex + 1
-                        this.balance = this.balance + 2
-                        this.setState({balance: this.balance})
+                        this.setState({balance: this.state.balance + 2})
                         this.setState({six: this.mineIndex})
                     }
                     this.saveMineState()
-                }, 50000000000)
+                }, 10000)
                 
 
             }else if(this.state.five === 0 && this.state.six === 9){
@@ -762,8 +761,7 @@ class Dashboard extends Component {
                 setInterval(()=>{
                     if(this.mineIndex <= 9){
                         this.mineIndex = this.mineIndex + 1
-                        this.balance = this.balance + 2
-                        this.setState({balance: this.balance})
+                        this.setState({balance: this.state.balance + 2})
                         this.setState({six: this.mineIndex})
                     }
                     this.saveMineState()
@@ -775,8 +773,7 @@ class Dashboard extends Component {
                 setInterval(()=>{
                     if(this.mineIndex <= 9){
                         this.mineIndex = this.mineIndex + 1
-                        this.balance = this.balance + 2
-                        this.setState({balance: this.balance})
+                        this.setState({balance: this.state.balance + 2})
                         this.setState({six: this.mineIndex})
                     }
                     this.saveMineState()
@@ -788,8 +785,7 @@ class Dashboard extends Component {
                 setInterval(()=>{
                     if(this.mineIndex <= 9){
                         this.mineIndex = this.mineIndex + 1
-                        this.balance = this.balance + 2
-                        this.setState({balance: this.balance})
+                        this.setState({balance: this.state.balance + 2})
                         this.setState({six: this.mineIndex})
                     }
                     this.saveMineState()
@@ -801,8 +797,7 @@ class Dashboard extends Component {
                 setInterval(()=>{
                     if(this.mineIndex <= 9){
                         this.mineIndex = this.mineIndex + 1
-                        this.balance = this.balance + 2
-                        this.setState({balance: this.balance})
+                        this.setState({balance: this.state.balance + 2})
                         this.setState({six: this.mineIndex})
                     }
                     this.saveMineState()
@@ -814,8 +809,7 @@ class Dashboard extends Component {
                 setInterval(()=>{
                     if(this.mineIndex <= 9){
                         this.mineIndex = this.mineIndex + 1
-                        this.balance = this.balance + 2
-                        this.setState({balance: this.balance})
+                        this.setState({balance: this.state.balance + 2})
                         this.setState({six: this.mineIndex})
                     }
                     this.saveMineState()
