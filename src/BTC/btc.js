@@ -706,7 +706,7 @@ class Dashboard extends Component {
         super(props);
         this.state = {
             user: '',
-            balance: 100,
+            balance: 0,
             id: '',
             one: 0,
             two: 0,
@@ -729,94 +729,105 @@ class Dashboard extends Component {
                 this.setState({five: e.data().five})
                 this.setState({six: e.data().six})
                 this.setState({id: e.data().id})
-                //this.setState({balance: e.data().balance})
+                this.setState({balance: e.data().balance})
                 this.setState({name: e.data().name})
                 this.setState({user: e.data().username})
             }
-            this.mine()
         })
-
-        if(!this.state.name){
-            alert('Please Update your Profile')
-        }
-        
+        this.mine()
     }
 
-    mineIndex = 0
+    six = 0
+    five = 0
+    four = 0
+    three = 0
+    two = 0
+    one = 0
     mine = () =>{
-        if(this.state.balance > 0){
-            if(this.state.six === 0){
-                setInterval(()=>{
-                    if(this.mineIndex <= 9){
-                        this.mineIndex = this.mineIndex + 1
-                        this.setState({balance: this.state.balance + 2})
-                        this.setState({six: this.mineIndex})
-                    }
-                    this.saveMineState()
-                }, 10000)
-                
-
-            }else if(this.state.five === 0 && this.state.six === 9){
-                this.mineIndex = 0;
-                setInterval(()=>{
-                    if(this.mineIndex <= 9){
-                        this.mineIndex = this.mineIndex + 1
-                        this.setState({balance: this.state.balance + 2})
-                        this.setState({six: this.mineIndex})
-                    }
-                    this.saveMineState()
-                }, 50000000000)
-                
-
-            }else if(this.state.four === 0 && this.state.five === 9){
-                this.mineIndex = 0;
-                setInterval(()=>{
-                    if(this.mineIndex <= 9){
-                        this.mineIndex = this.mineIndex + 1
-                        this.setState({balance: this.state.balance + 2})
-                        this.setState({six: this.mineIndex})
-                    }
-                    this.saveMineState()
-                }, 50000000000)
-                
-
-            }else if(this.state.three === 0 && this.state.four === 9){
-                this.mineIndex = 0;
-                setInterval(()=>{
-                    if(this.mineIndex <= 9){
-                        this.mineIndex = this.mineIndex + 1
-                        this.setState({balance: this.state.balance + 2})
-                        this.setState({six: this.mineIndex})
-                    }
-                    this.saveMineState()
-                }, 50000000000)
-                
-
-            }else if(this.state.two === 0 && this.state.three === 9){
-                this.mineIndex = 0;
-                setInterval(()=>{
-                    if(this.mineIndex <= 9){
-                        this.mineIndex = this.mineIndex + 1
-                        this.setState({balance: this.state.balance + 2})
-                        this.setState({six: this.mineIndex})
-                    }
-                    this.saveMineState()
-                }, 50000000000)
-                
-
-            }else if(this.state.one === 0 && this.state.two === 9){
-                this.mineIndex = 0;
-                setInterval(()=>{
-                    if(this.mineIndex <= 9){
-                        this.mineIndex = this.mineIndex + 1
-                        this.setState({balance: this.state.balance + 2})
-                        this.setState({six: this.mineIndex})
-                    }
-                    this.saveMineState()
-                }, 50000000000)
-                
-
-            }
+        
+        if(this.state.six !== 0){
+            setInterval(()=>{
+                this.six = this.six + 1
+                if(this.six < 10){
+                    this.setState({balance: this.state.balance + 2})
+                    this.setState({six: this.six})
+                }
+                if(this.six === 9){
+                    this.mine()
+                }
+                this.saveMineState()
+            }, 50000000000)
+        
+        }if(this.state.five === 0 && this.state.six === 9){
+            setInterval(()=>{
+                this.five = this.five + 1
+                if(this.five < 10){
+                    this.setState({balance: this.state.balance + 2})
+                    this.setState({five: this.five})
+                }
+                if(this.five === 9){
+                    this.mine()
+                }
+                this.saveMineState()
+            }, 50000000000)
+            
+        
+        }if(this.state.four === 0 && this.state.five === 9){
+            setInterval(()=>{
+                this.four = this.four + 1
+                if(this.four < 10){
+                    this.setState({balance: this.state.balance + 2})
+                    this.setState({four: this.four})
+                }
+                if(this.four === 9){
+                    this.mine()
+                }
+                this.saveMineState()
+            }, 50000000000)
+            
+        
+        }if(this.state.three === 0 && this.state.four === 9){
+            setInterval(()=>{
+                this.three = this.three + 1
+                if(this.three < 10){
+                    this.setState({balance: this.state.balance + 2})
+                    this.setState({three: this.three})
+                }
+                if(this.three === 9){
+                    this.mine()
+                }
+                this.saveMineState()
+            }, 50000000000)
+            
+        
+        }if(this.state.two === 0 && this.state.three === 9){
+            setInterval(()=>{
+                this.two = this.two + 1
+                if(this.two <= 9){
+                    this.setState({balance: this.state.balance + 2})
+                    this.setState({two: this.two})
+                }
+                if(this.two === 9){
+                    this.mine()
+                }
+                this.saveMineState()
+            }, 50000000000)
+            
+        
+        }if(this.state.one === 0 && this.state.two === 9){
+            setInterval(()=>{
+                this.one = this.one + 1
+                if(this.one <= 9){
+                    this.setState({balance: this.state.balance + 2})
+                    this.setState({one: this.one})
+                }
+                if(this.one === 9){
+                    this.mine()
+                }
+                this.saveMineState()
+            }, 50000000000)
+            
+        
         }
     }
 
