@@ -732,8 +732,8 @@ class Dashboard extends Component {
                 this.setState({balance: e.data().balance})
                 this.setState({name: e.data().name})
                 this.setState({user: e.data().username})
+                this.mine()
             }
-            this.mine()
         }))
     }
 
@@ -745,7 +745,7 @@ class Dashboard extends Component {
     one = 0
     mine = () =>{
         if(this.state.balance !== 0){
-            if(this.state.six === 0){
+            if(this.state.six < 9){
                 setInterval(()=>{
                     this.six = this.six + 1
                     if(this.six < 10){
@@ -756,7 +756,7 @@ class Dashboard extends Component {
                         }
                     }
                     this.saveMineState()
-                }, 500000)
+                }, 5000)
             
             }if(this.state.five === 0 && this.state.six === 9){
                 setInterval(()=>{
