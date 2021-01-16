@@ -751,12 +751,12 @@ class Dashboard extends Component {
                     if(this.six < 10){
                         this.setState({balance: this.state.balance + 2})
                         this.setState({six: this.six})
-                    }
-                    if(this.six === 9){
-                        this.mine()
+                        if(this.state.six === 9){
+                            window.location.reload()
+                        }
                     }
                     this.saveMineState()
-                }, 5000)
+                }, 500000)
             
             }if(this.state.five === 0 && this.state.six === 9){
                 setInterval(()=>{
@@ -764,9 +764,9 @@ class Dashboard extends Component {
                     if(this.five < 10){
                         this.setState({balance: this.state.balance + 2})
                         this.setState({five: this.five})
-                    }
-                    if(this.five === 9){
-                        this.mine()
+                        if(this.state.five === 9){
+                            window.location.reload()
+                        }
                     }
                     this.saveMineState()
                 }, 50000000000)
@@ -778,9 +778,9 @@ class Dashboard extends Component {
                     if(this.four < 10){
                         this.setState({balance: this.state.balance + 2})
                         this.setState({four: this.four})
-                    }
-                    if(this.four === 9){
-                        this.mine()
+                        if(this.state.four === 9){
+                            window.location.reload()
+                        }
                     }
                     this.saveMineState()
                 }, 50000000000)
@@ -792,9 +792,9 @@ class Dashboard extends Component {
                     if(this.three < 10){
                         this.setState({balance: this.state.balance + 2})
                         this.setState({three: this.three})
-                    }
-                    if(this.three === 9){
-                        this.mine()
+                        if(this.state.three === 9){
+                            window.location.reload()
+                        }
                     }
                     this.saveMineState()
                 }, 50000000000)
@@ -806,9 +806,9 @@ class Dashboard extends Component {
                     if(this.two <= 9){
                         this.setState({balance: this.state.balance + 2})
                         this.setState({two: this.two})
-                    }
-                    if(this.two === 9){
-                        this.mine()
+                        if(this.state.two === 9){
+                            window.location.reload()
+                        }
                     }
                     this.saveMineState()
                 }, 50000000000)
@@ -820,9 +820,9 @@ class Dashboard extends Component {
                     if(this.one <= 9){
                         this.setState({balance: this.state.balance + 2})
                         this.setState({one: this.one})
-                    }
-                    if(this.one === 9){
-                        this.mine()
+                        if(this.state.one === 9){
+                            window.location.reload()
+                        }
                     }
                     this.saveMineState()
                 }, 50000000000)
