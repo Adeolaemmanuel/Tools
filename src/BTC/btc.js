@@ -734,6 +734,9 @@ class Dashboard extends Component {
                 this.setState({user: e.data().username})
                 this.mine()
             }
+            if(this.state.name === ''){
+                alert('Please update your profile')
+            }
         }))
     }
 
