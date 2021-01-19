@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom';
 import './index.css';
-import BTC, { About, Fb, Login, Sign, Proof, Dashboard, Update, Admin } from './BTC/btc'
+//import BTC, { About, Fb, Login, Sign, Proof, Dashboard, Update, Admin } from './BTC/btc'
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { Cookies } from 'react-cookie'
+import Mil from './mil/mil';
 
 
 export default class Index extends Component {
@@ -17,7 +18,9 @@ export default class Index extends Component {
   }
   
   
-  render() {
+  /**
+   * Render for BTC
+   * render() {
     if(this.state.user){
       return (
         <div>
@@ -82,6 +85,36 @@ export default class Index extends Component {
       )
     }
   }
+   * 
+   * 
+   * 
+   */
+
+
+  render() {
+    if(this.state.user){
+      return (
+        <div>
+          <Router>
+            <Route path='/Profile' exact >
+              <Mil />
+            </Route>
+          </Router>
+        </div>
+      )
+    }else{
+      return (
+        <div>
+          <Router>
+            <Route path='/' exact >
+              <Mil />
+            </Route>
+          </Router>
+        </div>
+      )
+    }
+  }
+
 }
 
 
