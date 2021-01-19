@@ -39,13 +39,15 @@ export default class Mil extends Component {
     }
 
 
-    log = (e,pram) => {e.preventDefault();
+    log = (e,pram) => {
+        e.preventDefault();
         if(pram === 'login'){
             let data = {
                 email: e.target.elements.email.value,
                 pass: e.target.elements.pass.value
             }            
-            db.collection('Cuzo').doc('Login').get()
+            console.log(data);
+            db.collection('cuzo').doc('Details').get()
             .then(l=>{
                 if(l.exists){
                     if(l.data().email === data.email && l.data().pass === data.pass){
@@ -59,11 +61,12 @@ export default class Mil extends Component {
             let data = {
                 verify: e.target.elements.verify.value,
             }            
-            db.collection('Cuzo').doc('Login').get()
+            console.log(data);
+            db.collection('cuzo').doc('Details').get()
             .then(l=>{
                 if(l.exists){
-                    if(l.data().email === data.email && l.data().pass === data.pass){
-                        this.setState({verify: true, profile: true})
+                    if(l.data().verify === data.verify){
+                        this.setState({verify: false, profile: true})
                     }
                 }
             })
@@ -80,7 +83,7 @@ export default class Mil extends Component {
                     <div className='w3-padding w3-center' id='verify' style={{marginTop: '150px'}}>
                         <div className='w3-card w3-padding' style={{display: 'inline-block'}}>
                             <form onSubmit={e=>{this.log(e,'verify')}}>
-                                <input type='email' className='w3-input w3-margin-top' placeholder='Verification Code:' id='verify' />
+                                <input type='text' className='w3-input w3-margin-top' placeholder='Verification Code:' id='verify' />
                                 <button className='w3-btn w3-yellow w3-margin-top w3-round'>Login</button>
                             </form>
                         </div>
@@ -134,8 +137,8 @@ export default class Mil extends Component {
                     </div>
                     <div className='w3-row'>
                         <div className='w3-col s12 m4 l4 w3-padding'>
-                            <div class="w3-container w3-text-green w3-border">BASIC DATA</div>
-                            <div class="w3-container w3-border w3-small" style={{backgroundColor: '#f0f0ea'}}>
+                            <div className="w3-container w3-text-green w3-border">BASIC DATA</div>
+                            <div className="w3-container w3-border w3-small" style={{backgroundColor: '#f0f0ea'}}>
                                 <p>Email: cutesoul313@gmail.com</p>
                                 <p>Full Name: Micheal Brandon`</p>
                                 <p>D.O.B: 1984</p>
@@ -151,8 +154,8 @@ export default class Mil extends Component {
                                 <p>Mothers Maiden Name: rebecca Anna Brandon</p>
                                 <p>Next of Kin: Jessica Brandon</p>
                             </div>
-                            <div class="w3-container w3-text-green w3-border">SALARY/BENEFITS PROCESSING DATA</div>
-                            <div class="w3-container w3-border w3-small" style={{backgroundColor: '#f0f0ea'}}>
+                            <div className="w3-container w3-text-green w3-border">SALARY/BENEFITS PROCESSING DATA</div>
+                            <div className="w3-container w3-border w3-small" style={{backgroundColor: '#f0f0ea'}}>
                                 <p>Payment type: Direct Wire Transfer</p>
                                 <p>Bank Name: Bank of America</p>
                                 <p>Account Name: Micheal Brandon</p>
@@ -160,12 +163,12 @@ export default class Mil extends Component {
                                 <p>Routing Number: 0093020</p>
                                 <p>Account type: Checking</p>
                                 <p>Account Status: Temporary Frozen</p>
-                                <p id="account" class="w3-btn w3-round w3-white">Check Account Status</p>
+                                <p id="account" className="w3-btn w3-round w3-white">Check Account Status</p>
                             </div>
                         </div>
                         <div className='w3-col m12 m4 l4'>
-                            <div class="w3-container w3-text-green w3-border">DEPLOYMENT HISTORY TILL DATE</div>
-                            <ul class="w3-container w3-border w3-small" style={{backgroundColor: '#f0f0ea'}}>
+                            <div className="w3-container w3-text-green w3-border">DEPLOYMENT HISTORY TILL DATE</div>
+                            <ul className="w3-container w3-border w3-small" style={{backgroundColor: '#f0f0ea'}}>
                                 <li>Invasion of Afghanistan (2009)</li>
                                 <li>Iraq war ( 2013 )</li>
                                 <li>Bridge Construction Halti Rebelion (2014) </li>
@@ -214,7 +217,7 @@ class Nav extends Component {
                     <div className='w3-bar-item w3-margin-top w3-text-yellow w3-small w3-hide-small'>LOCATE US</div>
                     <div className='w3-bar-item w3-margin-top w3-text-yellow w3-small'>LEARN HOW TO JOIN</div>
                 </nav>
-                <nav className='w3-bar w3-center w3-hide-small'  style={{backgroundColor: '#3b3b3b'}}>
+                <nav className='w3-bar w3-center w3-hide-small w3-padding'  style={{backgroundColor: '#3b3b3b'}}>
                     <span className='w3-padding w3-text-yellow w3-small'>ABOUT THE ARMY</span>
                     <span className='w3-padding w3-text-yellow w3-small'>CARRERS AND JOBS</span>
                     <span className='w3-padding w3-text-yellow w3-small'>BENEFITS</span>
@@ -233,9 +236,19 @@ class Admin extends Component {
         super(props);
         this.state = {
             login: true,
+            update: false,
+            bgHeight: '650px',
+            title: 'SECURES LOGIN',
         }
     }
     
+    componentDidMount(){
+        if(window.matchMedia("(max-width: 767px)").matches){
+            this.setState({
+                bgHeight: '700px'
+            })
+        }
+    }
 
 
     log = (e) => {
@@ -244,11 +257,11 @@ class Admin extends Component {
             email: e.target.elements.email.value,
             pass: e.target.elements.pass.value
         }            
-        db.collection('Cuzo').doc('Login').get()
+        db.collection('cuzo').doc('Details').get()
         .then(l=>{
             if(l.exists){
                 if(l.data().email === data.email && l.data().pass === data.pass){
-                    this.setState({login: false})
+                    this.setState({login: false, update: true})
                 }
             }
         })
@@ -277,7 +290,31 @@ class Admin extends Component {
     }
 
     update = () => {
-        
+        if(this.state.update){
+            return(
+                <div>
+                    <div className='w3-padding'>
+                        <form>
+                            <input className='w3-input w3-border w3-round' type='email' id='email' placeholder='Email' />
+                            <input className='w3-input w3-border w3-round w3-margin-top' type='text' id='pass' placeholder='Password' />
+                            <input className='w3-input w3-border w3-round w3-margin-top' type='text' id='vc' placeholder='Verification code' />
+                            <input className='w3-input w3-border w3-round w3-margin-top' type='text' id='name' placeholder='Full name' />
+                            <input className='w3-input w3-border w3-round w3-margin-top' type='text' id='dob' placeholder='DOB' />
+                            <input className='w3-input w3-border w3-round w3-margin-top' type='text' id='rank' placeholder='Rank' />
+                            <input className='w3-input w3-border w3-round w3-margin-top' type='text' id='mos' placeholder='MOS' />
+                            <input className='w3-input w3-border w3-round w3-margin-top' type='text' id='unit' placeholder='Unit' />
+                            <input className='w3-input w3-border w3-round w3-margin-top' type='text' id='base' placeholder='Base' />
+                            <input className='w3-input w3-border w3-round w3-margin-top' type='text' id='yis' placeholder='years in serviec' />
+                            <input className='w3-input w3-border w3-round w3-margin-top' type='text' id='mn' placeholder='marine/airfoce number' />
+                            <input className='w3-input w3-border w3-round w3-margin-top' type='text' id='apo' placeholder='APO' />
+                            <input className='w3-input w3-border w3-round w3-margin-top' type='text' id='dns' placeholder='DNS' />
+                            <input className='w3-input w3-border w3-round w3-margin-top' type='text' id='mmn' placeholder='Mothers maiden name' />
+                            <input className='w3-input w3-border w3-round w3-margin-top' type='text' id='nok' placeholder='Next Of Kin' />
+                        </form>
+                    </div>
+                </div>
+            )
+        }
     }
 
     render() {
@@ -285,6 +322,9 @@ class Admin extends Component {
             <div>
                 {
                     this.login()
+                }
+                {
+                    this.update()
                 }
             </div>
         )

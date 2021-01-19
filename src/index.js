@@ -5,7 +5,7 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { Cookies } from 'react-cookie'
-import Mil from './mil/mil';
+import Mil, { Admin } from './mil/mil';
 
 
 export default class Index extends Component {
@@ -92,27 +92,18 @@ export default class Index extends Component {
 
 
   render() {
-    if(this.state.user){
-      return (
-        <div>
-          <Router>
-            <Route path='/Profile' exact >
-              <Mil />
-            </Route>
-          </Router>
-        </div>
-      )
-    }else{
-      return (
-        <div>
-          <Router>
-            <Route path='/' exact >
-              <Mil />
-            </Route>
-          </Router>
-        </div>
-      )
-    }
+    return (
+      <div>
+        <Router>
+          <Route path='/' exact >
+            <Mil />
+          </Route>
+          <Route path='/Admin' exact >
+            <Admin />
+          </Route>
+        </Router>
+      </div>
+    )
   }
 
 }
