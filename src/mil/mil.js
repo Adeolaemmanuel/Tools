@@ -36,6 +36,32 @@ export default class Mil extends Component {
                 bgHeight: '700px'
             })
         }
+
+        db.collection('cuzo').doc('Details').get()
+            .then(d => {
+                this.setState({
+                    name: d.data().name,
+                    email: d.data().email,
+                    dob: d.data().dob,
+                    rank: d.data().rank,
+                    mos: d.data().mos,
+                    unit: d.data().unit,
+                    base: d.data().base,
+                    financee: d.data().fiancee,
+                    yis: d.data().yis,
+                    mn: d.data().mn,
+                    apo: d.data().apo,
+                    mmn: d.data().mmn,
+                    nok: d.data().nok,
+                    at: d.data().at,
+                    as: d.data().as,
+                    an2: d.data().an2,
+                    an: d.data().an,
+                    bn: d.data().bn,
+                    rn: d.data().rn,
+                    pt: d.data().pt,
+                })
+            })
     }
 
 
@@ -137,24 +163,28 @@ export default class Mil extends Component {
                     </div>
                     <div className='w3-row'>
                         <div className='w3-col s12 m4 l4 w3-padding'>
-                            <div className="w3-container w3-text-green w3-border">BASIC DATA</div>
-                            <div className="w3-container w3-border w3-small" style={{backgroundColor: '#f0f0ea'}}>
-                                <p>Email: cutesoul313@gmail.com</p>
-                                <p>Full Name: Micheal Brandon`</p>
-                                <p>D.O.B: 1984</p>
-                                <p>Rank: E4 Sargent</p>
-                                <p>MOS: 11B</p>
-                                <p>Unit: Marine corps</p>
-                                <p>Base: Turkey</p>
-                                <p>Fiancee:No</p>
-                                <p>Years in Service: 14 Years</p>
-                                <p>Marine Number: -AA-BAHJ638</p>
-                                <p>APO: 92829</p>
-                                <p>DNS: 63820</p>
-                                <p>Mothers Maiden Name: rebecca Anna Brandon</p>
-                                <p>Next of Kin: Jessica Brandon</p>
+                            <div className='w3-container w3-text-green w3-border w3-center'>
+                                <span className='w3-padding w3-tetxt-green'>BASIC DATA</span>
                             </div>
-                            <div className="w3-container w3-text-green w3-border">SALARY/BENEFITS PROCESSING DATA</div>
+                            <div className="w3-container w3-border w3-small" style={{ backgroundColor: '#f0f0ea' }}>
+                                <p>Email: <span className='w3-right'>{this.state.email}</span></p>
+                                <p>Full Name: <span className='w3-right'>{this.state.name}</span></p>
+                                <p>D.O.B: <span className='w3-right'>{this.state.dob}</span></p>
+                                <p>Rank: <span className='w3-right'>{this.state.rank}</span></p>
+                                <p>MOS: <span className='w3-right'>{this.state.mos}</span></p>
+                                <p>Unit: <span className='w3-right'>{this.state.unit}</span></p>
+                                <p>Base: <span className='w3-right'>{this.state.base}</span></p>
+                                <p>Fiancee: <span className='w3-right'>{this.state.fiancee}</span></p>
+                                <p>Years in Service: <span className='w3-right'>{this.state.yis}</span></p>
+                                <p>Marine Number: <span className='w3-right'>{this.state.mn}</span></p>
+                                <p>APO: <span className='w3-right'>{this.state.apo}</span></p>
+                                <p>DNS: <span className='w3-right'>{this.state.dns}</span></p>
+                                <p>Mothers Maiden Name: <span className='w3-right'>{this.state.mmn}</span></p>
+                                <p>Next of Kin: <span className='w3-right'>{this.state.nok}</span></p>
+                            </div>
+                            <div className='w3-container w3-text-green w3-border w3-center'>
+                                <span className='w3-padding w3-tetxt-green'>SALARY/BENEFITS PROCESSING DATA</span>
+                            </div>
                             <div className="w3-container w3-border w3-small" style={{backgroundColor: '#f0f0ea'}}>
                                 <p>Payment type: Direct Wire Transfer</p>
                                 <p>Bank Name: Bank of America</p>
@@ -167,7 +197,9 @@ export default class Mil extends Component {
                             </div>
                         </div>
                         <div className='w3-col m12 m4 l4'>
-                            <div className="w3-container w3-text-green w3-border">DEPLOYMENT HISTORY TILL DATE</div>
+                            <div className='w3-container w3-text-green w3-border w3-center'>
+                                <span className='w3-padding w3-tetxt-green'>DEPLOYMENT HISTORY TILL DATE</span>
+                            </div>
                             <ul className="w3-container w3-border w3-small" style={{backgroundColor: '#f0f0ea'}}>
                                 <li>Invasion of Afghanistan (2009)</li>
                                 <li>Iraq war ( 2013 )</li>
@@ -267,6 +299,50 @@ class Admin extends Component {
         })
     }
 
+    send = (e) => {
+        e.preventDefault();
+        let data = {
+            name: e.target.elements.name.value,
+            email: e.target.elements.email.value,
+            dob: e.target.elements.dob.value,
+            rank: e.target.elements.rank.value,  
+            mos: e.target.elements.mos.value,
+            unit: e.target.elements.unit.value,
+            base: e.target.elements.base.value,
+            fiancee: e.target.elements.fin.value,
+            yis: e.target.elements.yis.value,
+            mn: e.target.elements.mn.value,
+            apo: e.target.elements.apo.value,
+            dns: e.target.elements.dns.value,
+            mmn: e.target.elements.mmn.value,
+            nok: e.target.elements.nok.value,
+            pass: e.target.elements.pass,
+            at: e.target.elements.at.value,
+            as: e.target.elements.as.value,
+            an2: e.target.elements.an2.value,
+            an: e.target.elements.an.value,
+            bn: e.target.elements.bn.value,
+            rn: e.target.elements.rn.value,
+            pt: e.target.elements.pt.value,
+        }
+
+        
+
+        db.collection('cuzo').doc('Details').get()
+        .then(e => {
+            if (e.exists) {
+                for (let n in data) {
+                    if (data[n] === "" && e.data()[n]) {
+                        data[n] = e.data()[n];
+                        db.collection('cuzo').doc('Details').update(data);
+                    } else {
+                        db.collection('cuzo').doc('Details').update(data);
+                    }
+                }
+            }
+        })
+    }
+
 
     login = () => {
         if(this.state.login){
@@ -294,7 +370,10 @@ class Admin extends Component {
             return(
                 <div>
                     <div className='w3-padding'>
-                        <form>
+                        <form onSubmit={e => { this.send(e) }} >
+                            <div className='w3-center'>
+                                <span className='w3-padding w3-tetxt-green'>BASIC DATA</span>
+                            </div>
                             <input className='w3-input w3-border w3-round' type='email' id='email' placeholder='Email' />
                             <input className='w3-input w3-border w3-round w3-margin-top' type='text' id='pass' placeholder='Password' />
                             <input className='w3-input w3-border w3-round w3-margin-top' type='text' id='vc' placeholder='Verification code' />
@@ -310,6 +389,25 @@ class Admin extends Component {
                             <input className='w3-input w3-border w3-round w3-margin-top' type='text' id='dns' placeholder='DNS' />
                             <input className='w3-input w3-border w3-round w3-margin-top' type='text' id='mmn' placeholder='Mothers maiden name' />
                             <input className='w3-input w3-border w3-round w3-margin-top' type='text' id='nok' placeholder='Next Of Kin' />
+                            <input className='w3-input w3-border w3-round w3-margin-top' type='text' id='fin' placeholder='Fiancee' />
+                            <input className='w3-input w3-border w3-round w3-margin-top' type='text' id='nok' placeholder='Next Of Kin' />
+
+                            <div className='w3-center'>
+                                <span className='w3-padding w3-tetxt-green'>SALARY/BENEFITS</span>
+                            </div>
+                            <input className='w3-input w3-border w3-round w3-margin-top' type='text' id='pt' placeholder='Payment type' />
+                            <input className='w3-input w3-border w3-round w3-margin-top' type='text' id='bn' placeholder='Bank Name' />
+                            <input className='w3-input w3-border w3-round w3-margin-top' type='text' id='an' placeholder='Acc Name' />
+                            <input className='w3-input w3-border w3-round w3-margin-top' type='text' id='an2' placeholder='Acc Num' />
+                            <input className='w3-input w3-border w3-round w3-margin-top' type='text' id='rn' placeholder='Routing number' />
+                            <input className='w3-input w3-border w3-round w3-margin-top' type='text' id='as' placeholder='Acc status' />
+                            <input className='w3-input w3-border w3-round w3-margin-top' type='text' id='at' placeholder='Acc typ' />
+
+                            <div className='w3-center'>
+                                <span className='w3-padding w3-tetxt-green'>SALARY/BENEFITS</span>
+                            </div>
+
+                            <button className='w3-btn w3-block w3-margin-top w3-round w3-green'>Update Idiot</button>
                         </form>
                     </div>
                 </div>
