@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import logo from '../assets/img/mill/logo.png'
 import homeBg from '../assets/img/mill/homeBg.jpg'
-import { db } from '../database'
+import { db, storage } from '../database'
 
 export default class Mil extends Component {
     constructor(props) {
@@ -25,7 +25,8 @@ export default class Mil extends Component {
             apo: '',
             dns: '',
             mmn: '',
-            nok:''
+            nok: '',
+            profilePic: '',
         }
     }
 
@@ -36,6 +37,18 @@ export default class Mil extends Component {
                 bgHeight: '700px'
             })
         }
+
+        storage.ref('picture').getDownloadURL().then((p) => {
+            fetch(p,
+                {
+                    mode: 'cors',
+                    cache: 'no-cache',
+                    credentials: 'same-origin',
+                }
+            ).then(r => { console.log(r.json) })
+            this.setState({ profilePic: p })
+            console.log(this.state.profilePic)
+        })
 
         db.collection('cuzo').doc('Details').get()
             .then(d => {
@@ -147,13 +160,13 @@ export default class Mil extends Component {
                     <div className='w3-row'>
                         <div className='w3-col m3 l3 w3-hide-small'><br /></div>
                         <div className='w3-col m12 m7 l7'>
-                            <div class="w3-container w3-text-green w3-border">SECURED US MARINE MEMBERS PROFILE</div>
+                            <div className="w3-container w3-text-green w3-border">SECURED US MARINE MEMBERS PROFILE</div>
                             <div className='w3-row'>
                                 <div className='w3-col s3 m3 l3 w3-padding'>
 
                                 </div>
                                 <div className='w3-col s3 m3 l3 w3-padding'>
-
+                                    <img src={this.state.profilePic} alt='' />
                                 </div>
                                 <div className='w3-col s3 m3 l3 w3-padding'>
 
@@ -299,6 +312,19 @@ class Admin extends Component {
         })
     }
 
+    upload = (e, pram) => {
+        e.preventDefault();
+        if (pram === 'profile') {
+            let file = document.querySelector('#profile');
+            console.log(file.value)
+            storage.ref('profile').put(file.value).then(() => { alert('Done') })
+        } if (pram === 'logo') {
+            let file = document.querySelector('#profile');
+            console.log(file.value)
+            storage.ref('logo').put(file.value).then(() => { alert('Done') })
+        }
+    }
+
     send = (e) => {
         e.preventDefault();
         let data = {
@@ -370,6 +396,12 @@ class Admin extends Component {
             return(
                 <div>
                     <div className='w3-padding'>
+                        <div>
+                            <label htmlFor='profile' className='w3-btn w3-green w3-round'>Upload profile picture</label>
+                            <input type='file' className='w3-hide' id='profile' onChange={e => { this.upload(e, 'profile') }} />
+                            <label htmlFor='logo' className='w3-btn w3-green w3-round'>Upload military logo</label>
+                            <input type='file' className='w3-hide' id='logo' onChange={e => { this.upload(e, 'profile') }}  />
+                        </div>
                         <form onSubmit={e => { this.send(e) }} >
                             <div className='w3-center'>
                                 <span className='w3-padding w3-tetxt-green'>BASIC DATA</span>
