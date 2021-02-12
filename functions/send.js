@@ -6,8 +6,8 @@ let transporter = nodemailer.createTransport({
     port: 465,
     secure: true, // true for 465, false for other ports
     auth: {
-      user: 'jeffretspencer42@gmail.com', // generated ethereal user
-      pass: 'tino2021%', // generated ethereal password
+      user: 'Bellissimoinvsts@gmail.com', // generated ethereal user
+      pass: 'Bellissimo2020', // generated ethereal password
     },
   });
 
@@ -15,7 +15,7 @@ exports.handler = async function(event, context, callback) {
     console.log('sent');
     let data = JSON.parse(event.body)
     await transporter.sendMail({
-        from: `jeffretspencer42@gmail.com`, // sender address
+        from: `Bellissimoinvsts@gmail.com`, // sender address
         to: `${data.email}`, // list of receivers
         subject: "Welcome to BELLISSIMO", // Subject line
         html: `
