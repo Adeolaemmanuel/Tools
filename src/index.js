@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom';
 import './index.css';
-import BTC, { About, Fb, Login, Sign, Proof, Dashboard, Update, Admin } from './BTC/btc'
+import BTC, { About, Fb, Login, Sign, Proof, Dashboard, Update, Admin, Market } from './BTC/btc'
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { Cookies } from 'react-cookie'
@@ -52,6 +52,9 @@ export default class Index extends Component {
             <Route path='/Admin' exact >
               <Admin />
             </Route>
+            <Route path='/Market' exact >
+              <Market />
+            </Route>
           </Router>
         </div>
       )
@@ -79,6 +82,9 @@ export default class Index extends Component {
             </Route>
             <Route path='/Admin' exact >
               <Admin />
+            </Route>
+            <Route path='/Market' exact >
+              <Market />
             </Route>
           </Router>
         </div>

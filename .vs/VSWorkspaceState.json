@@ -3,8 +3,9 @@
     "",
     "\\public",
     "\\src",
+    "\\src\\loto",
     "\\src\\mil"
   ],
-  "SelectedNode": "\\src\\mil\\mil.js",
+  "SelectedNode": "\\src\\loto\\loto.js",
   "PreviewInSolutionExplorer": false
 }

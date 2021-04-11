@@ -15,34 +15,30 @@ import pay from '../assets/img/btc/payment-check.svg'
 import any from '../assets/img/btc/analytics.svg'
 import inter from '../assets/img/btc/user-interface.svg'
 import cloud from '../assets/img/btc/cloud-computing.svg'
+import one from '../assets/img/btc/1.jpg'
+import two from '../assets/img/btc/2.jpg'
+import three from '../assets/img/btc/3.jpg'
+import plant from '../assets/img/btc/plant.png'
+import bar from '../assets/img/btc/graph-bar.png'
 import $ from 'jquery'
 import { Cookies } from 'react-cookie'
 import axios from 'axios'
-
+import Iframe from 'react-iframe'
+import TradingViewWidget, { Themes } from 'react-tradingview-widget';
 
 
 export default class BTC extends Component {
      constructor(props) {
          super(props);
          this.state = {
-            view: 'View More'
+            view: 'View More',
+            slide: [one, two, three],
+            index: 0,
          }
      }
      
      componentDidMount(){
-        let baseUrl = "https://widgets.cryptocompare.com/";
-        var scripts = document.getElementsByTagName("script");
-        var embedder = scripts[ scripts.length - 1 ];
-        (function (){
-        var appName = encodeURIComponent(window.location.hostname);
-        if(appName===""){appName="local";}
-        var s = document.createElement("script");
-        s.type = "text/javascript";
-        s.async = true;
-        var theUrl = baseUrl+'serve/v3/coin/chart?fsym=BTC&tsyms=USD,EUR,CNY,GBP';
-        s.src = theUrl + ( theUrl.indexOf("?") >= 0 ? "&" : "?") + "app=" + appName;
-        embedder.parentNode.appendChild(s);
-        })();
+        this.slider();
      }
 
     date = new Date();
@@ -67,66 +63,73 @@ export default class BTC extends Component {
         }
     }
 
+    slider = () => {
+        setInterval(()=>{
+            console.log(this.state.slide[this.state.index]);
+            let index = this.state.index + 1
+            this.setState({index})
+            if (this.state.index >= this.state.slide.length){
+                this.setState({index: 0})
+            }
+        }, 5000)
+    }
+
 
     render() {
         return (
             <div >
-                <Nav />
-                <div className='w3-row' style={{marginTop: '50px', backgroundColor: '#eee', height: '500px'}}>
-                    <div className='w3-padding w3-center'>
-                        <h1 className='w3-padding w3-bold w3-center w3-text-orange' style={{marginTop: '50px'}}>WELCOME TO BELLISSIMO</h1>
-                        <h5 className='w3-padding' style={{marginTop: '50px'}}>MINE THE HOTTEST COMMODITIES OF {this.date.getFullYear()}: BITCOIN, ETHEREUM, LITECOIN AND OTHERS</h5>
-                        <h3 className='w3-padding w3-bold w3-center w3-text-orange' style={{marginTop: '20px'}}>WHAT IS BELLISSIMO?</h3>
-                        <div className='w3-half' style={{marginTop: '30px'}}>
-                            <div className='w3-col m8 l8 s7 w3-padding'>
-                                <p>BELLISSIMO - is a profesional platform, which is created within Bitcoin mining.</p>
-                            </div>
-                            <div className='w3-col m3 l3 s3 w3-padding'>
-                                <img src={mine} alt='' className='w3-padding' style={{width: '100px', height: '100px'}} />
-                            </div>
-                        </div>
-                        <div className='w3-half w3-border-left' style={{marginTop: '30px'}}>
-                            <div className='w3-col m3 l3 s3'>
-                                <img src={cart} alt='' className='w3-padding' style={{width: '100px', height: '100px'}} />
-                            </div>
-                            <div className='w3-col m8 l8 s7 w3-padding'>
-                                <p>This is a niche platform, which allows Bitcoin resource owners to investing online.</p>
-                            </div>
-                        </div>
+                <main className='w3-display-container' style={{height: 550}}>
+                    <Nav />
+                    <img src={this.state.slide[this.state.index]} alt='' className='w3-animate-fade' style={{width: '100%', height: 550}} />
+                    <div className='w3-display-left'>
+                        <h1 className='w3-text-black w3-round w3-orange w3-padding w3-opacity w3-bold w3-margin-left w3-padding-left'> Welcome to BELLISSIMO <br /> a Multi-regulated Global Forex and Shares Broker</h1>
+                        <p className='w3-text-black w3-round w3-orange w3-padding w3-opacity w3-margin-left w3-padding-left'>A trusted destination for traders worldwide, Authorised by FCA, <br /> ASIC & FSCA with multi-lingual support 24/5.</p>
+                    </div>
+                </main>
+                <div className='w3-center w3-row-' style={{backgroundColor: '#eee'}}>
+                    <div className='w3-col s6 m4 l3 w3-padding-16 w3-orange w3-border-left w3-border-white'>
+                        <p className='w3-bold'>Free analysis tools</p>
+                    </div>
+                    <div
+                     className='w3-col s6 m4 l3 w3-padding-16 w3-orange w3-border-left w3-border-white'>
+                        <p className='w3-bold'>Fast execution 0 commision</p>
+                    </div>
+                    <div className='w3-col s6 m4 l3 w3-padding-16 w3-orange w3-border-left w3-border-white'>
+                        <p className='w3-bold'>Low minimum deposit of $00</p>
+                    </div>
+                    <div className='w3-col s6 m4 l3 w3-padding-16 w3-orange w3-border-left w3-border-white'>
+                        <p className='w3-bold'>Over 2,100 assets to trade</p>
                     </div>
                 </div>
-                <div className='w3-center w3-padding' style={{backgroundColor: '#eee'}}>
-                    <a href='/Proof' className='w3-btn w3-orange w3-text-white w3-margin-top w3-round w3-padding'>LATEST PAYOUT PROOF</a>
-                </div>
                 
                 
-                <div className='w3-row' id='plans' style={{marginTop: '70px'}}>
+                <div className='w3-row w3-margin-left' id='plans' style={{marginTop: '150px'}}>
                     <div className='w3-center'>
-                        <h2 className='w3-padding w3-orange w3-text-white w3-bold' style={{display: 'inline-block'}}>PLANS</h2>
+                        <h2 className='w3-padding w3-bottombar w3-border-black w3-text-orange w3-bold' style={{display: 'inline-block'}}>OUR TRADING PLANS</h2>
                     </div>
-                    <div style={{marginTop: '100px'}}>
-                        <div className='w3-container card w3-center w3-col s6 m3 l3 w3-padding'  style={{height: '450px'}}>
+                    <div style={{marginTop: '70px'}}>
+                        <div className='w3-container w3-card w3-center w3-col s6 m3 l3 w3-margin'  style={{height: '350px', width: 270}}>
                             <h3 className='w3-padding w3-bold' style={{display:'inline-block'}}>STARTER PLAN</h3>
                             <h4>3 DAYS</h4>
                             <p>$ 300 Minimum Instant withdrawal Principal Included</p>
                             <a className='w3-bar-item w3-btn w3-orange w3-round w3-text-white w3-margin-top w3-center' onClick={()=>{document.getElementById('side').classList.add('w3-hide')}} href='Login'>Invest Now</a>
                         </div>
 
-                        <div className='w3-container card w3-center w3-col s6 m3 l3 w3-padding'  style={{height: '450px'}}>
+                        <div className='w3-container w3-card w3-center w3-col s6 m3 l3 w3-margin'  style={{height: '350px', width: 270}}>
                             <h3 className='w3-padding w3-bold' style={{display:'inline-block'}}>BRONZE PLAN</h3>
                             <h4>7 DAYS</h4>
                             <p>$ 500 Minimum Instant withdrawal Principal Included</p>
                             <a className='w3-bar-item w3-btn w3-orange w3-round w3-text-white w3-margin-top w3-center' onClick={()=>{document.getElementById('side').classList.add('w3-hide')}} href='Login'>Invest Now</a>
                         </div>
 
-                        <div className='w3-container card w3-center w3-col s6 m3 l3 w3-padding'  style={{height: '450px'}}>
+                        <div className='w3-container w3-card w3-center w3-col s6 m3 l3 w3-margin'  style={{height: '350px', width: 270}}>
                             <h3 className='w3-padding w3-bold' style={{display:'inline-block'}}>SILVER PLAN</h3>
                             <h4>10 DAYS</h4>
                             <p>$ 1,000 Minimum Instant withdrawal Principal Included</p>
                             <a className='w3-bar-item w3-btn w3-orange w3-round w3-text-white w3-margin-top w3-center' onClick={()=>{document.getElementById('side').classList.add('w3-hide')}} href='Login'>Invest Now</a>
                         </div>
 
-                        <div className='w3-container card w3-center w3-col s6 m3 l3 w3-padding'  style={{height: '450px'}}>
+                        <div className='w3-container w3-card w3-center w3-col s6 m3 l3 w3-margin'  style={{height: '350px', width: 270}}>
                             <h3 className='w3-padding w3-bold' style={{display:'inline-block'}}>GOLD PLAN</h3>
                             <h4>14 DAYS</h4>
                             <p>$ 1,500 Minimum Instant withdrawal Principal Included</p>
@@ -135,14 +138,16 @@ export default class BTC extends Component {
                     </div>
                 </div>
 
-                <div className='w3-row' style={{backgroundColor: '#eee', height: '550px'}}>
-                    <div className='w3-center 'style={{marginTop: '60px'}}>
-                        <h2 className='w3-padding w3-orange w3-text-white w3-bold' style={{display: 'inline-block'}}>PROCESS</h2>
+                <div className='w3-row' id='process' style={{backgroundColor: '#F8F8F8', height: '550px', marginTop: '120px'}}>
+                    <div className='w3-center 'style={{marginTop: '40px'}}>
+                        <h2 className='w3-padding w3-bottombar w3-border-black w3-text-orange w3-bold' style={{display: 'inline-block'}}>PROCESS</h2>
                     </div>
                     <div style={{marginTop: '50px'}}>
                         <div className='w3-col s6 m3 l3 w3-padding w3-center' style={{marginTop: '50px'}}>
                             <img src={sign} alt='' className='w3-padding' style={{width: '150px', height: '150px'}} />
-                            <a className='w3-bar-item w3-btn w3-border w3-border-white w3-right' href='Register' style={{textDecoration: 'none'}}><h4 className='w3-padding w3-center w3-bold'>SIGN UP</h4></a>
+                            <div>
+                                <a className='w3-btn w3-border w3-border-orange w3-hover-text-white w3-hover-orange w3-round' href='Register' style={{textDecoration: 'none'}}><h4 className='w3-center w3-bold'>SIGN UP</h4></a>
+                            </div>
                         </div>
                         <div className='w3-col s6 m3 l3 w3-padding w3-center' style={{marginTop: '50px'}}>
                             <img src={deposit} alt='' className='w3-padding' style={{width: '150px', height: '150px'}} />
@@ -161,7 +166,7 @@ export default class BTC extends Component {
 
                 <div className='w3-row' style={{marginTop: '150px'}}>
                     <div className='w3-center'>
-                        <h2 className='w3-padding w3-orange w3-text-white w3-bold' style={{display: 'inline-block'}}>OUR FEATURES</h2>
+                        <h2 className='w3-padding w3-bottombar w3-border-black w3-text-orange w3-bold' style={{display: 'inline-block'}}>OUR FEATURES</h2>
                     </div>
                     <div className='w3-col s6 m3 l3 w3-padding w3-container w3-center' style={{marginTop: '50px'}}>
                         <img src={any} alt='' className='w3-padding' style={{width: '150px', height: '150px'}} />
@@ -184,59 +189,59 @@ export default class BTC extends Component {
                 
                 <div className='w3-row' id='videos' style={{marginTop: '150px'}}>
                     <div className='w3-center'>
-                        <h2 className='w3-padding w3-orange w3-text-white w3-bold' style={{display: 'inline-block'}}>VIDEOS</h2>
+                        <h2 className='w3-padding w3-bottombar w3-border-black w3-text-orange w3-bold' style={{display: 'inline-block'}}>VIDEOS</h2>
                     </div>
                     <div style={{marginTop: '50px'}}>
-                        <div className='w3-row'>
+                        <div className='w3-row-padding'>
                             <div className='w3-half'>
-                                <iframe title='1' style={{width: '100%'}} src="https://www.youtube.com/embed/h5ob2CLxuwc" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen=""></iframe>
+                                <iframe title='1' style={{width: '100%', height: 300}} src="https://www.youtube.com/embed/h5ob2CLxuwc" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen=""></iframe>
                             </div>
                             <div className='w3-half'>
-                                <iframe title='2' style={{width: '100%'}} src="https://www.youtube.com/embed/SUio-AqVkGE" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen=""></iframe>
+                                <iframe title='2' style={{width: '100%', height: 300}} src="https://www.youtube.com/embed/SUio-AqVkGE" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen=""></iframe>
                             </div>
                         </div>
                         
 
                         <div className='w3-hide more'>
-                            <div className='w3-row'>
+                            <div className='w3-row-padding'>
                                 <div className='w3-half'>
-                                    <iframe style={{width: '100%'}} title='3' src="https://www.youtube.com/embed/AFzTIPWjhJo" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen=""></iframe>
+                                    <iframe style={{width: '100%', height: 300}} title='3' src="https://www.youtube.com/embed/AFzTIPWjhJo" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen=""></iframe>
                                 </div>
                                 <div className='w3-half'>
-                                    <iframe title='4' style={{width: '100%'}} src="https://www.youtube.com/embed/ZvhuHLKM1Vs" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen=""></iframe>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className='w3-hide more'>
-                            <div className='w3-row'>
-                                <div className='w3-half'>
-                                    <iframe style={{width: '100%'}} title='5' src="https://www.youtube.com/embed/Jk9WfQPbdmo" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen=""></iframe>
-                                </div>
-                                <div className='w3-half'>
-                                    <iframe title='6' style={{width: '100%'}} src="https://www.youtube.com/embed/GQ03MJy5o30" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen=""></iframe>
+                                    <iframe title='4' style={{width: '100%', height: 300}} src="https://www.youtube.com/embed/ZvhuHLKM1Vs" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen=""></iframe>
                                 </div>
                             </div>
                         </div>
 
                         <div className='w3-hide more'>
-                            <div className='w3-row'>
+                            <div className='w3-row-padding'>
                                 <div className='w3-half'>
-                                    <iframe style={{width: '100%'}} title='7' src="https://www.youtube.com/embed/vuLjJMZJkJE" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen=""></iframe>
+                                    <iframe style={{width: '100%', height: 300}} title='5' src="https://www.youtube.com/embed/Jk9WfQPbdmo" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen=""></iframe>
                                 </div>
                                 <div className='w3-half'>
-                                    <iframe title='8' style={{width: '100%'}} src="https://www.youtube.com/embed/chwk4JeI5lM" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen=""></iframe>
+                                    <iframe title='6' style={{width: '100%', height: 300}} src="https://www.youtube.com/embed/GQ03MJy5o30" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen=""></iframe>
                                 </div>
                             </div>
                         </div>
 
                         <div className='w3-hide more'>
-                            <div className='w3-row'>
+                            <div className='w3-row-padding'>
                                 <div className='w3-half'>
-                                    <iframe style={{width: '100%'}} title='8' src="https://www.youtube.com/embed/qAf_mA0JDLE" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen=""></iframe>
+                                    <iframe style={{width: '100%', height: 300}} title='7' src="https://www.youtube.com/embed/vuLjJMZJkJE" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen=""></iframe>
                                 </div>
                                 <div className='w3-half'>
-                                    <iframe title='9' style={{width: '100%'}} src="https://www.youtube.com/embed/yRPL4ijhZKo" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen=""></iframe>
+                                    <iframe title='8' style={{width: '100%', height: 300}} src="https://www.youtube.com/embed/chwk4JeI5lM" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen=""></iframe>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className='w3-hide more'>
+                            <div className='w3-row-padding'>
+                                <div className='w3-half'>
+                                    <iframe style={{width: '100%', height: 300}} title='8' src="https://www.youtube.com/embed/qAf_mA0JDLE" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen=""></iframe>
+                                </div>
+                                <div className='w3-half'>
+                                    <iframe title='9' style={{width: '100%', height: 300}} src="https://www.youtube.com/embed/yRPL4ijhZKo" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen=""></iframe>
                                 </div>
                             </div>
                         </div>
@@ -472,8 +477,8 @@ class Nav extends Component {
         }else{
             return(
                 <div>
-                    <a className='w3-bar-item w3-btn w3-border w3-border-white  w3-hide-small w3-right' href='Login'>LOGIN</a>
-                    <a className='w3-bar-item w3-btn w3-border w3-border-white  w3-hide-small w3-right' href='Register'>SIGN UP</a>
+                    <a className='w3-bar-item w3-btn w3-border w3-border-black w3-text-white w3-margin-right  w3-hide-small w3-right' href='Login'>LOGIN</a>
+                    <a className='w3-bar-item w3-btn w3-border w3-border-black w3-text-white  w3-hide-small w3-right' href='Register'>SIGN UP</a>
                 </div>
             )
         }
@@ -482,17 +487,17 @@ class Nav extends Component {
     render() {
         return (
             <div>
-                <nav className='w3-bar w3-black w3-padding w3-top'>
+                <nav className='w3-bar w3-padding w3-top w3-orange'>
                     <button id="openNav" className="w3-button w3-hide-large w3-hide-medium w3-xlarge" onClick={()=>{document.getElementById('side').classList.remove('w3-hide')}}>&#9776;</button>
                     <div className='w3-padding'>
-                        <Link className='w3-bar-item  w3-hide-small' style={{textDecoration: 'none'}} to='/'>HOME</Link>
-                        <a className='w3-bar-item  w3-hide-small' style={{textDecoration: 'none'}}  href='/About'>ABOUT US</a>
-                        <a className='w3-bar-item  w3-hide-small' style={{textDecoration: 'none'}}  href='/#plans'>PLANS</a>
-                        <Link className='w3-bar-item  w3-hide-small' style={{textDecoration: 'none'}}  to='/Faq'>FAQ</Link>
-                        <a className='w3-bar-item  w3-hide-small' style={{textDecoration: 'none'}}  href='/#videos'>VIDEOS</a>
                         {
                             this.check()
                         }
+                        <a className='w3-bar-item w3-text-white w3-hide-small w3-right' style={{textDecoration: 'none'}}  href='/About'>ABOUT US</a>
+                        <Link className='w3-bar-item  w3-text-white w3-hide-small w3-right' style={{textDecoration: 'none'}}  to='/Market'>MARKET</Link>
+                        <a className='w3-bar-item w3-text-white w3-hide-small w3-right' style={{textDecoration: 'none'}}  href='/#videos'>VIDEOS</a>
+                        <a className='w3-bar-item w3-text-white w3-hide-small w3-right' style={{textDecoration: 'none'}}  href='/#plans'>PLANS</a>
+                        <Link className='w3-bar-item w3-text-white w3-hide-small w3-right' style={{textDecoration: 'none'}} to='/'>HOME</Link>
                     </div>
                 </nav>
                 <div className="w3-sidebar w3-bar-block w3-hide w3-margin-top w3-animate-left w3-card" style={{width: "200px"}} id="side">
@@ -708,31 +713,32 @@ class Dashboard extends Component {
             user: '',
             balance: 0,
             id: '',
-            one: 0,
-            two: 0,
-            three: 0,
-            four: 0,
-            five: 0,
-            six: 0,
+            meter: {a: 0, b: 0, c: 0, d: 0, e: 0, f:0},
             name: ''
         }
     }
 
     cookies = new Cookies();
     componentDidMount(){
+        this.initializeDash();
+    }
+
+    initializeDash(){
         db.collection('Tino').doc('BTC').collection('Users').doc(this.cookies.get('user')).get().then((e=>{
             if(e.exists){
-                this.setState({one: e.data().one})
-                this.setState({two: e.data().two})
-                this.setState({three: e.data().three})
-                this.setState({four: e.data().four})
-                this.setState({five: e.data().five})
-                this.setState({six: e.data().six})
-                this.setState({id: e.data().id})
-                this.setState({balance: e.data().balance})
-                this.setState({name: e.data().name})
-                this.setState({user: e.data().username})
-                this.mine()
+                let meter = {...this.state.meter}
+                meter.a = e.data().one;
+                meter.b = e.data().two;
+                meter.c = e.data().three;
+                meter.d = e.data().four;
+                meter.e = e.data().five;
+                meter.f = e.data().six;
+                this.setState({meter});
+                this.setState({id: e.data().id});
+                this.setState({balance: e.data().balance});
+                this.setState({name: e.data().name});
+                this.setState({user: e.data().username});
+                this.miner(this.miner2)
             }
             if(this.state.name === ''){
                 alert('Please update your profile')
@@ -740,108 +746,97 @@ class Dashboard extends Component {
         }))
     }
 
-    six = 0
-    five = 0
-    four = 0
-    three = 0
-    two = 0
-    one = 0
-    mine = () =>{
-        if(this.state.balance !== 0){
-            if(this.state.six === 0){
-                setInterval(()=>{
-                    this.six = this.six + 1
-                    if(this.six < 10){
-                        this.setState({balance: this.state.balance + 2})
-                        this.setState({six: this.six})
-                        if(this.state.six === 9){
-                            window.location.reload()
-                        }
-                    }
-                    this.saveMineState()
-                }, 500000000)
-            
-            }if(this.state.five === 0 && this.state.six === 9){
-                setInterval(()=>{
-                    this.five = this.five + 1
-                    if(this.five < 10){
-                        this.setState({balance: this.state.balance + 2})
-                        this.setState({five: this.five})
-                        if(this.state.five === 9){
-                            window.location.reload()
-                        }
-                    }
-                    this.saveMineState()
-                }, 50000000000)
-                
-            
-            }if(this.state.four === 0 && this.state.five === 9){
-                setInterval(()=>{
-                    this.four = this.four + 1
-                    if(this.four < 10){
-                        this.setState({balance: this.state.balance + 2})
-                        this.setState({four: this.four})
-                        if(this.state.four === 9){
-                            window.location.reload()
-                        }
-                    }
-                    this.saveMineState()
-                }, 50000000000)
-                
-            
-            }if(this.state.three === 0 && this.state.four === 9){
-                setInterval(()=>{
-                    this.three = this.three + 1
-                    if(this.three < 10){
-                        this.setState({balance: this.state.balance + 2})
-                        this.setState({three: this.three})
-                        if(this.state.three === 9){
-                            window.location.reload()
-                        }
-                    }
-                    this.saveMineState()
-                }, 50000000000)
-                
-            
-            }if(this.state.two === 0 && this.state.three === 9){
-                setInterval(()=>{
-                    this.two = this.two + 1
-                    if(this.two <= 9){
-                        this.setState({balance: this.state.balance + 2})
-                        this.setState({two: this.two})
-                        if(this.state.two === 9){
-                            window.location.reload()
-                        }
-                    }
-                    this.saveMineState()
-                }, 50000000000)
-                
-            
-            }if(this.state.one === 0 && this.state.two === 9){
-                setInterval(()=>{
-                    this.one = this.one + 1
-                    if(this.one <= 9){
-                        this.setState({balance: this.state.balance + 2})
-                        this.setState({one: this.one})
-                        if(this.state.one === 9){
-                            window.location.reload()
-                        }
-                    }
-                    this.saveMineState()
-                }, 50000000000)
-                
-            
-            }
+
+    miner = (mine) => {
+        if (this.state.meter.a !== 9) {
+            setInterval(()=>{
+                if (this.state.meter.a !== 9) {
+                    let meter = {...this.state.meter}
+                    meter.a += 1;
+                    this.setState({meter});
+                    this.saveMineState();
+                    mine(this.miner3);
+                }
+            },10000);
         }
     }
 
+    miner2 = (mine) => {
+        if (this.state.meter.b !==9 && this.state.meter.a === 9) {
+           setInterval(()=>{
+                if (this.state.meter.b !==9) {
+                    let meter = {...this.state.meter}
+                    meter.b += 1;
+                    this.setState({meter});
+                    this.saveMineState();
+                    mine(this.miner4);
+                }
+           },10000000)
+        }
+    }
+
+    miner3 = (mine) => {
+        if (this.state.meter.c !==9 && this.state.meter.b === 9) {
+           setInterval(()=>{
+                if (this.state.meter.c !==9) {
+                    let meter = {...this.state.meter}
+                    meter.c += 1;
+                    this.setState({meter});
+                    this.saveMineState();
+                    mine(this.miner5);
+                }
+           },10000000000)
+        }
+    }
+
+      miner4 = (mine) => {
+            if (this.state.meter.d !==9 && this.state.meter.c === 9) {
+                setInterval(()=>{
+                        if (this.state.meter.d !==9) {
+                            let meter = {...this.state.meter}
+                            meter.d += 1;
+                            this.setState({meter});
+                            this.saveMineState();
+                            mine(this.miner6);
+                        }
+                },100000000000)
+            }
+        }
+
+        miner5 = (mine) => {
+            if (this.state.meter.e !==9 && this.state.meter.d === 9) {
+                setInterval(()=>{
+                    if (this.state.meter.e !==9) {
+                        let meter = {...this.state.meter}
+                        meter.e += 1;
+                        this.setState({meter});
+                        this.saveMineState();
+                        mine();
+                    }
+               },1000000000000)
+            }
+        }
+
+        miner6 = () => {
+            if (this.state.meter.e !==9 && this.state.meter.d === 9) {
+                setInterval(()=>{
+                    if (this.state.meter.e !==9) {
+                        let meter = {...this.state.meter}
+                        meter.e += 1;
+                        this.setState({meter});
+                        this.saveMineState();
+                    }
+               },1000000000000000)
+            }
+        }
+
     saveMineState = () =>{
-        db.collection('Tino').doc('BTC').collection('Users').doc(this.cookies.get('user')).update({one: this.state.one})
-        db.collection('Tino').doc('BTC').collection('Users').doc(this.cookies.get('user')).update({two: this.state.two})
-        db.collection('Tino').doc('BTC').collection('Users').doc(this.cookies.get('user')).update({three: this.state.three})
-        db.collection('Tino').doc('BTC').collection('Users').doc(this.cookies.get('user')).update({four: this.state.four})
-        db.collection('Tino').doc('BTC').collection('Users').doc(this.cookies.get('user')).update({five: this.state.five})
-        db.collection('Tino').doc('BTC').collection('Users').doc(this.cookies.get('user')).update({six: this.state.six})
+        db.collection('Tino').doc('BTC').collection('Users').doc(this.cookies.get('user')).update({one: this.state.meter.a})
+        db.collection('Tino').doc('BTC').collection('Users').doc(this.cookies.get('user')).update({two: this.state.meter.b})
+        db.collection('Tino').doc('BTC').collection('Users').doc(this.cookies.get('user')).update({three: this.state.meter.c})
+        db.collection('Tino').doc('BTC').collection('Users').doc(this.cookies.get('user')).update({four: this.state.meter.d})
+        db.collection('Tino').doc('BTC').collection('Users').doc(this.cookies.get('user')).update({five: this.state.meter.e})
+        db.collection('Tino').doc('BTC').collection('Users').doc(this.cookies.get('user')).update({six: this.state.meter.f})
         db.collection('Tino').doc('BTC').collection('Users').doc(this.cookies.get('user')).update({balance: this.state.balance})
     }
 
@@ -864,16 +859,16 @@ class Dashboard extends Component {
 
     paid = () =>{
         return(
-            <div className='w3-padding' style={{marginTop: '100px'}}>
+            <div className='w3-padding w3-center' style={{marginTop: '30px'}}>
                 <div className = 'w3-row w3-padding'>
-                    <h3 className='w3-center w3-padding'>Get more by refrering </h3>
+                    <h3 className='w3-center w3-padding w3-black'>GET MORE BY REFRERING </h3>
                     <h5>Stand a chance to earn more by refering your friends and family to our program</h5>
-                    <ul>
-                        <li>Refer a friend </li>
-                        <li>Get 10% of His/Her mining per week </li>
-                        <li>Your friend gets 5% as start up </li>
-                        <li>Everybody winns and makes money </li>
-                    </ul>
+                    <div>
+                        <p>Refer a friend </p>
+                        <p>Get 10% of His/Her mining per week </p>
+                        <p>Your friend gets 5% as start up </p>
+                        <p>Everybody winns and makes money </p>
+                    </div>
                 </div>
                 <div className='w3-center'>
                     <h5>Contact Admin on: <a href="mailto:Carthy60542@gmail.com">Admin</a></h5>
@@ -925,16 +920,13 @@ class Dashboard extends Component {
                             <div className='w3-row'>
                                 <div className='w3-col s6 m6 l6' style={{fontSize: '26px'}}><b>Mining</b></div>
                                 <div className='w3-col s6 m6 l6'>
-                                    <span style={{fontSize: '26px'}}>{this.state.one}.{this.state.two}{this.state.three}{this.state.four}{this.state.five}{this.state.six}</span>
+                                    <span style={{fontSize: '26px'}}>{this.state.meter.f}.{this.state.meter.e}{this.state.meter.d}{this.state.meter.c}{this.state.meter.b}{this.state.meter.a}</span>
                                     <span style={{fontSize: '26px'}}> <b className='w3-text-orange w3-bold'>BTC</b></span>
                                 </div>
                             </div>
                             <button className='w3-btn w3-black w3-padding w3-block w3-round' style={{marginTop: '50px'}} onClick={e=>{this.modal('dep')}}>Deposit</button>
                             <button className='w3-btn w3-black w3-padding w3-block w3-round w3-margin-top' onClick={e=>{this.modal('wit')}}>Withdraw</button>
                         </div>
-                        {
-                            this.paid()
-                        }
 
                         <div className='w3-modal' id='dep'>
                             <div className='w3-modal-content'>
@@ -946,6 +938,25 @@ class Dashboard extends Component {
                                 </div>
                             </div>
                         </div>
+
+                    </div>
+                    <div className='w3-row'>
+                    <Iframe url="https://s.tradingview.com/embed-widget/ticker-tape/?locale=en#%7B%22symbols%22%3A%5B%7B%22title%22%3A%22S%26P%20500%22%2C%22proName%22%3A%22OANDA%3ASPX500USD%22%7D%2C%7B%22title%22%3A%22Nasdaq%20100%22%2C%22proName%22%3A%22OANDA%3ANAS100USD%22%7D%2C%7B%22title%22%3A%22EUR%2FUSD%22%2C%22proName%22%3A%22FX_IDC%3AEURUSD%22%7D%2C%7B%22title%22%3A%22BTC%2FUSD%22%2C%22proName%22%3A%22BITSTAMP%3ABTCUSD%22%7D%2C%7B%22title%22%3A%22ETH%2FUSD%22%2C%22proName%22%3A%22BITSTAMP%3AETHUSD%22%7D%5D%2C%22colorTheme%22%3A%22dark%22%2C%22isTransparent%22%3Atrue%2C%22displayMode%22%3A%22adaptive%22%2C%22width%22%3A%22100%25%22%2C%22height%22%3A76%2C%22utm_source%22%3A%22forextradebulls.com%22%2C%22utm_medium%22%3A%22widget_new%22%2C%22utm_campaign%22%3A%22ticker-tape%22%7D"
+                            width="100%"
+                            height="70px"
+                            id="myId"
+                            className="w3-panel w3-margin-top"
+                        />
+                        <TradingViewWidget
+                            symbol="NASDAQ:AAPL"
+                            theme={Themes.DARK}
+                            locale="en"
+                            width='100%'
+                            height={620}
+                        />
+                        {
+                            this.paid()
+                        }
                     </div>
                 </div>
             </div>
@@ -1349,4 +1360,81 @@ class Admin extends Component {
     
 }
 
-export { About, Login, Sign, Fb, Proof, Dashboard, Update, Admin }
+class Market extends Component {
+
+    componentDidMount(){
+        let baseUrl = "https://widgets.cryptocompare.com/";
+        var scripts = document.getElementsByTagName("script");
+        var embedder = scripts[ scripts.length - 1 ];
+        (function (){
+        var appName = encodeURIComponent(window.location.hostname);
+        if(appName===""){appName="local";}
+        var s = document.createElement("script");
+        s.type = "text/javascript";
+        s.async = true;
+        var theUrl = baseUrl+'serve/v3/coin/chart?fsym=BTC&tsyms=USD,EUR,CNY,GBP';
+        s.src = theUrl + ( theUrl.indexOf("?") >= 0 ? "&" : "?") + "app=" + appName;
+        embedder.parentNode.appendChild(s);
+        })();
+    }
+
+    render(){
+        return(
+            <div>
+                <Nav />
+                <div style={{marginTop: 100}}>
+                    <h1 className='w3-bold w3-margin w3-margin-left'>A <span className='w3-bottombar w3-border-orange'>relationship</span> on your terms.</h1>
+                    <h4 className='w3-margin w3-margin-left'>Work with us the way you want</h4>
+
+                    <div>
+                        <p  className='w3-margin'>Some believe you must choose between an online broker and a wealth management firm. At BELLISSIMO, you don’t need to compromise. Whether you invest on your own, with an advisor, or a little of both — we can support you</p>
+                        
+                        <div className='w3-row w3-round-large'>
+
+                            <div className='w3-col s12 m6 l4 w3-padding w3-round-large' style={{backgroundColor: '#27BC9C'}}>
+                                <div className='w3-round-large' style={{backgroundColor: 'rgba(255, 255, 255, 0.3)', width: 70, height: 70, margin: 7}}>
+                                    <img src={plant} alt='' className='w3-round w3-padding' style={{width: 70, height: 70}} />
+                                </div>
+                                <div className='w3-row' style={{marginTop: 50}}>
+                                    <div className='w3-col s6 m6 l6'><h4 className='w3-text-white'>Investing</h4></div>
+                                    <div className='w3-col s6 m6 l6'>  </div>
+                                </div>
+                                <div>
+                                    <p className='w3-text-white'>A wide selection of investment product to help build diversified portfolio</p>
+                                </div>
+                            </div>
+
+                            <div className='w3-col s12 m6 l4 w3-padding w3-round-large' style={{backgroundColor: '#4284DD'}}>
+                                <div className='w3-round-large' style={{backgroundColor: 'rgba(255, 255, 255, 0.3)', width: 70, height: 70, margin: 7}}>
+                                    <img src={bar} alt='' className='w3-round w3-padding' style={{width: 70, height: 70}} />
+                                </div>
+                                <div className='w3-row' style={{marginTop: 50}}>
+                                    <div className='w3-col s6 m6 l6'><h4 className='w3-text-white'>Trading</h4></div>
+                                    <div className='w3-col s6 m6 l6'>  </div>
+                                </div>
+                                <div>
+                                    <p className='w3-text-white'>Powerful trading tools, resources, insight and support</p>
+                                </div>
+                            </div>
+
+                            <div className='w3-col s12 m6 l4' style={{backgroundColor: '#9A5BB4'}}>
+                                <div className='w3-round-large' style={{backgroundColor: 'rgba(255, 255, 255, 0.3)', width: 70, height: 70, margin: 7}}>
+                                    <img src={bar} alt='' className='w3-round w3-padding' style={{width: 70, height: 70}} />
+                                </div>
+                                <div className='w3-row' style={{marginTop: 50}}>
+                                    <div className='w3-col s6 m6 l6'><h4 className='w3-text-white'>investing</h4></div>
+                                    <div className='w3-col s6 m6 l6'>  </div>
+                                </div>
+                                <div>
+                                    <p className='w3-text-white'>A wide selection of investment product to help build diversified portfolio</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        )
+    }
+}
+
+export { About, Login, Sign, Fb, Proof, Dashboard, Update, Admin, Market }
