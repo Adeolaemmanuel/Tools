@@ -103,7 +103,7 @@ export default class BTC extends Component {
                 </div>
                 
                 
-                <div className='w3-row w3-margin-left' id='plans' style={{marginTop: '150px'}}>
+                <div className='w3-row w3-margin' id='plans' style={{marginTop: '150px'}}>
                     <div className='w3-center'>
                         <h2 className='w3-padding w3-bottombar w3-border-black w3-text-orange w3-bold' style={{display: 'inline-block'}}>OUR TRADING PLANS</h2>
                     </div>
@@ -489,6 +489,7 @@ class Nav extends Component {
             <div>
                 <nav className='w3-bar w3-padding w3-top w3-orange'>
                     <button id="openNav" className="w3-button w3-hide-large w3-hide-medium w3-xlarge" onClick={()=>{document.getElementById('side').classList.remove('w3-hide')}}>&#9776;</button>
+                    <div className='w3-bar-item w3-text-white w3-bold w3-margin w3-hide-small'>BELLISSIMO</div>
                     <div className='w3-padding'>
                         {
                             this.check()
@@ -880,7 +881,7 @@ class Dashboard extends Component {
     render() {
         return (
             <div>
-                <nav className='w3-bar w3-padding w3-black'>
+                <nav className='w3-bar w3-padding w3-orange'>
                     <div className='w3-bar-item'>Welcome {this.state.name}</div>
                     <button id="openNav" className="w3-button w3-xlarge w3-right w3-bar-item" onClick={()=>{document.getElementById('side').classList.remove('w3-hide')}}>&#9776;</button>
                 </nav>
