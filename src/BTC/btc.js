@@ -5,8 +5,8 @@ import '../index.css'
 import './btc.css'
 import btc from '../assets/img/btc/bitcoin.svg'
 import b from '../assets/img/btc/btc.gif'
-import mine from '../assets/img/btc/miner.svg'
-import cart from '../assets/img/btc/mine-cart.svg'
+//import mine from '../assets/img/btc/miner.svg'
+//import cart from '../assets/img/btc/mine-cart.svg'
 import sign from '../assets/img/btc/enrollment.svg'
 import fb from '../assets/img/btc/logo.svg'
 import earn from '../assets/img/btc/earnings.svg'
@@ -20,6 +20,7 @@ import two from '../assets/img/btc/2.jpg'
 import three from '../assets/img/btc/3.jpg'
 import plant from '../assets/img/btc/plant.png'
 import bar from '../assets/img/btc/graph-bar.png'
+import pie from '../assets/img/btc/graph.png'
 import $ from 'jquery'
 import { Cookies } from 'react-cookie'
 import axios from 'axios'
@@ -78,26 +79,25 @@ export default class BTC extends Component {
     render() {
         return (
             <div >
-                <main className='w3-display-container' style={{height: 550}}>
+                <main className='w3-display-container' style={{height: 570}}>
                     <Nav />
-                    <img src={this.state.slide[this.state.index]} alt='' className='w3-animate-fade' style={{width: '100%', height: 550}} />
+                    <img src={this.state.slide[this.state.index]} alt='' className='w3-animate-fade' style={{width: '100%', height: 570}} />
                     <div className='w3-display-left'>
                         <h1 className='w3-text-black w3-round w3-orange w3-padding w3-opacity w3-bold w3-margin-left w3-padding-left'> Welcome to BELLISSIMO <br /> a Multi-regulated Global Forex and Shares Broker</h1>
                         <p className='w3-text-black w3-round w3-orange w3-padding w3-opacity w3-margin-left w3-padding-left'>A trusted destination for traders worldwide, Authorised by FCA, <br /> ASIC & FSCA with multi-lingual support 24/5.</p>
                     </div>
                 </main>
-                <div className='w3-center w3-row-' style={{backgroundColor: '#eee'}}>
-                    <div className='w3-col s6 m4 l3 w3-padding-16 w3-orange w3-border-left w3-border-white'>
+                <div className='w3-center w3-row w3-margin' style={{backgroundColor: '#eee'}}>
+                    <div className='w3-col s6 m4 l3 w3-padding w3-orange w3-border-left w3-border-white'>
                         <p className='w3-bold'>Free analysis tools</p>
                     </div>
-                    <div
-                     className='w3-col s6 m4 l3 w3-padding-16 w3-orange w3-border-left w3-border-white'>
+                    <div className='w3-col s6 m4 l3 w3-padding w3-orange w3-border-left w3-border-white'>
                         <p className='w3-bold'>Fast execution 0 commision</p>
                     </div>
-                    <div className='w3-col s6 m4 l3 w3-padding-16 w3-orange w3-border-left w3-border-white'>
+                    <div className='w3-col s6 m4 l3 w3-padding w3-orange w3-border-left w3-border-white'>
                         <p className='w3-bold'>Low minimum deposit of $00</p>
                     </div>
-                    <div className='w3-col s6 m4 l3 w3-padding-16 w3-orange w3-border-left w3-border-white'>
+                    <div className='w3-col s6 m4 l3 w3-padding w3-orange w3-border-left w3-border-white'>
                         <p className='w3-bold'>Over 2,100 assets to trade</p>
                     </div>
                 </div>
@@ -144,21 +144,21 @@ export default class BTC extends Component {
                     </div>
                     <div style={{marginTop: '50px'}}>
                         <div className='w3-col s6 m3 l3 w3-padding w3-center' style={{marginTop: '50px'}}>
-                            <img src={sign} alt='' className='w3-padding' style={{width: '150px', height: '150px'}} />
+                            <img src={sign} alt='' className='w3-padding' style={{width: '100px', height: '100px'}} />
                             <div>
                                 <a className='w3-btn w3-border w3-border-orange w3-hover-text-white w3-hover-orange w3-round' href='Register' style={{textDecoration: 'none'}}><h4 className='w3-center w3-bold'>SIGN UP</h4></a>
                             </div>
                         </div>
                         <div className='w3-col s6 m3 l3 w3-padding w3-center' style={{marginTop: '50px'}}>
-                            <img src={deposit} alt='' className='w3-padding' style={{width: '150px', height: '150px'}} />
+                            <img src={deposit} alt='' className='w3-padding' style={{width: '100px', height: '100px'}} />
                             <h4 className='w3-padding w3-center w3-bold'>MAKE DEPOSIT</h4>
                         </div>
                         <div className='w3-col s6 m3 l3 w3-padding w3-center' style={{marginTop: '50px'}}>
-                            <img src={earn} alt='' className='w3-padding' style={{width: '150px', height: '150px'}} />
+                            <img src={earn} alt='' className='w3-padding' style={{width: '100px', height: '100px'}} />
                             <h4 className='w3-padding w3-center w3-bold'>EARN HOURLY OR DAILY</h4>
                         </div>
                         <div className='w3-col s6 m3 l3 w3-padding w3-center' style={{marginTop: '50px'}}>
-                            <img src={pay} alt='' className='w3-padding' style={{width: '150px', height: '150px'}} />
+                            <img src={pay} alt='' className='w3-padding' style={{width: '100px', height: '100px'}} />
                             <h4 className='w3-padding w3-center w3-bold'>REQUEST FOR PAYMENT</h4>
                         </div>
                     </div>
@@ -166,23 +166,23 @@ export default class BTC extends Component {
 
                 <div className='w3-row' style={{marginTop: '150px'}}>
                     <div className='w3-center'>
-                        <h2 className='w3-padding w3-bottombar w3-border-black w3-text-orange w3-bold' style={{display: 'inline-block'}}>OUR FEATURES</h2>
+                        <h2 className='w3-bottombar w3-border-black w3-text-orange w3-bold' style={{display: 'inline-block'}}>OUR FEATURES</h2>
                     </div>
-                    <div className='w3-col s6 m3 l3 w3-padding w3-container w3-center' style={{marginTop: '50px'}}>
-                        <img src={any} alt='' className='w3-padding' style={{width: '150px', height: '150px'}} />
-                        <h4 className='w3-padding w3-center w3-bold'>The highest rates of conversion and quality in our segment!</h4>
+                    <div className='w3-col s6 m3 l3 w3-padding w3-center' style={{marginTop: '50px'}}>
+                        <img src={any} alt='' className='w3-padding' style={{width: '100px', height: '100px'}} />
+                        <h4 className='w3-center w3-bold'>The highest rates of conversion and quality in our segment!</h4>
                     </div>
-                    <div className='w3-col s6 m3 l3 w3-container w3-padding w3-center' style={{marginTop: '50px'}}>
-                        <img src={inter} alt='' className='w3-padding' style={{width: '150px', height: '150px'}} />
-                        <h4 className='w3-padding w3-center w3-bold'>Easy in use and comprehensive user interface.</h4>
+                    <div className='w3-col s6 m3 l3 w3-padding w3-center' style={{marginTop: '50px'}}>
+                        <img src={inter} alt='' className='w3-padding' style={{width: '100px', height: '100px'}} />
+                        <h4 className='w3-center w3-bold'>Easy in use and comprehensive user interface.</h4>
                     </div>
-                    <div className='w3-col s6 m3 l3 w3-container w3-padding w3-center' style={{marginTop: '50px'}}>
-                        <img src={btc} alt='' className='w3-padding' style={{width: '150px', height: '150px'}} />
-                        <h4 className='w3-padding w3-center w3-bold'>Fast, convenient and anonymous Bitcoin Payments!</h4>
+                    <div className='w3-col s6 m3 l3 w3-padding w3-center' style={{marginTop: '50px'}}>
+                        <img src={btc} alt='' className='w3-padding' style={{width: '100px', height: '100px'}} />
+                        <h4 className='w3-center w3-bold'>Fast, convenient and anonymous Bitcoin Payments!</h4>
                     </div>
-                    <div className='w3-col s6 m3 l3 w3-container w3-padding w3-center' style={{marginTop: '50px'}}>
-                        <img src={cloud} alt='' className='w3-padding' style={{width: '150px', height: '150px'}} />
-                        <h4 className='w3-padding w3-center w3-bold'>Our technologies sustain any load and handle any payment without a delay!</h4>
+                    <div className='w3-col s6 m3 l3 w3-padding w3-center' style={{marginTop: '50px'}}>
+                        <img src={cloud} alt='' className='w3-padding' style={{width: '100px', height: '100px'}} />
+                        <h4 className='w3-center w3-bold'>Our technologies sustain any load and handle any payment without a delay!</h4>
                     </div>
                 </div>
 
@@ -507,7 +507,7 @@ class Nav extends Component {
                         <Link className='w3-bar-item w3-btn w3-orange w3-round w3-text-white w3-margin-top w3-center' onClick={()=>{document.getElementById('side').classList.add('w3-hide')}} style={{textDecoration: 'none'}} to='/'>HOME</Link>
                         <Link className='w3-bar-item w3-btn w3-orange w3-round w3-text-white w3-margin-top w3-center' onClick={()=>{document.getElementById('side').classList.add('w3-hide')}}  to='/About'>ABOUT US</Link>
                         <a className='w3-bar-item w3-btn w3-orange w3-round w3-text-white w3-margin-top w3-center' onClick={()=>{document.getElementById('side').classList.add('w3-hide')}}  href='/#plans'>PLANS</a>
-                        <Link className='w3-bar-item w3-btn w3-orange w3-round w3-text-white w3-margin-top w3-center' onClick={()=>{document.getElementById('side').classList.add('w3-hide')}}  to='/Faq'>FAQ</Link>
+                        <Link className='w3-bar-item w3-btn w3-orange w3-round w3-text-white w3-margin-top w3-center' onClick={()=>{document.getElementById('side').classList.add('w3-hide')}}  to='/Market'>Market</Link>
                         <a className='w3-bar-item w3-btn w3-orange w3-round w3-text-white w3-margin-top w3-center' onClick={()=>{document.getElementById('side').classList.add('w3-hide')}}  href='/#videos'>VIDEOS</a>
                         <a className='w3-bar-item w3-btn w3-orange w3-round w3-text-white w3-margin-top w3-center' onClick={()=>{document.getElementById('side').classList.add('w3-hide')}} href='Login'>LOGIN</a>
                         <a className='w3-bar-item w3-btn w3-orange w3-round w3-text-white w3-margin-top w3-center' onClick={()=>{document.getElementById('side').classList.add('w3-hide')}} href='Register'>SIGN UP</a>
@@ -1382,14 +1382,14 @@ class Market extends Component {
         return(
             <div>
                 <Nav />
-                <div style={{marginTop: 100}}>
+                <div className='w3-margin-bottom' style={{marginTop: 100}}>
                     <h1 className='w3-bold w3-margin w3-margin-left'>A <span className='w3-bottombar w3-border-orange'>relationship</span> on your terms.</h1>
                     <h4 className='w3-margin w3-margin-left'>Work with us the way you want</h4>
 
                     <div>
                         <p  className='w3-margin'>Some believe you must choose between an online broker and a wealth management firm. At BELLISSIMO, you don’t need to compromise. Whether you invest on your own, with an advisor, or a little of both — we can support you</p>
                         
-                        <div className='w3-row w3-round-large'>
+                        <div className='w3-row w3-margin w3-round-large'>
 
                             <div className='w3-col s12 m6 l4 w3-padding w3-round-large' style={{backgroundColor: '#27BC9C'}}>
                                 <div className='w3-round-large' style={{backgroundColor: 'rgba(255, 255, 255, 0.3)', width: 70, height: 70, margin: 7}}>
@@ -1417,16 +1417,16 @@ class Market extends Component {
                                 </div>
                             </div>
 
-                            <div className='w3-col s12 m6 l4' style={{backgroundColor: '#9A5BB4'}}>
+                            <div className='w3-col s12 m6 l4 w3-padding w3-round-large' style={{backgroundColor: '#9A5BB4'}}>
                                 <div className='w3-round-large' style={{backgroundColor: 'rgba(255, 255, 255, 0.3)', width: 70, height: 70, margin: 7}}>
-                                    <img src={bar} alt='' className='w3-round w3-padding' style={{width: 70, height: 70}} />
+                                    <img src={pie} alt='' className='w3-round w3-padding' style={{width: 70, height: 70}} />
                                 </div>
                                 <div className='w3-row' style={{marginTop: 50}}>
-                                    <div className='w3-col s6 m6 l6'><h4 className='w3-text-white'>investing</h4></div>
+                                    <div className='w3-col s6 m6 l6'><h4 className='w3-text-white'>Wealth management</h4></div>
                                     <div className='w3-col s6 m6 l6'>  </div>
                                 </div>
                                 <div>
-                                    <p className='w3-text-white'>A wide selection of investment product to help build diversified portfolio</p>
+                                    <p className='w3-text-white'>Dedicated financial consultant to help reach your own specific goals</p>
                                 </div>
                             </div>
                         </div>
