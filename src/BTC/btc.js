@@ -1027,7 +1027,7 @@ class Update extends Component {
     render() {
         return (
             <div>
-                <nav className='w3-bar w3-padding w3-black'>
+                <nav className='w3-bar w3-padding w3-orange'>
                     <div className='w3-bar-item'>Welcome {this.state.user}</div>
                     <button id="openNav" className="w3-button w3-xlarge w3-right w3-bar-item" onClick={()=>{document.getElementById('side').classList.remove('w3-hide')}}>&#9776;</button>
                 </nav>
@@ -1087,14 +1087,30 @@ class Update extends Component {
                     <div className='w3-padding w3-card w3-round w3-margin-bottom' style={{marginTop: '50px'}}>
                     <h2 className='w3-bold w3-center w3-orange w3-text-white w3-round'>UPDATE DETAILS</h2>
                         <form onSubmit={this.update}>
-                            <input className='w3-input w3-border w3-round' placeholder='Fullname:' value={this.state.name} id='name' />
-                            <input className='w3-input w3-border w3-round w3-margin-top' placeholder='Email:' value={this.state.email} id='email' />
-                            <input className='w3-input w3-border w3-round w3-margin-top' placeholder='Username:' type='text'  value={this.state.username} id='user' />
-                            <input className='w3-input w3-border w3-round w3-margin-top' placeholder='BTC Address:' type='text'  value={this.state.btc} id='btc' />
-                            <input className='w3-input w3-border w3-round w3-margin-top' placeholder='Address:'  value={this.state.address} id='add' />
-                            <input className='w3-input w3-border w3-round w3-margin-top' placeholder='Number:'  value={this.state.number} id='num' />
-                            <input className='w3-input w3-border w3-round w3-margin-top' placeholder='DOB:'  value={this.state.dob} id='dob' />
-                            <input className='w3-input w3-border w3-round w3-margin-top' placeholder='Password:' type={this.state.passwordT}  value={this.state.password} id='pass' />
+                            <input className='w3-input w3-border w3-round' placeholder='Fullname:' value={this.state.name} id='name' onChange={name=>{
+                                this.setState({name})
+                            }} />
+                            <input className='w3-input w3-border w3-round w3-margin-top' placeholder='Email:' value={this.state.email} id='email' onChange={email=>{
+                                this.setState({email})
+                            }} />
+                            <input className='w3-input w3-border w3-round w3-margin-top' placeholder='Username:' type='text'  value={this.state.username} id='user' onChange={user=>{
+                                this.setState({user})
+                            }} />
+                            <input className='w3-input w3-border w3-round w3-margin-top' placeholder='BTC Address:' type='text'  value={this.state.btc} id='btc'onChange={btc=>{
+                                this.setState({btc})
+                            }} />
+                            <input className='w3-input w3-border w3-round w3-margin-top' placeholder='Address:'  value={this.state.address} id='add' onChange={address=>{
+                                this.setState({address})
+                            }} />
+                            <input className='w3-input w3-border w3-round w3-margin-top' placeholder='Number:'  value={this.state.number} id='num' onChange={number=>{
+                                this.setState({number})
+                            }} />
+                            <input className='w3-input w3-border w3-round w3-margin-top' placeholder='DOB:'  value={this.state.dob} id='dob' onChange={dob=>{
+                                this.setState({dob})
+                            }} />
+                            <input className='w3-input w3-border w3-round w3-margin-top' placeholder='Password:' type={this.state.passwordT} onChange={password=>{
+                                this.setState({password})
+                            }}  value={this.state.password} id='pass' />
                             <button className='w3-padding w3-btn w3-round w3-margin-top w3-center w3-orange w3-block w3-text-white'>UPDATE</button>
                         </form>
                     </div>
