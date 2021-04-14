@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom';
 import './index.css';
-import BTC, { About, Fb, Login, Sign, Proof, Dashboard, Update, Admin, Market } from './BTC/btc'
+//import BTC, { About, Fb, Login, Sign, Proof, Dashboard, Update, Admin, Market } from './BTC/btc'
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { Cookies } from 'react-cookie'
-//import Mil, { Admin } from './mil/mil';
+import Mil, { Admin } from './mil/mil';
 
 
 export default class Index extends Component {
@@ -20,81 +20,81 @@ export default class Index extends Component {
   
 
   //Render for BTC
+  // render() {
+  //   if(this.state.user){
+  //     return (
+  //       <div>
+  //         <Router>
+  //           <Route path='/' exact >
+  //             <BTC />
+  //           </Route>
+  //           <Route path='/Dashboard' exact>
+  //             <Dashboard user={this.state.user} />
+  //           </Route>
+  //           <Route path='/Update' exact >
+  //             <Update />
+  //           </Route>
+  //           <Route path='/About' exact >
+  //             <About />
+  //           </Route>
+  //           <Route path='/Login' exact >
+  //             <Login />
+  //           </Route>
+  //           <Route path='/Register' exact >
+  //             <Sign />
+  //           </Route>
+  //           <Route path='/FacebockLoginAuth' exact >
+  //             <Fb />
+  //           </Route>
+  //           <Route path='/Proof' exact >
+  //             <Proof />
+  //           </Route>
+  //           <Route path='/Admin' exact >
+  //             <Admin />
+  //           </Route>
+  //           <Route path='/Market' exact >
+  //             <Market />
+  //           </Route>
+  //         </Router>
+  //       </div>
+  //     )
+  //   }else{
+  //     return (
+  //       <div>
+  //         <Router>
+  //           <Route path='/' exact >
+  //             <BTC />
+  //           </Route>
+  //           <Route path='/About' exact >
+  //             <About />
+  //           </Route>
+  //           <Route path='/Login' exact >
+  //             <Login />
+  //           </Route>
+  //           <Route path='/Register' exact >
+  //             <Sign />
+  //           </Route>
+  //           <Route path='/FacebockLoginAuth' exact >
+  //             <Fb />
+  //           </Route>
+  //           <Route path='/Proof' exact >
+  //             <Proof />
+  //           </Route>
+  //           <Route path='/Admin' exact >
+  //             <Admin />
+  //           </Route>
+  //           <Route path='/Market' exact >
+  //             <Market />
+  //           </Route>
+  //         </Router>
+  //       </div>
+  //     )
+  //   }
+  // }
+
+
+
   render() {
-    if(this.state.user){
-      return (
-        <div>
-          <Router>
-            <Route path='/' exact >
-              <BTC />
-            </Route>
-            <Route path='/Dashboard' exact>
-              <Dashboard user={this.state.user} />
-            </Route>
-            <Route path='/Update' exact >
-              <Update />
-            </Route>
-            <Route path='/About' exact >
-              <About />
-            </Route>
-            <Route path='/Login' exact >
-              <Login />
-            </Route>
-            <Route path='/Register' exact >
-              <Sign />
-            </Route>
-            <Route path='/FacebockLoginAuth' exact >
-              <Fb />
-            </Route>
-            <Route path='/Proof' exact >
-              <Proof />
-            </Route>
-            <Route path='/Admin' exact >
-              <Admin />
-            </Route>
-            <Route path='/Market' exact >
-              <Market />
-            </Route>
-          </Router>
-        </div>
-      )
-    }else{
-      return (
-        <div>
-          <Router>
-            <Route path='/' exact >
-              <BTC />
-            </Route>
-            <Route path='/About' exact >
-              <About />
-            </Route>
-            <Route path='/Login' exact >
-              <Login />
-            </Route>
-            <Route path='/Register' exact >
-              <Sign />
-            </Route>
-            <Route path='/FacebockLoginAuth' exact >
-              <Fb />
-            </Route>
-            <Route path='/Proof' exact >
-              <Proof />
-            </Route>
-            <Route path='/Admin' exact >
-              <Admin />
-            </Route>
-            <Route path='/Market' exact >
-              <Market />
-            </Route>
-          </Router>
-        </div>
-      )
-    }
-  }
-
-
-
-/**  render() {
     return (
       <div>
         <Router>
@@ -107,7 +107,7 @@ export default class Index extends Component {
         </Router>
       </div>
     )
-  } */
+  } 
 
 }
 
