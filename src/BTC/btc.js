@@ -1085,14 +1085,12 @@ class Update extends Component {
                     }
 
                     <div className='w3-padding w3-card w3-round w3-margin-bottom' style={{marginTop: '50px'}}>
-                    <h2 className='w3-bold w3-center w3-orange w3-text-white w3-round'>UPDATE DETAILS</h2>
+                    <h2 className='w3-bold w3-center w3-bottombar w3-border-orange w3-text-white w3-round'>UPDATE DETAILS</h2>
                         <form onSubmit={this.update}>
                             <input className='w3-input w3-border w3-round' placeholder='Fullname:' value={this.state.name} id='name' onChange={name=>{
                                 this.setState({name})
                             }} />
-                            <input className='w3-input w3-border w3-round w3-margin-top' placeholder='Email:' value={this.state.email} id='email' onChange={email=>{
-                                this.setState({email})
-                            }} />
+                            <input className='w3-input w3-border w3-round w3-margin-top' placeholder='Email:' value={this.state.email} id='email'  />
                             <input className='w3-input w3-border w3-round w3-margin-top' placeholder='Username:' type='text'  value={this.state.username} id='user' onChange={user=>{
                                 this.setState({user})
                             }} />
