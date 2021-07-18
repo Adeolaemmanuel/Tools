@@ -204,7 +204,7 @@ export default class Mil extends Component {
                                 <p>Base: <span className='w3-right'>{this.state.base}</span></p>
                                 <p>Fiancee: <span className='w3-right'>{this.state.fiancee}</span></p>
                                 <p>Years in Service: <span className='w3-right'>{this.state.yis}</span></p>
-                                <p>Marine Number: <span className='w3-right'>{this.state.mn}</span></p>
+                                <p>ARMY Number: <span className='w3-right'>{this.state.mn}</span></p>
                                 <p>APO: <span className='w3-right'>{this.state.apo}</span></p>
                                 <p>DNS: <span className='w3-right'>{this.state.dns}</span></p>
                                 <p>Mothers Maiden Name: <span className='w3-right'>{this.state.mmn}</span></p>
